@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct BackgammonScoreKeeperApp: App {
+    
+    @State private var viewModel = ViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //            ContentView()
+            //                .environment(viewModel)
+            //            TestAlignment()
+            //                .environment(viewModel)
+            //            OrientationTest()
+//        xxx()
+            ControllerView()
+                .environment(viewModel)
+            
         }
     }
 }
