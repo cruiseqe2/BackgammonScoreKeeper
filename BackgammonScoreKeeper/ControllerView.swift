@@ -18,10 +18,11 @@ struct ControllerView: View {
     var body: some View {
         
         MainView()
+            .background(Color.theme.background)
             .fullScreenCover(isPresented: $showErrorScreen) {
             Text("Please rotate the phone to Landscape")
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
         .onAppear {
             vm.deviceOrientation = getDeviceOrientation()
             showErrorScreen = (wrongOrientation ? true : false)

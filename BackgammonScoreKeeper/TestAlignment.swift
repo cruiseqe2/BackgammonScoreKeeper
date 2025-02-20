@@ -110,7 +110,8 @@ struct TestAlignment: View {
 ***/
 
 #Preview(traits: .landscapeLeft) {
-    Outer(sideToProcess: .leftHandSide)
+//    Outer(sideToProcess: .leftHandSide)
+    Middle()
         .environment(ViewModel())
 }
 
@@ -154,6 +155,8 @@ struct Outer: View {
         GeometryReader { geo in
             
             let columnWidth = geo.size.width
+            let largeBoxWidth = columnWidth * 0.58
+            let smallBoxWidth = columnWidth * 0.38
             
             VStack {
                 
@@ -161,11 +164,84 @@ struct Outer: View {
                     .font(.system(size: 24, weight: .black))
                     .padding(.vertical, 15)
                     .frame(maxWidth: columnWidth)
-                    .foregroundStyle(.white)
-                    .background(.black)
+                    .foregroundStyle(Color.theme.foreground)
+                    .background(Color.theme.background)
                     .border(width: 3, edges: [.bottom], color: .yellow)
                     .clipped()
                     .padding(.bottom, 3)
+                
+                
+                HStack(alignment: .bottom, spacing: 0) {
+                    
+                    if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
+                        
+                        Text("\(vm.LHSPoints)")
+                            .font(.system(size: 110, weight: .bold))
+                            .padding(15)
+                            .offset(y: 15)
+                            .frame(width: largeBoxWidth)
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(.mint, lineWidth: 4)
+                            )
+                            .overlay(alignment: .top) {
+                                Text("Points")
+                                    .font(.system(size: 20, weight: .black))
+                                    .offset(y: 10)
+                            }
+                    
+                        Spacer()
+                        
+                        Text("\(vm.LHSGames)")
+                            .font(.system(size: 56))
+                            .padding(15)
+                            .offset(y: 15)
+                            .frame(width: smallBoxWidth)
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(.indigo, lineWidth: 4)
+                            )
+                            .overlay(alignment: .top) {
+                                Text("Games")
+                                    .font(.system(size: 20, weight: .black))
+                                    .offset(y: 7)
+                            }
+                    
+                    
+                    } else {  // We are now dealing with the Right Hand Side
+                        
+                        Text("\(vm.RHSGames)")
+                            .font(.system(size: 56))
+                            .padding(15)
+                            .offset(y: 15)
+                            .frame(width: smallBoxWidth)
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(.indigo, lineWidth: 4)
+                            )
+                            .overlay(alignment: .top) {
+                                Text("Games")
+                                    .font(.system(size: 20, weight: .black))
+                                    .offset(y: 7)
+                            }
+                        
+                        Spacer()
+                        
+                        Text("\(vm.RHSPoints)")
+                            .font(.system(size: 110, weight: .bold))
+                            .padding(15)
+                            .offset(y: 15)
+                            .frame(width: largeBoxWidth)
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(.mint, lineWidth: 4)
+                            )
+                            .overlay(alignment: .top) {
+                                Text("Points")
+                                    .font(.system(size: 20, weight: .black))
+                                    .offset(y: 10)
+                            }
+                        
+                    }
+                    
+                }
+                
                 
                 
                 HStack(spacing: 0) {
@@ -212,13 +288,30 @@ struct Outer: View {
     }
 }
 
-struct MIDDLE: View {
+struct Middle: View {
+    @Environment(ViewModel.self) var vm
+    
     var body: some View {
         VStack {
+            
+            Button {
+                vm.swapPositions()
+            } label: {
+                Image(systemName: "arrow.left.arrow.right")
+                    .font(.system(size: 30))
+//                    .clipped(.Circle)
+            }
+            .padding(.bottom, 16)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.circle)
+            
+            
             Text("Best Of")
             Text("Up To")
             Text("Games")
             Text("Points")
+            
+            Spacer()
 //            HStack(spacing: 0) {
 //                Text("LHS").padding(.leading, 10)
 //                Spacer()
@@ -232,33 +325,11 @@ struct MIDDLE: View {
 //                Spacer()
 //                Text("Bottom line").padding(.trailing, 10)
 //            }
-//            
-            HStack {
-                Button {
-                    
-                } label: {
-                    Text("Backgammon")
-                }
-                .buttonStyle(.bordered)
-                .tint(.pink)
-                Spacer()
-                Button {
-                    
-                } label: {
-                    Text("Gammon")
-                }
-                .buttonStyle(.bordered)
-                .tint(.pink)
-                Spacer()
-                Button {
-                    
-                } label: {
-                    Text("Win")
-                }
-                .buttonStyle(.bordered)
-                .tint(.pink)
-            }
+//
+            
         }
+//        .background(Color.theme.background)
+//        .border(Color.gray, width: 4)
     }
 }
 

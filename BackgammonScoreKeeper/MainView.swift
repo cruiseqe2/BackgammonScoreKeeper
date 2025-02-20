@@ -32,9 +32,11 @@ struct MainView: View {
                 
                     HStack(alignment: .firstTextBaseline) {
                         Text("BACKGAMMON")
+                            .foregroundStyle(Color.theme.foreground)
                             .font(.system(size: 36, weight: .black))
                             .kerning(8)
                         Text("Score Keeper")
+                            .foregroundStyle(Color.theme.foreground)
                             .font(.system(size: 24, weight: .black))
                             .kerning(5)
                         
@@ -58,7 +60,8 @@ struct MainView: View {
                     
                     Color.green
                         .frame(width: middleColumnWidth)
-                        .overlay(MIDDLE())
+                        .overlay(Middle())
+//                        .background(Color.theme.background)
                     
                     Color.blue
                         .frame(width: outerColumnWidth)
@@ -67,7 +70,20 @@ struct MainView: View {
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
         }
+        .padding()
+        .opacity(menuBeingShown ? 0.2 : 1.0)
+        .disabled(menuBeingShown)
+        .overlay(mainMenu)
+//        .background(Color.theme.background)
+//        .ignoresSafeArea(.all)
     }
+    
+    @ViewBuilder private var mainMenu: some View {
+        if menuBeingShown {
+            MainMenu(showMenu: $menuBeingShown)
+        }
+    }
+    
 }
 
 #Preview(traits: .landscapeLeft) {
