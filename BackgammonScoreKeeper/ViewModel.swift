@@ -15,11 +15,11 @@ class ViewModel {
     var isOnRight: Bool = true
     
     var opponent: String = "Alice"
-    var myGamesWon: Int = 5
-    var opponentGamesWon: Int = 1
+    var myGames: Int = 5
+    var opponentGames: Int = 1
     var myPoints: Int = 10
     var opponentPoints: Int = 2
-    var typeOfGame: TypeOfGame = .firstTo
+    var typeOfGame: TypeOfGame = .bestOf
     var pointsOrGamesToWin : PointsOrGamesToWin? = .points
     var numberOfGamesOrPoints: Int? = 11
     var timeStarted = Date()
@@ -29,7 +29,7 @@ class ViewModel {
         return isOnRight ? opponent : owmerName
     }
     var LHSGames: Int {
-        return isOnRight ? opponentGamesWon : myGamesWon
+        return isOnRight ? opponentGames : myGames
     }
     var LHSPoints: Int {
         return isOnRight ? opponentPoints : myPoints
@@ -47,24 +47,13 @@ class ViewModel {
     }
     
     var line2: String {
-        if let numberOfGamesOrPoints {
-            "\(numberOfGamesOrPoints)"
-        } else {
-            ""
-        }
+        guard typeOfGame != .friendly else { return "" }
+        return ("\(numberOfGamesOrPoints ?? 0)")
     }
     
     var line3: String {
-        if let pointsOrGamesToWin {
-            switch pointsOrGamesToWin {
-            case .games:
-                return "Games"
-            case .points:
-                return "Points"
-            }
-        } else {
-            return ""
-        }
+        guard let pointsOrGamesToWin else { return "" }
+        return (pointsOrGamesToWin == .games ? "Games" : "Points")
     }
     
     
@@ -72,11 +61,25 @@ class ViewModel {
         return isOnRight ? owmerName : opponent
     }
     var RHSGames: Int {
-        return isOnRight ? myGamesWon : opponentGamesWon
+        return isOnRight ? myGames : opponentGames
     }
     var RHSPoints: Int {
         return isOnRight ? myPoints : opponentPoints
     }
+    
+    
+    /// Should BumpUp be visible
+    var bumpUpVisible: Bool {
+        typeOfGame == .friendly ? false : true
+    }
+    
+    /// Should BumpDown be visible
+    var bumpDownVisible: Bool {
+        guard bumpUpVisible else { return false }
+        let currentTotal = (pointsOrGamesToWin == .points ? myPoints + opponentPoints : myGames + opponentGames)
+        return (numberOfGamesOrPoints! > currentTotal ? true : false)
+    }
+    
     
     
     
@@ -86,6 +89,13 @@ class ViewModel {
         isOnRight.toggle()
     }
 
+    func bumpUp() {
+        numberOfGamesOrPoints! += (typeOfGame == .bestOf ? 2 : 1)
+    }
+    
+    func bumpDown() {
+        numberOfGamesOrPoints! -= (typeOfGame == .bestOf ? 2 : 1)
+    }
     
     
 }

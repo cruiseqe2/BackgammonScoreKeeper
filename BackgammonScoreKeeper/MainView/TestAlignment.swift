@@ -161,9 +161,9 @@ struct Outer: View {
                     .frame(maxWidth: columnWidth)
                     .foregroundStyle(Color.theme.foreground)
                     .background(Color.theme.background)
-                    .border(width: 3, edges: [.bottom], color: .yellow)
+//                    .border(width: 3, edges: [.bottom], color: .yellow)
                     .clipped()
-                    .padding(.bottom, 3)
+//                    .padding(.bottom, 3)
                 
                 
                 HStack(alignment: .bottom, spacing: 0) {
@@ -237,21 +237,6 @@ struct Outer: View {
                     
                 }
                 
-                
-                
-                HStack(spacing: 0) {
-                    Text("LHS").padding(.leading, 10)
-                    Spacer()
-                }
-                HStack(spacing: 0) {
-                    //                Spacer()
-                    Text("Another line")
-                    //                Spacer()
-                }
-                HStack(spacing: 0) {
-                    Spacer()
-                    Text("Bottom line").padding(.trailing, 10)
-                }
                 
                 HStack {
                     Button {

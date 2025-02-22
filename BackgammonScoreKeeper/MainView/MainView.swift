@@ -56,16 +56,16 @@ struct MainView: View {
                 HStack(spacing: 0) {
                     Color.red.opacity(0.5)
                         .frame(width: outerColumnWidth)
-                        .overlay(Outer(sideToProcess: .leftHandSide))
+                        .overlay(OuterView(sideToProcess: .leftHandSide))
                     
                     Color.green
                         .frame(width: middleColumnWidth)
-                        .overlay(Middle())
+                        .overlay(MiddleView())
 //                        .background(Color.theme.background)
                     
                     Color.blue
                         .frame(width: outerColumnWidth)
-                        .overlay(Outer(sideToProcess: .rightHandSide))
+                        .overlay(OuterView(sideToProcess: .rightHandSide))
                 }
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
