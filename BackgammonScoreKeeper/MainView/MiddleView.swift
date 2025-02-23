@@ -26,9 +26,7 @@ struct MiddleView: View {
             .buttonBorderShape(.circle)
             
             Text(vm.line1)
-            
             Text(vm.line2)
-            
             Text(vm.line3)
             
             Button {
@@ -55,46 +53,65 @@ struct MiddleView: View {
                     vm.typeOfGame = .friendly
                     vm.pointsOrGamesToWin = nil
                 } label: {
-                    Text(" F ")
+                    Text("F")
+                        .padding(.all, 5)
+                        .foregroundStyle(Color.theme.foreground)
+                        .background(.red)
                 }
-                .tint(.red)
                 Button {
                     vm.typeOfGame = .firstTo
                     if vm.pointsOrGamesToWin == nil {
                         vm.pointsOrGamesToWin = [.points, .games].randomElement()
                     }
                 } label: {
-                    Text(" T " )
+                    Text("T")
+                        .padding(.all, 5)
+                        .foregroundStyle(Color.theme.foreground)
+                        .background(.blue)
                 }
-                .tint(.blue)
-                Button {
+               Button {
                     vm.typeOfGame = .bestOf
                     if vm.pointsOrGamesToWin == nil {
                         vm.pointsOrGamesToWin = [.points, .games].randomElement()
                     }
+                   if vm.numberOfGamesOrPoints! % 2 == 0 {
+                       vm.numberOfGamesOrPoints! += 1
+                   }
+                   
+                   
+                   
+                   
                 } label: {
-                    Text(" B ")
+                    Text("B")
+                        .padding(.all, 5)
+                        .foregroundStyle(Color.theme.foreground)
+                        .background(.brown)
                 }
-                .tint(.yellow)
             }
             HStack {
                 Button {
                     vm.pointsOrGamesToWin = .games
                 } label: {
-                    Text(" G ")
+                    Text("G")
+                        .padding(.all, 5)
+                        .foregroundStyle(Color.theme.foreground)
+                        .background(.indigo)
+                        .clipped()
                 }
                 .opacity(vm.typeOfGame != .friendly ? 1 : 0)
                 .disabled(vm.typeOfGame == .friendly)
-                .tint(.indigo)
                 Button {
                     vm.pointsOrGamesToWin = .points
                 } label: {
-                    Text(" P " )
+                    Text("P")
+                        .padding(.all, 5)
+                        .foregroundStyle(Color.theme.foreground)
+                        .background(.orange)
+                        .clipped()
                 }
                 .opacity(vm.typeOfGame != .friendly ? 1 : 0)
                 .disabled(vm.typeOfGame == .friendly)
-                .tint(.orange)
-            }
+                }
             
             
             
