@@ -28,8 +28,6 @@ struct MainView: View {
             let outerColumnWidth = geometry.size.width * 0.40
             let middleColumnWidth = geometry.size.width * 0.20
             
-//            let _ = print("middleColumnWidth: \(middleColumnWidth)")
-            
             VStack(spacing: 0) {
                 
                     HStack(alignment: .firstTextBaseline) {
@@ -44,6 +42,15 @@ struct MainView: View {
                         
                         Spacer()
                         
+                        /// This should be removed when finished
+                        Button {
+                            vm.showDebugButtons.toggle()
+                        } label: {
+                            Text(vm.showDebugButtons ? "Hide" : "Show")
+                        }
+                        Spacer()
+                        /// End of stuff to be removed before use
+                        
                         Button {
                             menuBeingShown.toggle()
                         } label: {
@@ -56,23 +63,20 @@ struct MainView: View {
                     .padding(.bottom, 0)
                 
                 HStack(spacing: 0) {
-                    Color.red.opacity(0.5)
+                    OuterView(sideToProcess: .leftHandSide)
                         .frame(width: outerColumnWidth)
-                        .overlay(OuterView(sideToProcess: .leftHandSide))
                     
-                    Color.green
+                    MiddleView()
                         .frame(width: middleColumnWidth)
-                        .overlay(MiddleView())
                         .addWidthOfObject { columnWidth in
                             vm.totalWidth += columnWidth
                             vm.middleColumnWidth = columnWidth
                         }
                     
-                    Color.blue
+                    OuterView(sideToProcess: .rightHandSide)
                         .frame(width: outerColumnWidth)
-                        .overlay(OuterView(sideToProcess: .rightHandSide))
-
                 }
+                
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
         }
@@ -85,8 +89,6 @@ struct MainView: View {
 //        .ignoresSafeArea(.all)
     }
         
-        
-    
     @ViewBuilder private var mainMenu: some View {
         if menuBeingShown {
             MainMenu(showMenu: $menuBeingShown)
@@ -97,11 +99,8 @@ struct MainView: View {
         if vm.showDoublingCube {
             DoublingCubeView()
                 .offset(y: vm.doublingCubeYPosition)
-//                .offset(y: 127)
-
         }
     }
-    
     
 }
 

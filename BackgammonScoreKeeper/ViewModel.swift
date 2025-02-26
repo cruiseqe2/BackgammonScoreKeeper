@@ -26,6 +26,7 @@ class ViewModel {
     var timeFinished = Date()
     var showDoublingCube: Bool = true
     
+    var showDebugButtons: Bool = false
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
     var gamesBoxWidth: CGFloat = 0.0

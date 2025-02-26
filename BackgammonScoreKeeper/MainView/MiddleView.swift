@@ -18,41 +18,61 @@ struct MiddleView: View {
             Button {
                 vm.swapPositions()
             } label: {
-                Image(systemName: "arrow.left.arrow.right")
-                    .font(.system(size: 30))
+                Image(systemName: "arrow.left.and.right")
+                    .font(.system(size: 44))
                 //                    .clipped(.Circle)
             }
-            .padding(.bottom, 16)
+            .padding(.bottom, 8)
             .buttonStyle(.bordered)
             .buttonBorderShape(.circle)
             
-            Group {
+            VStack(spacing: 0) {
+                
                 Text(vm.line1)
-                Text(vm.line2)
+                    .font(.system(size: 30))
+                    .fontWeight(.black)
+                    .padding(.top, 14)
+                    .padding(.bottom, 4)
+                
+                
+                HStack {
+                    Button {
+                        vm.bumpUp()
+                    } label: {
+                        Image(systemName: "arrow.up")
+                    }
+                    .opacity(vm.bumpUpVisible ? 1 : 0)
+                    .disabled(!vm.bumpUpVisible)
+                    .font(.system(size: 30))
+                    
+                    Text(vm.line2)
+                        .font(.system(size: 50))
+                        .fontWeight(.black)
+                    
+                    Button {
+                        vm.bumpDown()
+                    } label: {
+                        Image(systemName: "arrow.down")
+                    }
+                    .opacity(vm.bumpDownVisible ? 1 : 0)
+                    .disabled(!vm.bumpDownVisible)
+                    .font(.system(size: 30))
+                }
+                
                 Text(vm.line3)
-                
-                Button {
-                    vm.bumpUp()
-                } label: {
-                    Text("Bump Up")
-                }
-                .opacity(vm.bumpUpVisible ? 1 : 0)
-                .disabled(!vm.bumpUpVisible)
-                
-                Button {
-                    vm.bumpDown()
-                } label: {
-                    Text("Bump Down")
-                }
-                .opacity(vm.bumpDownVisible ? 1 : 0)
-                .disabled(!vm.bumpDownVisible)
+                    .font(.system(size: 30))
+                    .fontWeight(.black)
+                    .padding(.top, 4)
             }
             .offset(y: 50)
             
             Spacer()
             
-            debugOptions
-                .padding(.bottom, 1)
+            if vm.showDebugButtons {
+                debugOptions
+                    .padding(.bottom, 1)
+            }
+            
         }
     }
 }
