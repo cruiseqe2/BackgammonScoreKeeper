@@ -14,7 +14,7 @@ struct DoublingCubeView: View {
         VStack {
             RoundedRectangle(cornerRadius: 10.0)
                 .fill(.yellow.opacity(0.5))
-                .frame(width: vm.totalWidth, height: 50)
+                .frame(width: vm.doublingCubeTotalWidth, height: 50)
                 .overlay(Circle())
             Spacer()
         }

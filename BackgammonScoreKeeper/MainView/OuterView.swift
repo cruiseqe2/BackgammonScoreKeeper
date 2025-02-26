@@ -41,18 +41,16 @@ struct OuterView: View {
                             .offset(y: 15)
                             .frame(width: largeBoxWidth)
                             .overlay(
-                                GeometryReader { yyy in
-                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                        .strokeBorder(.mint, lineWidth: 4)
-//                                    let y = yyy.frame(in: .global).minY //         origin.y
-                                        .preference(key: DoublingCubeYPosition.self, value:    yyy.frame(in: .global).origin.y)
-//                            let _ = print("y=\(y)")
-                                }
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .strokeBorder(.mint, lineWidth: 4)
                             )
                             .overlay(alignment: .top) {
                                 Text("Points")
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
+                            }
+                            .onPointsBoxShown { topOfPointsBox in
+                                vm.doublingCubeYPosition = topOfPointsBox
                             }
                         
                         Spacer()
@@ -62,12 +60,6 @@ struct OuterView: View {
                             .padding(15)
                             .offset(y: 15)
                             .frame(width: smallBoxWidth)
-                            .background(
-                                GeometryReader { geometry in
-                                    Color.clear
-                                        .preference(key: TotalWidthKey.self, value: geometry.size.width)
-                                }
-                            )
                             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .strokeBorder(.indigo, lineWidth: 4)
                             )
@@ -76,8 +68,13 @@ struct OuterView: View {
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 7)
                             }
-                        
-                        //                        }
+                            .addWidthOfObject { gamesBoxWidth in
+                                vm.totalWidth += gamesBoxWidth
+                            }
+                            .getGamesBoxWidth { gamesBoxWidth in
+                                print("Games Box Width: \(gamesBoxWidth)")
+                                vm.gamesBoxWidth = gamesBoxWidth
+                            }
                         
                     } else {  // We are now dealing with the Right Hand Side
                         
@@ -86,12 +83,6 @@ struct OuterView: View {
                             .padding(15)
                             .offset(y: 15)
                             .frame(width: smallBoxWidth)
-                            .background(
-                                GeometryReader { geometry in
-                                    Color.clear
-                                        .preference(key: TotalWidthKey.self, value: geometry.size.width)
-                                }
-                            )
                             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .strokeBorder(.indigo, lineWidth: 4)
                             )
@@ -99,6 +90,9 @@ struct OuterView: View {
                                 Text("Games")
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 7)
+                            }
+                            .addWidthOfObject { gamesBoxWidth in
+                                vm.totalWidth += gamesBoxWidth
                             }
                         
                         Spacer()
@@ -120,8 +114,6 @@ struct OuterView: View {
                     }
                     
                 }
-                
-                
                 
                 
                 HStack {
@@ -158,7 +150,3 @@ struct OuterView: View {
     OuterView(sideToProcess: .leftHandSide)
         .environment(ViewModel())
 }
-
-
-
-

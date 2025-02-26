@@ -1,5 +1,5 @@
 //
-//  DoublingCubeYPosition.swift
+//  GamesBoxWidthKey.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 24/02/2025.
@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUICore
 
-struct DoublingCubeYPosition: PreferenceKey {
+struct GamesBoxWidthKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
     
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value += nextValue()
+        value = nextValue()
     }
 }

@@ -26,8 +26,13 @@ class ViewModel {
     var timeFinished = Date()
     var showDoublingCube: Bool = true
     
-    var totalWidth: CGFloat = 0.0
     var doublingCubeYPosition: CGFloat = 0.0
+    var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
+    var gamesBoxWidth: CGFloat = 0.0
+    var middleColumnWidth: CGFloat = 0.0
+    var doublingCubeTotalWidth: CGFloat {
+        (((gamesBoxWidth / 2 ) + 25) * 2) + middleColumnWidth
+    }
     
     var LHSName: String {
         return isOnRight ? opponent : owmerName

@@ -63,10 +63,10 @@ struct MainView: View {
                     Color.green
                         .frame(width: middleColumnWidth)
                         .overlay(MiddleView())
-                        .background(GeometryReader { geometry in
-                                        Color.clear.preference(key: TotalWidthKey.self, value: geometry.size.width)
-                                    })
-//                        .background(Color.theme.background)
+                        .addWidthOfObject { columnWidth in
+                            vm.totalWidth += columnWidth
+                            vm.middleColumnWidth = columnWidth
+                        }
                     
                     Color.blue
                         .frame(width: outerColumnWidth)
@@ -75,16 +75,6 @@ struct MainView: View {
                 }
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
-        }
-        .onPreferenceChange(TotalWidthKey.self) { value in
-            print("Got Here!")
-            vm.totalWidth = value
-            print("W=\(vm.totalWidth)")
-        }
-        .onPreferenceChange(DoublingCubeYPosition.self) { value in
-            print("Got There!, Value=\(value)")
-            vm.doublingCubeYPosition = value
-            print("Y=\(vm.doublingCubeYPosition)")
         }
         .padding()
         .opacity(menuBeingShown ? 0.2 : 1.0)
