@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct DoublingCubeView: View {
+    @Environment(ViewModel.self) var vm
+      
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            RoundedRectangle(cornerRadius: 10.0)
+                .fill(.yellow.opacity(0.5))
+                .frame(width: vm.totalWidth, height: 50)
+                .overlay(Circle())
+            Spacer()
+        }
     }
 }
 
-#Preview {
+#Preview(traits: .landscapeLeft) {
     DoublingCubeView()
+        .environment(ViewModel())
 }
+

@@ -10,6 +10,7 @@ import SwiftUI
 struct OuterView: View {
     @Environment(ViewModel.self) var vm
     @State var sideToProcess: SideToProcess
+    
     var body: some View {
         GeometryReader { geo in
             
@@ -25,9 +26,9 @@ struct OuterView: View {
                     .frame(maxWidth: columnWidth)
                     .foregroundStyle(Color.theme.foreground)
                     .background(Color.theme.background)
-//                    .border(width: 3, edges: [.bottom], color: .yellow)
+                //                    .border(width: 3, edges: [.bottom], color: .yellow)
                     .clipped()
-//                    .padding(.bottom, 3)
+                //                    .padding(.bottom, 3)
                 
                 
                 HStack(alignment: .bottom, spacing: 0) {
@@ -39,15 +40,21 @@ struct OuterView: View {
                             .padding(15)
                             .offset(y: 15)
                             .frame(width: largeBoxWidth)
-                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .strokeBorder(.mint, lineWidth: 4)
+                            .overlay(
+                                GeometryReader { yyy in
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .strokeBorder(.mint, lineWidth: 4)
+//                                    let y = yyy.frame(in: .global).minY //         origin.y
+                                        .preference(key: DoublingCubeYPosition.self, value:    yyy.frame(in: .global).origin.y)
+//                            let _ = print("y=\(y)")
+                                }
                             )
                             .overlay(alignment: .top) {
                                 Text("Points")
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
                             }
-                    
+                        
                         Spacer()
                         
                         Text("\(vm.LHSGames)")
@@ -55,6 +62,12 @@ struct OuterView: View {
                             .padding(15)
                             .offset(y: 15)
                             .frame(width: smallBoxWidth)
+                            .background(
+                                GeometryReader { geometry in
+                                    Color.clear
+                                        .preference(key: TotalWidthKey.self, value: geometry.size.width)
+                                }
+                            )
                             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .strokeBorder(.indigo, lineWidth: 4)
                             )
@@ -63,8 +76,9 @@ struct OuterView: View {
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 7)
                             }
-                    
-                    
+                        
+                        //                        }
+                        
                     } else {  // We are now dealing with the Right Hand Side
                         
                         Text("\(vm.RHSGames)")
@@ -72,6 +86,12 @@ struct OuterView: View {
                             .padding(15)
                             .offset(y: 15)
                             .frame(width: smallBoxWidth)
+                            .background(
+                                GeometryReader { geometry in
+                                    Color.clear
+                                        .preference(key: TotalWidthKey.self, value: geometry.size.width)
+                                }
+                            )
                             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .strokeBorder(.indigo, lineWidth: 4)
                             )
@@ -102,7 +122,7 @@ struct OuterView: View {
                 }
                 
                 
-        
+                
                 
                 HStack {
                     Button {

@@ -28,6 +28,8 @@ struct MainView: View {
             let outerColumnWidth = geometry.size.width * 0.40
             let middleColumnWidth = geometry.size.width * 0.20
             
+//            let _ = print("middleColumnWidth: \(middleColumnWidth)")
+            
             VStack(spacing: 0) {
                 
                     HStack(alignment: .firstTextBaseline) {
@@ -50,8 +52,8 @@ struct MainView: View {
                         }
                         .disabled(menuBeingShown)
                     }
-                    .padding(.top, 5)
-                    .padding(.bottom, 10)
+                    .padding(.top, 2)
+                    .padding(.bottom, 0)
                 
                 HStack(spacing: 0) {
                     Color.red.opacity(0.5)
@@ -61,28 +63,55 @@ struct MainView: View {
                     Color.green
                         .frame(width: middleColumnWidth)
                         .overlay(MiddleView())
+                        .background(GeometryReader { geometry in
+                                        Color.clear.preference(key: TotalWidthKey.self, value: geometry.size.width)
+                                    })
 //                        .background(Color.theme.background)
                     
                     Color.blue
                         .frame(width: outerColumnWidth)
                         .overlay(OuterView(sideToProcess: .rightHandSide))
+
                 }
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
+        }
+        .onPreferenceChange(TotalWidthKey.self) { value in
+            print("Got Here!")
+            vm.totalWidth = value
+            print("W=\(vm.totalWidth)")
+        }
+        .onPreferenceChange(DoublingCubeYPosition.self) { value in
+            print("Got There!, Value=\(value)")
+            vm.doublingCubeYPosition = value
+            print("Y=\(vm.doublingCubeYPosition)")
         }
         .padding()
         .opacity(menuBeingShown ? 0.2 : 1.0)
         .disabled(menuBeingShown)
         .overlay(mainMenu)
+        .overlay(showCube)
 //        .background(Color.theme.background)
 //        .ignoresSafeArea(.all)
     }
+        
+        
     
     @ViewBuilder private var mainMenu: some View {
         if menuBeingShown {
             MainMenu(showMenu: $menuBeingShown)
         }
     }
+    
+    @ViewBuilder private var showCube: some View {
+        if vm.showDoublingCube {
+            DoublingCubeView()
+                .offset(y: vm.doublingCubeYPosition)
+//                .offset(y: 127)
+
+        }
+    }
+    
     
 }
 

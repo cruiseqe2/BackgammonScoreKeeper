@@ -24,6 +24,10 @@ class ViewModel {
     var numberOfGamesOrPoints: Int? = 11
     var timeStarted = Date()
     var timeFinished = Date()
+    var showDoublingCube: Bool = true
+    
+    var totalWidth: CGFloat = 0.0
+    var doublingCubeYPosition: CGFloat = 0.0
     
     var LHSName: String {
         return isOnRight ? opponent : owmerName

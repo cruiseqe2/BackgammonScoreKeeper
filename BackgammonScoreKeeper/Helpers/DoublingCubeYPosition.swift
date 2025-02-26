@@ -12,6 +12,7 @@ struct DoublingCubeYPosition: PreferenceKey {
     static var defaultValue: CGFloat = 0
     
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        print("PK.value: \(value)")
         value += nextValue()
     }
 }
