@@ -72,7 +72,6 @@ struct OuterView: View {
                                 vm.totalWidth += gamesBoxWidth
                             }
                             .getGamesBoxWidth { gamesBoxWidth in
-                                print("Games Box Width: \(gamesBoxWidth)")
                                 vm.gamesBoxWidth = gamesBoxWidth
                             }
                         
