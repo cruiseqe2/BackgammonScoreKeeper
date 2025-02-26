@@ -45,14 +45,14 @@ class ViewModel {
     }
     
     var line1: String {
-            switch typeOfGame {
-            case .friendly:
-                "Friendly"
-            case .firstTo:
-                "First To"
-            case .bestOf:
-                "Best Of"
-            }
+        switch typeOfGame {
+        case .friendly:
+            "Friendly"
+        case .firstTo:
+            "First To"
+        case .bestOf:
+            "Best Of"
+        }
     }
     
     var line2: String {
