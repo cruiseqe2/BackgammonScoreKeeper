@@ -60,7 +60,7 @@ struct MainView: View {
                         .disabled(menuBeingShown)
                     }
                     .padding(.top, 2)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 5)
                 
                 HStack(spacing: 0) {
                     OuterView(sideToProcess: .leftHandSide)

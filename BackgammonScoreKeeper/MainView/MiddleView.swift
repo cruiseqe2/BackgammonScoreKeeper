@@ -13,6 +13,8 @@ struct MiddleView: View {
     
     var body: some View {
         
+        @Bindable var vm = vm
+        
         VStack {
             
             Button {
@@ -26,14 +28,11 @@ struct MiddleView: View {
             .buttonStyle(.bordered)
             .buttonBorderShape(.circle)
             
-            VStack(spacing: 0) {
+            VStack(spacing: 8) {
                 
                 Text(vm.line1)
                     .font(.system(size: 30))
                     .fontWeight(.black)
-                    .padding(.top, 14)
-                    .padding(.bottom, 4)
-                
                 
                 HStack {
                     Button {
@@ -41,9 +40,9 @@ struct MiddleView: View {
                     } label: {
                         Image(systemName: "arrow.up")
                     }
+                    .font(.system(size: 30))
                     .opacity(vm.bumpUpVisible ? 1 : 0)
                     .disabled(!vm.bumpUpVisible)
-                    .font(.system(size: 30))
                     
                     Text(vm.line2)
                         .font(.system(size: 50))
@@ -54,22 +53,24 @@ struct MiddleView: View {
                     } label: {
                         Image(systemName: "arrow.down")
                     }
+                    .font(.system(size: 30))
                     .opacity(vm.bumpDownVisible ? 1 : 0)
                     .disabled(!vm.bumpDownVisible)
-                    .font(.system(size: 30))
                 }
                 
                 Text(vm.line3)
                     .font(.system(size: 30))
                     .fontWeight(.black)
-                    .padding(.top, 4)
+                
+                if vm.typeOfMatch == .points {
+                    Toggle("Games", isOn: $vm.showGamesBoxIfPointsBased)
+                        .toggleStyle(SwitchToggleStyle(tint: .green.opacity(0.7)))
+                        .padding(.top, 5)
+                        .frame(width: vm.middleColumnWidth * 0.75)
+                }
+                    
             }
-            .offset(y: 70)
-            
-            Button("Reset") {
-                vm.clearGame()
-            }
-            .offset(y: 90)
+            .offset(y: 60)
             
             Spacer()
             
@@ -84,15 +85,15 @@ extension MiddleView {
     
     private var testingButtons: some View {
         VStack {
-            testingLine1OfButtons
-            testingLine2OfButtons
-            testingLine3OfButtons
-            testingLine4OfButtons
+            line_1_OfTestingButtons
+            line_2_OfTestingButtons
+            line_3_OfTestingButtons
+            testingLine_ResetLine
         }
         .padding(.bottom, 1)
     }
     
-    private var testingLine1OfButtons: some View {
+    private var line_1_OfTestingButtons: some View {
         HStack {
             Button {     // Social
                 vm.typeOfMatch = .social
@@ -132,7 +133,7 @@ extension MiddleView {
         }
     }
     
-    private var testingLine2OfButtons: some View {
+    private var line_2_OfTestingButtons: some View {
         HStack {
             Button {     // First To
                 vm.finishWhen = .firstTo
@@ -149,10 +150,8 @@ extension MiddleView {
                     .foregroundStyle(Color.theme.foreground)
                     .background(.brown)
             }
-            .opacity((vm.typeOfMatch != .social   &&
-                      vm.typeOfMatch != .points) ? 1 : 0)
-            .disabled(vm.typeOfMatch == .social   ||
-                      vm.typeOfMatch == .points)
+            .opacity(vm.typeOfMatch == .games ? 1 : 0)
+            .disabled(vm.typeOfMatch != .games)
             Button {     // Best Of
                 vm.finishWhen = .bestOf
                 //                vm.typeOfGame = .firstTo
@@ -165,14 +164,12 @@ extension MiddleView {
                     .foregroundStyle(Color.theme.foreground)
                     .background(.blue)
             }
-            .opacity((vm.typeOfMatch != .social   &&
-                      vm.typeOfMatch != .points) ? 1 : 0)
-            .disabled(vm.typeOfMatch == .social   ||
-                      vm.typeOfMatch == .points)
+            .opacity(vm.typeOfMatch == .games ? 1 : 0)
+            .disabled(vm.typeOfMatch != .games)
         }
     }
     
-    private var testingLine3OfButtons: some View {
+    private var line_3_OfTestingButtons: some View {
         HStack {
             Button {     // Show Doubling Cube
                 if vm.typeOfMatch == .points {
@@ -187,7 +184,7 @@ extension MiddleView {
                     .background(.teal)
             }
             Button {     // Hide Doubling Cube
-                //            vm.showDoublingCube = false
+                vm.showDoublingCube = false
             } label: {
                 Text("no DC")
                     .padding(.all, 5)
@@ -195,16 +192,16 @@ extension MiddleView {
                     .background(.gray)
             }
         }
-        .opacity(vm.typeOfMatch != .social ? 1 : 0)
-        .disabled(vm.typeOfMatch == .social)
+        .opacity(vm.typeOfMatch == .points ? 1 : 0)
+        .disabled(vm.typeOfMatch != .points)
     }
     
-    
-    
-    
-    
-    
-    
+    private var testingLine_ResetLine: some View {
+        Button("Reset") {
+            vm.clearGame()
+        }
+        .offset(y: 8)
+    }
     
     //    HStack {
     //        Button {  // Best Of
@@ -230,33 +227,6 @@ extension MiddleView {
     //    }
     //}
     
-    
-    private var testingLine4OfButtons: some View {
-        HStack {
-            Button {     // Show Games
-                //            vm.typeOfMatch = .social
-                
-                //            vm.pointsOrGamesToWin = nil
-            } label: {
-                Text("SG")
-                    .padding(.all, 5)
-                    .foregroundStyle(Color.theme.foreground)
-                    .background(.red)
-            }
-            Button {      // Hide Games
-                //                vm.typeOfMatch = .social
-                //
-                //                vm.pointsOrGamesToWin = nil
-            } label: {
-                Text("HG")
-                    .padding(.all, 5)
-                    .foregroundStyle(Color.theme.foreground)
-                    .background(.blue)
-            }
-        }
-        .opacity(vm.typeOfMatch != .social ? 1 : 0)
-        .disabled(vm.typeOfMatch == .social)
-    }
 }
 
 #Preview(traits: .landscapeLeft) {

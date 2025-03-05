@@ -22,12 +22,6 @@ class ViewModel {
     var opponentPoints: Int = 2
     
     
-//    let c = "c"
-//    let objc = "Objective-C"
-//
-//    objc.localizedCaseInsensitiveContains(c)
-//    // true
-    
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
     var typeOfMatch: TypeOfMatch = .games
@@ -40,6 +34,7 @@ class ViewModel {
     }
     
     var showDoublingCube: Bool = true
+    var showGamesBoxIfPointsBased: Bool = true
     
     var showTestingButtons: Bool = true
     var doublingCubeYPosition: CGFloat = 0.0

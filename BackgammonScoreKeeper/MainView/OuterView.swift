@@ -61,21 +61,23 @@ struct OuterView: View {
                 
                 Text(sideToProcess == .leftHandSide ? vm.LHSName : vm.RHSName)
                     .font(.system(size: 24, weight: .black))
-                    .padding(.vertical, 15)
+                    .padding(.vertical, 10)
                     .frame(maxWidth: columnWidth)
                     .foregroundStyle(Color.theme.foreground)
                     .background(backgroundColor)
                     .border(width: 3, edges: [.bottom], color:
                                 Color.theme.foreground
                     )
-                    .padding(.bottom, 14)
+                    .padding(.bottom, 8)
                     .clipped()
                 
                 HStack(alignment: .bottom, spacing: 0) {
                     
                     if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
                         
-                        Text("\(vm.LHSPoints)")
+                        Text(vm.typeOfMatch == .points ? "\(vm.LHSPoints)" : "\(vm.LHSGames)")
+                        
+//                        Text(vm.typeOfMatch == .points ? "\(vm.LHSPoints)") : "\(vm.LHSGames)")
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
@@ -85,7 +87,7 @@ struct OuterView: View {
                                     .strokeBorder(.mint, lineWidth: 4)
                             )
                             .overlay(alignment: .top) {
-                                Text("Points")
+                                Text(vm.typeOfMatch == .points ? "Points" : "Games")
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
                             }
@@ -114,6 +116,7 @@ struct OuterView: View {
                             .getGamesBoxWidth { gamesBoxWidth in
                                 vm.gamesBoxWidth = gamesBoxWidth
                             }
+                            .opacity(vm.typeOfMatch == .points  &&  vm.showGamesBoxIfPointsBased ? 1 : 0)
                         
                     } else {  // We are now dealing with the Right Hand Side
                         
@@ -133,10 +136,12 @@ struct OuterView: View {
                             .addWidthOfObject { gamesBoxWidth in
                                 vm.totalWidth += gamesBoxWidth
                             }
+                            .opacity(vm.typeOfMatch == .points  &&  vm.showGamesBoxIfPointsBased ? 1 : 0)
                         
                         Spacer()
                         
-                        Text("\(vm.RHSPoints)")
+                        Text(vm.typeOfMatch == .points ? "\(vm.RHSPoints)" : "\(vm.RHSGames)")
+//                        Text("\(vm.RHSPoints)")
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
@@ -145,8 +150,7 @@ struct OuterView: View {
                                 .strokeBorder(.mint, lineWidth: 4)
                             )
                             .overlay(alignment: .top) {
-                                Text("Points")
-                                    .font(.system(size: 20, weight: .black))
+                                Text(vm.typeOfMatch == .points ? "Points" : "Games")   .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
                             }
                         
