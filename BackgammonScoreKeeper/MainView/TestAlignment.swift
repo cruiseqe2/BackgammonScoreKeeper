@@ -304,7 +304,7 @@ struct Middle: View {
             Text("Points")
             
             Button {
-                vm.bumpUp()
+//                vm.bumpUp()
             } label: {
                 Text("Bump Up")
             }

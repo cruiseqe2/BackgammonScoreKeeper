@@ -11,6 +11,45 @@ struct OuterView: View {
     @Environment(ViewModel.self) var vm
     @State var sideToProcess: SideToProcess
     
+    private var buttonSide: Side {
+        if sideToProcess == .leftHandSide {
+            if vm.positionOfOwner == .leftHandSide {
+                return .owner
+            } else {
+                return .opponent
+            }
+        } else {  // sideToProcess = .rightHandSide
+            if vm.positionOfOwner == .leftHandSide {
+                return .opponent
+            } else {
+                return .owner
+            }
+        }
+    }
+    
+    
+    
+    private var backgroundColor: Color {
+        guard vm.winnerIs != .noWinnerYet else {
+            return Color.theme.background
+        }
+        
+        if sideToProcess == .leftHandSide {
+            if vm.positionOfOwner == .leftHandSide {
+                return vm.winnerIs == .owner ? .green : .red
+            } else {  // positionOfOwner = .rightHandSide
+                return vm.winnerIs == .owner ? .red : .green
+            }
+        } else {  // sideToProcess = .rightHandside
+            if vm.positionOfOwner == .leftHandSide {
+                return vm.winnerIs == .owner ? .red : .green
+            } else {  // positionOfOwner = .rightHandSide
+                return vm.winnerIs == .owner ? .green : .red
+            }
+        }
+        
+    }
+    
     var body: some View {
         GeometryReader { geo in
             
@@ -25,11 +64,12 @@ struct OuterView: View {
                     .padding(.vertical, 15)
                     .frame(maxWidth: columnWidth)
                     .foregroundStyle(Color.theme.foreground)
-                    .background(Color.theme.background)
-                //                    .border(width: 3, edges: [.bottom], color: .yellow)
+                    .background(backgroundColor)
+                    .border(width: 3, edges: [.bottom], color:
+                                Color.theme.foreground
+                    )
+                    .padding(.bottom, 14)
                     .clipped()
-                //                    .padding(.bottom, 3)
-                
                 
                 HStack(alignment: .bottom, spacing: 0) {
                     
@@ -114,31 +154,68 @@ struct OuterView: View {
                     
                 }
                 
+                /// Deal with the button pressing
                 
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Text("Backgammon")
+                if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
+                    
+                    HStack {
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 3)
+                        } label: {
+                            Text("Backgammon")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
+                        Spacer()
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 2)
+                        } label: {
+                            Text("Gammon")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
+                        Spacer()
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 1)
+                        } label: {
+                            Text("Win")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(.pink)
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Text("Gammon")
+                    
+                } else {  // We are now dealing with the Right Hand Side
+                    
+                    HStack {
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 1)
+                        } label: {
+                            Text("Win")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
+                        Spacer()
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 2)
+                        } label: {
+                            Text("Gammon")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
+                        Spacer()
+                        Button {
+                            vm.WinningButtonTapped(side: buttonSide, value: 3)
+                        } label: {
+                            Text("Backgammon")
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(.pink)
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Text("Win")
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.pink)
+                    
+                    
+                    
+                    
+                    
                 }
             }
         }

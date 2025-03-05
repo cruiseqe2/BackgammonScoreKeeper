@@ -44,9 +44,9 @@ struct MainView: View {
                         
                         /// This should be removed when finished
                         Button {
-                            vm.showDebugButtons.toggle()
+                            vm.showTestingButtons.toggle()
                         } label: {
-                            Text(vm.showDebugButtons ? "Hide" : "Show")
+                            Text(vm.showTestingButtons ? "Hide" : "Show")
                         }
                         Spacer()
                         /// End of stuff to be removed before use
@@ -60,7 +60,7 @@ struct MainView: View {
                         .disabled(menuBeingShown)
                     }
                     .padding(.top, 2)
-                    .padding(.bottom, 0)
+                    .padding(.bottom, 10)
                 
                 HStack(spacing: 0) {
                     OuterView(sideToProcess: .leftHandSide)
@@ -80,7 +80,7 @@ struct MainView: View {
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
         }
-        .padding()
+//        .padding()
         .opacity(menuBeingShown ? 0.2 : 1.0)
         .disabled(menuBeingShown)
         .overlay(mainMenu)
