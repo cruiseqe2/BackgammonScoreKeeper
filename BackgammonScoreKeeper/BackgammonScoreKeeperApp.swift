@@ -14,15 +14,8 @@ struct BackgammonScoreKeeperApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            ContentView()
-            //                .environment(viewModel)
-            //            TestAlignment()
-            //                .environment(viewModel)
-            //            OrientationTest()
-//        xxx()
             ControllerView()
                 .environment(viewModel)
-            
         }
     }
 }

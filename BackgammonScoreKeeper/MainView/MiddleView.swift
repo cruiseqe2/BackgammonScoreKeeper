@@ -36,7 +36,7 @@ struct MiddleView: View {
                 
                 HStack {
                     Button {
-                        //                        vm.bumpUp()
+                        vm.bumpUp()
                     } label: {
                         Image(systemName: "arrow.up")
                     }
@@ -49,7 +49,7 @@ struct MiddleView: View {
                         .fontWeight(.black)
                     
                     Button {
-                        //                        vm.bumpDown()
+                        vm.bumpDown()
                     } label: {
                         Image(systemName: "arrow.down")
                     }
@@ -99,8 +99,6 @@ extension MiddleView {
                 vm.typeOfMatch = .social
                 vm.finishWhen = .social
                 vm.showDoublingCube = false
-                
-                //                vm.pointsOrGamesToWin = nil
             } label: {
                 Text("S")
                     .padding(.all, 5)
@@ -110,9 +108,6 @@ extension MiddleView {
             Button {     // Games
                 vm.typeOfMatch = .games
                 vm.showDoublingCube = false
-                //                vm.typeOfMatch = .social
-                //
-                //                vm.pointsOrGamesToWin = nil
             } label: {
                 Text("G")
                     .padding(.all, 5)
@@ -121,9 +116,8 @@ extension MiddleView {
             }
             Button {     // Points
                 vm.typeOfMatch = .points
-                //                vm.typeOfMatch = .social
-                //
-                //                vm.pointsOrGamesToWin = nil
+                vm.finishWhen = .firstTo
+                vm.showDoublingCube = true
             } label: {
                 Text("P")
                     .padding(.all, 5)
@@ -137,13 +131,6 @@ extension MiddleView {
         HStack {
             Button {     // First To
                 vm.finishWhen = .firstTo
-                //                vm.typeOfGame = .bestOf
-                //                if vm.pointsOrGamesToWin == nil {
-                //                    vm.pointsOrGamesToWin = [.points, .games].randomElement()
-                //                }
-                //                if vm.numberOfGamesOrPoints! % 2 == 0 {
-                //                    vm.numberOfGamesOrPoints! += 1
-                //                }
             } label: {
                 Text("F")
                     .padding(.all, 5)
@@ -154,10 +141,9 @@ extension MiddleView {
             .disabled(vm.typeOfMatch != .games)
             Button {     // Best Of
                 vm.finishWhen = .bestOf
-                //                vm.typeOfGame = .firstTo
-                //                if vm.pointsOrGamesToWin == nil {
-                //                    vm.pointsOrGamesToWin = [.points, .games].randomElement()
-                //                }
+                if vm.numberOfGamesOrPoints! .isMultiple(of: 2) {
+                    vm.numberOfGamesOrPoints! += 1
+                }
             } label: {
                 Text("B")
                     .padding(.all, 5)
@@ -202,30 +188,6 @@ extension MiddleView {
         }
         .offset(y: 8)
     }
-    
-    //    HStack {
-    //        Button {  // Best Of
-    //            //                vm.pointsOrGamesToWin = .games
-    //        } label: {
-    //            Text("B")
-    //                .padding(.all, 5)
-    //                .foregroundStyle(Color.theme.foreground)
-    //                .background(.indigo)
-    //        }
-    //        .opacity(vm.typeOfMatch != .social ? 1 : 0)
-    //        .disabled(vm.typeOfMatch == .social)
-    //        Button {   // First To
-    //            //                vm.pointsOrGamesToWin = .points
-    //        } label: {
-    //            Text("F")
-    //                .padding(.all, 5)
-    //                .foregroundStyle(Color.theme.foreground)
-    //                .background(.orange)
-    //        }
-    //        .opacity(vm.typeOfMatch != .social ? 1 : 0)
-    //        .disabled(vm.typeOfMatch == .social)
-    //    }
-    //}
     
 }
 

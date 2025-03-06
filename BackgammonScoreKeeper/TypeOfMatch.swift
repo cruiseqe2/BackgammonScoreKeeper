@@ -48,3 +48,8 @@ enum Side {
     case owner
     case opponent
 }
+
+enum SinglesOrDoubles {
+    case singles
+    case doubles
+}

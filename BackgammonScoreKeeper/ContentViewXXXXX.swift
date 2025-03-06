@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentViewXXXXX: View {
     @Environment(ViewModel.self) var vm
     @State private var showMenu = false
     
@@ -312,7 +312,7 @@ struct ContentView: View {
 }
 
 #Preview(traits: .landscapeLeft) {
-    ContentView()
+    ContentViewXXXXX()
         .environment(ViewModel())
 }
 

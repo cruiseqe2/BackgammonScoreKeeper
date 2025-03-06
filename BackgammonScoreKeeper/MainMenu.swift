@@ -54,7 +54,7 @@ struct MainMenu: View {
 }
 
 #Preview(traits: .landscapeLeft) {
-    ContentView()
+    MainView()
         .environment(ViewModel())
 }
 

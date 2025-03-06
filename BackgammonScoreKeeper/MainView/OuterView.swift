@@ -141,7 +141,6 @@ struct OuterView: View {
                         Spacer()
                         
                         Text(vm.typeOfMatch == .points ? "\(vm.RHSPoints)" : "\(vm.RHSGames)")
-//                        Text("\(vm.RHSPoints)")
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
@@ -187,6 +186,8 @@ struct OuterView: View {
                         .buttonStyle(.bordered)
                         .tint(.pink)
                     }
+                    .opacity(vm.winnerIs == .noWinnerYet ? 1 : 0)
+                    .disabled(vm.winnerIs != .noWinnerYet)
                     
                 } else {  // We are now dealing with the Right Hand Side
                     
@@ -215,11 +216,8 @@ struct OuterView: View {
                         .buttonStyle(.bordered)
                         .tint(.pink)
                     }
-                    
-                    
-                    
-                    
-                    
+                    .opacity(vm.winnerIs == .noWinnerYet ? 1 : 0)
+                    .disabled(vm.winnerIs != .noWinnerYet)
                 }
             }
         }

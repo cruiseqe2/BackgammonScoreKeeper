@@ -16,17 +16,18 @@ class ViewModel {
     var ownerGames: Int = 5
     var ownerPoints: Int = 10
 
-
     var opponentName: String = "Alice"
     var opponentGames: Int = 1
     var opponentPoints: Int = 2
     
+    var singlesOrDoubles: SinglesOrDoubles = .doubles
+    var ownerSecondName: String? = "Adam"
+    var opponentSecondName: String? = "Steve"
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
     var typeOfMatch: TypeOfMatch = .games
     var finishWhen: FinishWhen = .bestOf
-    var pointsOrGamesToWin : PointsOrGamesToWin? = .points
     var numberOfGamesOrPoints: Int? = 11
     var winningScoreIfBestOfGames: Int? {
         guard let numberOfGamesOrPoints else { return nil }
@@ -48,8 +49,26 @@ class ViewModel {
     
     /// Populate the Left and Right hand side of the main display
     
+    var ownerNameDisplay: String {
+        if singlesOrDoubles == .doubles {
+            owmerName + " & " + ownerSecondName!
+        } else {
+            owmerName
+        }
+    }
+    
+    var opponentNameDisplay: String {
+        if singlesOrDoubles == .doubles {
+            opponentName + " & " + opponentSecondName!
+        } else {
+            opponentName
+        }
+    }
+    
+    
+    
     var LHSName: String {
-        return positionOfOwner == .leftHandSide ? owmerName : opponentName
+        return positionOfOwner == .leftHandSide ? ownerNameDisplay : opponentNameDisplay
     }
     var LHSGames: Int {
         return positionOfOwner == .leftHandSide ? ownerGames : opponentGames
@@ -59,7 +78,7 @@ class ViewModel {
     }
     
     var RHSName: String {
-        return positionOfOwner == .rightHandSide ? owmerName : opponentName
+        return positionOfOwner == .rightHandSide ? ownerNameDisplay : opponentNameDisplay
     }
     var RHSGames: Int {
         return positionOfOwner == .rightHandSide ? ownerGames : opponentGames
@@ -94,15 +113,33 @@ class ViewModel {
 
     /// Should BumpUp be visible
     var bumpUpVisible: Bool {
-        typeOfMatch == .social ? false : true
+        guard winnerIs == .noWinnerYet else { return false }
+        guard typeOfMatch != .social else { return false }
+        return true
     }
     
     /// Should BumpDown be visible
     var bumpDownVisible: Bool {
         guard bumpUpVisible else { return false }
-        let currentTotal = (pointsOrGamesToWin == .points ? ownerPoints + opponentPoints : ownerGames + opponentGames)
+        guard let numberOfGamesOrPoints else { return false }
         
-        return (numberOfGamesOrPoints! > currentTotal ? true : false)
+        if typeOfMatch == .points {
+            return numberOfGamesOrPoints > ownerPoints + 1        &&
+                   numberOfGamesOrPoints > opponentPoints + 1
+            ? true : false
+        }
+        
+        if typeOfMatch == .games {
+            if finishWhen == .firstTo {
+                return numberOfGamesOrPoints > ownerGames + 1     &&
+                       numberOfGamesOrPoints > opponentGames + 1
+                ? true : false
+            } else {     // .BestOf
+                return winningScoreIfBestOfGames! > ownerGames + opponentGames ? true : false
+            }
+        }
+        
+        return false     // We should never get here!!!!!
     }
     
     func clearGame() {
@@ -122,13 +159,22 @@ class ViewModel {
         }
     }
 
-//    func bumpUp() {
-//        numberOfGamesOrPoints! += (typeOfGame == .bestOf ? 2 : 1)
-//    }
-//    
-//    func bumpDown() {
-//        numberOfGamesOrPoints! -= (typeOfGame == .bestOf ? 2 : 1)
-//    }
+    /// Handle the 'bumping' buttons
+    
+    func bumpUp() {
+        numberOfGamesOrPoints! += (finishWhen == .bestOf ? 2 : 1)
+    }
+    
+    func bumpDown() {
+        numberOfGamesOrPoints! -= (finishWhen == .bestOf ? 2 : 1)
+        
+        // Ensure that if we are bumping down and are points based AND
+        // it is a .bestOf scenario AND we have landed on an EVEN
+        // number, then add 1 to ensure that it is ODD.
+        if typeOfMatch == .points && finishWhen == .bestOf && !(numberOfGamesOrPoints! .isMultiple(of: 2)) {
+            numberOfGamesOrPoints! += 1
+        }
+    }
     
     /// Handle the 'winning' buttons
 
