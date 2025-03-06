@@ -20,9 +20,8 @@ class ViewModel {
     var opponentGames: Int = 1
     var opponentPoints: Int = 2
     
-    var singlesOrDoubles: SinglesOrDoubles = .doubles
-    var ownerSecondName: String? = "Adam"
-    var opponentSecondName: String? = "Steve"
+    var ownerSecondName: String = "Adam"
+    var opponentSecondName: String = "Steve"
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
@@ -49,26 +48,16 @@ class ViewModel {
     
     /// Populate the Left and Right hand side of the main display
     
-    var ownerNameDisplay: String {
-        if singlesOrDoubles == .doubles {
-            owmerName + " & " + ownerSecondName!
-        } else {
-            owmerName
-        }
+    var ownerDisplayName: String {
+        return owmerName + (ownerSecondName.isNotEmpty ? " & " + ownerSecondName : "")
     }
     
-    var opponentNameDisplay: String {
-        if singlesOrDoubles == .doubles {
-            opponentName + " & " + opponentSecondName!
-        } else {
-            opponentName
-        }
+    var opponentDisplayName: String {
+        return opponentName + (opponentSecondName.isNotEmpty ? " & " + opponentSecondName : "")
     }
-    
-    
     
     var LHSName: String {
-        return positionOfOwner == .leftHandSide ? ownerNameDisplay : opponentNameDisplay
+        return positionOfOwner == .leftHandSide ? ownerDisplayName : opponentDisplayName
     }
     var LHSGames: Int {
         return positionOfOwner == .leftHandSide ? ownerGames : opponentGames
@@ -78,7 +67,7 @@ class ViewModel {
     }
     
     var RHSName: String {
-        return positionOfOwner == .rightHandSide ? ownerNameDisplay : opponentNameDisplay
+        return positionOfOwner == .rightHandSide ? ownerDisplayName : opponentDisplayName
     }
     var RHSGames: Int {
         return positionOfOwner == .rightHandSide ? ownerGames : opponentGames
@@ -109,7 +98,6 @@ class ViewModel {
         guard typeOfMatch != .social else { return "" }
         return (typeOfMatch == .games ? "Games" : "Points")
     }
-
 
     /// Should BumpUp be visible
     var bumpUpVisible: Bool {

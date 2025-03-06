@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct MainMenu: View {
+    @Environment(ViewModel.self) var vm
 //    @Environment(\.dismiss) private var dismiss
     @Binding var showMenu: Bool
+    @State private var isNewGameViewPresented = false
         
     var body: some View {
         VStack {
 //            Text("Main Menu")
 //                .font(.largeTitle)
             
-            Button("New Match") { }
+            Button("New Match") {
+                isNewGameViewPresented.toggle()
+            }
                 .frame(width: 600)
             
             Button("Adjust Scores") { }
@@ -47,6 +51,8 @@ struct MainMenu: View {
         .buttonStyle(.bordered)
         .font(.title)
         .tint(.mint)
+        
+        .fullScreenCover(isPresented: $isNewGameViewPresented, content: NewGameView.init)
         
         .frame(width: 200, height: 360)
         .background(.ultraThickMaterial)

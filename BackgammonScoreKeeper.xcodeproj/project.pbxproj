@@ -10,9 +10,33 @@
 		65B3E9622D52C41900AB92FB /* BackgammonScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgammonScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		65BA6E182D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "BackgammonScoreKeeper" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Extensions/Collection.swift,
+			);
+			target = 65B3E9612D52C41900AB92FB /* BackgammonScoreKeeper */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		65BA6E192D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "Copy Bundle Resources" phase from "BackgammonScoreKeeper" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 65B3E9602D52C41900AB92FB /* Resources */;
+			membershipExceptions = (
+				Extensions/Collection.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		65B3E9642D52C41900AB92FB /* BackgammonScoreKeeper */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				65BA6E182D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "BackgammonScoreKeeper" target */,
+				65BA6E192D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "Copy Bundle Resources" phase from "BackgammonScoreKeeper" target */,
+			);
 			path = BackgammonScoreKeeper;
 			sourceTree = "<group>";
 		};
