@@ -98,7 +98,7 @@ extension MiddleView {
             Button {     // Social
                 vm.typeOfMatch = .social
                 vm.finishWhen = .social
-                vm.showDoublingCube = false
+                vm.useDoublingCube = false
             } label: {
                 Text("S")
                     .padding(.all, 5)
@@ -107,7 +107,7 @@ extension MiddleView {
             }
             Button {     // Games
                 vm.typeOfMatch = .games
-                vm.showDoublingCube = false
+                vm.useDoublingCube = false
             } label: {
                 Text("G")
                     .padding(.all, 5)
@@ -117,7 +117,7 @@ extension MiddleView {
             Button {     // Points
                 vm.typeOfMatch = .points
                 vm.finishWhen = .firstTo
-                vm.showDoublingCube = true
+                vm.useDoublingCube = true
             } label: {
                 Text("P")
                     .padding(.all, 5)
@@ -159,9 +159,9 @@ extension MiddleView {
         HStack {
             Button {     // Show Doubling Cube
                 if vm.typeOfMatch == .points {
-                    vm.showDoublingCube = true
+                    vm.useDoublingCube = true
                 } else {
-                    vm.showDoublingCube = false
+                    vm.useDoublingCube = false
                 }
             } label: {
                 Text("DC")
@@ -170,7 +170,7 @@ extension MiddleView {
                     .background(.teal)
             }
             Button {     // Hide Doubling Cube
-                vm.showDoublingCube = false
+                vm.useDoublingCube = false
             } label: {
                 Text("no DC")
                     .padding(.all, 5)

@@ -84,7 +84,10 @@ struct MainView: View {
         .opacity(menuBeingShown ? 0.2 : 1.0)
         .disabled(menuBeingShown)
         .overlay(mainMenu)
-        .overlay(showCube)
+        .overlay(vm.useDoublingCube && !menuBeingShown ? DealWithTheDoublingCubeView() : nil)
+//        .opacity(menuBeingShown ? 0 : 1)
+//        .disabled(menuBeingShown)
+
 //        .background(Color.theme.background)
 //        .ignoresSafeArea(.all)
     }
@@ -95,14 +98,30 @@ struct MainView: View {
         }
     }
     
-    @ViewBuilder private var showCube: some View {
-        if vm.showDoublingCube {
-            DoublingCubeView()
-                .offset(y: vm.doublingCubeYPosition)
+}
+
+struct DealWithTheDoublingCubeView: View {
+    @Environment(ViewModel.self) var vm
+    var body: some View {
+        VStack {
+            switch vm.crawfordStatus {
+            case .notPointsBased:
+                EmptyView()
+            case .preCrawford, .postCrawford:
+                DoublingCubeView()
+                    .offset(y: vm.doublingCubeYPosition)
+            case .isCrawford:
+                CrawfordGameView()
+                    .offset(y: vm.doublingCubeYPosition)
+            }
         }
     }
-    
 }
+
+
+
+
+
 
 #Preview(traits: .landscapeLeft) {
     MainView()

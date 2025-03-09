@@ -13,30 +13,36 @@ class ViewModel {
     var deviceOrientation: UIDeviceOrientation = .portrait
 
     var owmerName: String = "Mark"
-    var ownerGames: Int = 5
-    var ownerPoints: Int = 10
+    var ownerGames: Int = 0
+    var ownerPoints: Int = 0
 
     var opponentName: String = "Alice"
-    var opponentGames: Int = 1
-    var opponentPoints: Int = 2
+    var opponentGames: Int = 0
+    var opponentPoints: Int = 0
     
     var ownerSecondName: String = "Adam"
     var opponentSecondName: String = "Steve"
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
-    var typeOfMatch: TypeOfMatch = .games
-    var finishWhen: FinishWhen = .bestOf
-    var numberOfGamesOrPoints: Int? = 11
+    var typeOfMatch: TypeOfMatch = .points
+    var finishWhen: FinishWhen = .firstTo
+    var numbersToShow: ValidGamesOrPoints {
+        finishWhen == .bestOf ? .oddsOnly : .all
+    }
+    var doublingCubeStatus: DoublingCubeStatus = .hide
+    var numberOfGamesOrPoints: Int? = 5
     var winningScoreIfBestOfGames: Int? {
         guard let numberOfGamesOrPoints else { return nil }
         return Int(numberOfGamesOrPoints / 2) + 1
     }
     
-    var showDoublingCube: Bool = true
+    var crawfordStatus: CrawfordStatus = .notPointsBased
+    
+    var useDoublingCube: Bool = true
     var showGamesBoxIfPointsBased: Bool = true
     
-    var showTestingButtons: Bool = true
+    var showTestingButtons: Bool = false
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
     var gamesBoxWidth: CGFloat = 0.0
@@ -136,6 +142,7 @@ class ViewModel {
         ownerPoints = 0
         opponentPoints = 0
         winnerIs = .noWinnerYet
+        crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
     }
     
     
@@ -176,9 +183,30 @@ class ViewModel {
             opponentGames += 1
         }
         
+        checkForCrawford()
         checkForWinner()
     }
 
+    /// Update the Crawford details.
+    
+    func checkForCrawford() {
+        guard let numberOfGamesOrPoints else { return }
+        switch crawfordStatus {
+        case .notPointsBased:
+            break
+        case .preCrawford:
+            if ownerPoints == numberOfGamesOrPoints - 1          ||
+                opponentPoints == numberOfGamesOrPoints - 1 {
+                crawfordStatus = .isCrawford
+            }
+        case .isCrawford:
+            crawfordStatus = .postCrawford
+        case .postCrawford:
+            break
+        }
+    }
+    
+    
     /// Check to see if somebody has won
     
     func checkForWinner() {

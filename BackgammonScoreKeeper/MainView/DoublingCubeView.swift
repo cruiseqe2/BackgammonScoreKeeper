@@ -16,9 +16,10 @@ struct DoublingCubeView: View {
                 .fill(.yellow.opacity(0.5))
                 .frame(width: vm.doublingCubeTotalWidth, height: 50)
                 .overlay(Circle())
+
             Spacer()
         }
-    }
+    }    
 }
 
 #Preview(traits: .landscapeLeft) {

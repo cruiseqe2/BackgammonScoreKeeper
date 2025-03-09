@@ -11,9 +11,6 @@ enum TypeOfMatch: CaseIterable {
     case social
     case games
     case points
-//    
-//    case firstTo
-//    case bestOf
 }
 
 enum PositionOfOwner {
@@ -52,4 +49,22 @@ enum Side {
 enum SinglesOrDoubles {
     case singles
     case doubles
+}
+
+enum DoublingCubeStatus {
+    case show
+    case hide
+}
+
+enum ValidGamesOrPoints {
+    case all
+    case evensOnly
+    case oddsOnly
+}
+
+enum CrawfordStatus {
+    case notPointsBased
+    case preCrawford
+    case isCrawford
+    case postCrawford
 }
