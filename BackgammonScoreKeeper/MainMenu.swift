@@ -15,69 +15,58 @@ struct MainMenu: View {
         
     var body: some View {
         VStack {
-//            Text("Main Menu")
-//                .font(.largeTitle)
-            
-            Button("New Match") {
-                isNewGameViewPresented.toggle()
+            Spacer()
+            Text("Main Menu")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            Spacer()
+            Spacer()
+            MainMenuButton(
+                buttonTitle: vm.winnerIs == .noWinnerYet ? "Abandon Match" : "New Match",
+                color: vm.winnerIs == .noWinnerYet ? .red : .green) {
+                    if vm.winnerIs == .noWinnerYet {
+                        isNewGameViewPresented.toggle()
+                    } else {
+                        isNewGameViewPresented.toggle()
+                    }
             }
-                .frame(width: 600)
-            
-            Button("Adjust Scores") { }
-                .frame(width: 600)
-            
-            Button("History") { }
-                .frame(width: 600)
-            
-            Button("Settings") { }
-                .buttonStyle(.myAppPrimaryButton)
-//                .frame(width: 600)
-            
-            Button {
-                
-            } label: {
-                Text("History")
-                    .frame(width: 500)
-            }
-
-    
-            Button("Cancel") {
+            MainMenuButton(buttonTitle: "Adjust Scores") {}
+            MainMenuButton(buttonTitle: "History") {}
+            MainMenuButton(buttonTitle: "Settings") {}
+            MainMenuButton(buttonTitle: "Cancel", color: .blue) {
                 showMenu = false
-                //                dismiss()
             }
-            .buttonStyle(.borderedProminent)
-            
+            Spacer()
         }
-        .buttonStyle(.bordered)
-        .font(.title)
-        .tint(.mint)
-        
+        .padding(16)
+        .frame(width: 250, height: 400)
+        .background(.ultraThinMaterial)
+        .fixedSize(horizontal: false, vertical: true)
+        .cornerRadius(25)
         .fullScreenCover(isPresented: $isNewGameViewPresented, content: NewGameView.init)
         
-        .frame(width: 200, height: 360)
-        .background(.ultraThickMaterial)
     }
 }
 
 #Preview(traits: .landscapeLeft) {
-    MainView()
+    MainMenu(showMenu: .constant(true))
         .environment(ViewModel())
 }
 
 
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
-            .bold()
-            .foregroundStyle(.white)
-            .background(Color.accentColor)
-            .clipShape(Capsule(style: .continuous))
-            .scaleEffect(configuration.isPressed ? 0.9 : 1)
-            .animation(.smooth, value: configuration.isPressed)
-    }
-}
-
-extension ButtonStyle where Self == PrimaryButtonStyle {
-    static var myAppPrimaryButton: PrimaryButtonStyle { .init() }
-}
+//struct PrimaryButtonStyle: ButtonStyle {
+//    func makeBody(configuration: Configuration) -> some View {
+//        configuration.label
+//            .padding(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
+//            .bold()
+//            .foregroundStyle(.white)
+//            .background(Color.accentColor)
+//            .clipShape(Capsule(style: .continuous))
+//            .scaleEffect(configuration.isPressed ? 0.9 : 1)
+//            .animation(.smooth, value: configuration.isPressed)
+//    }
+//}
+//
+//extension ButtonStyle where Self == PrimaryButtonStyle {
+//    static var myAppPrimaryButton: PrimaryButtonStyle { .init() }
+//}

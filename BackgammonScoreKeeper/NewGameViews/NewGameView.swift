@@ -12,18 +12,13 @@ struct NewGameView: View {
     @Environment(\.dismiss) var dismiss
     @State private var menuBeingShown: Bool = false
     @State private var isConfigurePlayersShown: Bool = false
-   
-    
-    var namesAreValid: Bool {
-        vm.opponentName.isNotEmpty ? true : false
-    }
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .systemIndigo
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemYellow], for: .normal)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
-    
+        
     var body: some View {
         
         @Bindable var vm = vm
@@ -55,12 +50,15 @@ struct NewGameView: View {
             HStack {
                 Text("Current players - \(vm.ownerDisplayName) **versus** \(vm.opponentDisplayName)")
                 Spacer()
+                
+                
                 Button {
                     isConfigurePlayersShown.toggle()
                 } label: {
-                    Text("Configure")
+                    Text("")
                 }
-                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .buttonStyle(.xyz(isChange: vm.namesAreValid))
                 .popover(isPresented: $isConfigurePlayersShown) {
                     ConfigureNamesView()
                         .padding(30)
@@ -69,36 +67,40 @@ struct NewGameView: View {
                 }
             }
             
-            Picker("", selection: $vm.typeOfMatch) {
-                Text("Social").tag(TypeOfMatch.social)
-                Text("Games").tag(TypeOfMatch.games)
-                Text("Points").tag(TypeOfMatch.points)
-            }
-            .pickerStyle(.segmented)
-            .padding(.bottom, -20)
-
-            
-            GeometryReader { geo in
-                HStack(spacing: 0) {
-                    SocialColumn()
-                        .padding([.bottom, .leading, .trailing], 12)
-                        .padding(.top, 8)
-                        .frame(width: geo.size.width / 3, alignment: .leading)
-                        .border(vm.typeOfMatch == .social ? .green : .clear, width: 1)
-                    GamesColumn()
-                        .padding([.bottom, .leading, .trailing], 12)
-                        .padding(.top, 8)
-                        .frame(width: geo.size.width / 3, alignment: .leading)
-                        .border(vm.typeOfMatch == .games ? .green : .clear, width: 1)
-                    PointsColumn()
-                        .padding([.bottom, .leading, .trailing], 12)
-                        .padding(.top, 8)
-                        .frame(width: geo.size.width / 3, alignment: .leading)
-                        .border(vm.typeOfMatch == .points ? .green : .clear, width: 1)
+            Group {
+                Picker("", selection: $vm.typeOfMatch) {
+                    Text("Social").tag(TypeOfMatch.social)
+                    Text("Games").tag(TypeOfMatch.games)
+                    Text("Points").tag(TypeOfMatch.points)
                 }
+                .pickerStyle(.segmented)
+                .padding(.bottom, -20)
+                
+                
+                GeometryReader { geo in
+                    HStack(spacing: 0) {
+                        SocialColumn()
+                            .padding([.bottom, .leading, .trailing], 12)
+                            .padding(.top, 8)
+                            .frame(width: geo.size.width / 3, alignment: .leading)
+                            .border(vm.typeOfMatch == .social ? .green : .clear, width: 1)
+                        GamesColumn()
+                            .padding([.bottom, .leading, .trailing], 12)
+                            .padding(.top, 8)
+                            .frame(width: geo.size.width / 3, alignment: .leading)
+                            .border(vm.typeOfMatch == .games ? .green : .clear, width: 1)
+                        PointsColumn()
+                            .padding([.bottom, .leading, .trailing], 12)
+                            .padding(.top, 8)
+                            .frame(width: geo.size.width / 3, alignment: .leading)
+                            .border(vm.typeOfMatch == .points ? .green : .clear, width: 1)
+                    }
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .opacity(vm.namesAreValid ? 1 : 0.25)
+            .disabled(!vm.namesAreValid)
             
         }
     }

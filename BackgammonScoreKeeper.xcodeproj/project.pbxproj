@@ -6,41 +6,78 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DA2D7E245C00D9F7A6 /* Color.swift */; };
+		65AC05012D7E245C00D9F7A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DB2D7E245C00D9F7A6 /* String.swift */; };
+		65AC05022D7E245C00D9F7A6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DC2D7E245C00D9F7A6 /* View.swift */; };
+		65AC05032D7E245C00D9F7A6 /* Bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DE2D7E245C00D9F7A6 /* Bindings.swift */; };
+		65AC05042D7E245C00D9F7A6 /* Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DF2D7E245C00D9F7A6 /* Borders.swift */; };
+		65AC05052D7E245C00D9F7A6 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E02D7E245C00D9F7A6 /* CheckboxStyle.swift */; };
+		65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */; };
+		65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */; };
+		65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */; };
+		65AC05092D7E245C00D9F7A6 /* GamesBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E42D7E245C00D9F7A6 /* GamesBoxWidthKey.swift */; };
+		65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */; };
+		65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */; };
+		65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */; };
+		65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */; };
+		65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */; };
+		65AC050F2D7E245C00D9F7A6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EC2D7E245C00D9F7A6 /* MainView.swift */; };
+		65AC05102D7E245C00D9F7A6 /* MiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04ED2D7E245C00D9F7A6 /* MiddleView.swift */; };
+		65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EE2D7E245C00D9F7A6 /* OuterView.swift */; };
+		65AC05122D7E245C00D9F7A6 /* TestAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EF2D7E245C00D9F7A6 /* TestAlignment.swift */; };
+		65AC05132D7E245C00D9F7A6 /* ConfigureNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */; };
+		65AC05142D7E245C00D9F7A6 /* NewGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */; };
+		65AC05152D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */; };
+		65AC05162D7E245C00D9F7A6 /* ContentViewXXXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F82D7E245C00D9F7A6 /* ContentViewXXXXX.swift */; };
+		65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F92D7E245C00D9F7A6 /* ControllerView.swift */; };
+		65AC05182D7E245C00D9F7A6 /* DayHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04FA2D7E245C00D9F7A6 /* DayHorizontalPicker.swift */; };
+		65AC05192D7E245C00D9F7A6 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */; };
+		65AC051A2D7E245C00D9F7A6 /* TypeOfMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04FC2D7E245C00D9F7A6 /* TypeOfMatch.swift */; };
+		65AC051B2D7E245C00D9F7A6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04FD2D7E245C00D9F7A6 /* ViewModel.swift */; };
+		65AC051C2D7E245C00D9F7A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04F42D7E245C00D9F7A6 /* Preview Assets.xcassets */; };
+		65AC051D2D7E245C00D9F7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */; };
+		65AC051E2D7E245C00D9F7A6 /* Collection.swift in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04D92D7E245C00D9F7A6 /* Collection.swift */; };
+		65AC05202D7E31E100D9F7A6 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */; };
+		65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		65AC04D92D7E245C00D9F7A6 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		65AC04DA2D7E245C00D9F7A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		65AC04DB2D7E245C00D9F7A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		65AC04DC2D7E245C00D9F7A6 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		65AC04DE2D7E245C00D9F7A6 /* Bindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindings.swift; sourceTree = "<group>"; };
+		65AC04DF2D7E245C00D9F7A6 /* Borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borders.swift; sourceTree = "<group>"; };
+		65AC04E02D7E245C00D9F7A6 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
+		65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotation.swift; sourceTree = "<group>"; };
+		65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublingCubeYPosition.swift; sourceTree = "<group>"; };
+		65AC04E42D7E245C00D9F7A6 /* GamesBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesBoxWidthKey.swift; sourceTree = "<group>"; };
+		65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceOrientation.swift; sourceTree = "<group>"; };
+		65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberHorizontalPicker.swift; sourceTree = "<group>"; };
+		65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalWidthKey.swift; sourceTree = "<group>"; };
+		65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawfordGameView.swift; sourceTree = "<group>"; };
+		65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublingCubeView.swift; sourceTree = "<group>"; };
+		65AC04EC2D7E245C00D9F7A6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		65AC04ED2D7E245C00D9F7A6 /* MiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleView.swift; sourceTree = "<group>"; };
+		65AC04EE2D7E245C00D9F7A6 /* OuterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterView.swift; sourceTree = "<group>"; };
+		65AC04EF2D7E245C00D9F7A6 /* TestAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAlignment.swift; sourceTree = "<group>"; };
+		65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureNamesView.swift; sourceTree = "<group>"; };
+		65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameView.swift; sourceTree = "<group>"; };
+		65AC04F42D7E245C00D9F7A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgammonScoreKeeperApp.swift; sourceTree = "<group>"; };
+		65AC04F82D7E245C00D9F7A6 /* ContentViewXXXXX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewXXXXX.swift; sourceTree = "<group>"; };
+		65AC04F92D7E245C00D9F7A6 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
+		65AC04FA2D7E245C00D9F7A6 /* DayHorizontalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHorizontalPicker.swift; sourceTree = "<group>"; };
+		65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		65AC04FC2D7E245C00D9F7A6 /* TypeOfMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfMatch.swift; sourceTree = "<group>"; };
+		65AC04FD2D7E245C00D9F7A6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		65B3E9622D52C41900AB92FB /* BackgammonScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgammonScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		65BA6E182D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "BackgammonScoreKeeper" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Extensions/Collection.swift,
-			);
-			target = 65B3E9612D52C41900AB92FB /* BackgammonScoreKeeper */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		65BA6E192D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "Copy Bundle Resources" phase from "BackgammonScoreKeeper" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 65B3E9602D52C41900AB92FB /* Resources */;
-			membershipExceptions = (
-				Extensions/Collection.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		65B3E9642D52C41900AB92FB /* BackgammonScoreKeeper */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				65BA6E182D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "BackgammonScoreKeeper" target */,
-				65BA6E192D79CA440019FCB8 /* Exceptions for "BackgammonScoreKeeper" folder in "Copy Bundle Resources" phase from "BackgammonScoreKeeper" target */,
-			);
-			path = BackgammonScoreKeeper;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		65B3E95F2D52C41900AB92FB /* Frameworks */ = {
@@ -53,10 +90,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65AC04DD2D7E245C00D9F7A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04D92D7E245C00D9F7A6 /* Collection.swift */,
+				65AC04DA2D7E245C00D9F7A6 /* Color.swift */,
+				65AC04DB2D7E245C00D9F7A6 /* String.swift */,
+				65AC04DC2D7E245C00D9F7A6 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */,
+				65AC04DE2D7E245C00D9F7A6 /* Bindings.swift */,
+				65AC04DF2D7E245C00D9F7A6 /* Borders.swift */,
+				65AC04E02D7E245C00D9F7A6 /* CheckboxStyle.swift */,
+				65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */,
+				65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */,
+				65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */,
+				65AC04E42D7E245C00D9F7A6 /* GamesBoxWidthKey.swift */,
+				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
+				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
+				65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */,
+				65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		65AC04EB2D7E245C00D9F7A6 /* DoublingCubeOverlays */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */,
+				65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */,
+			);
+			path = DoublingCubeOverlays;
+			sourceTree = "<group>";
+		};
+		65AC04F02D7E245C00D9F7A6 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04EB2D7E245C00D9F7A6 /* DoublingCubeOverlays */,
+				65AC04EC2D7E245C00D9F7A6 /* MainView.swift */,
+				65AC04ED2D7E245C00D9F7A6 /* MiddleView.swift */,
+				65AC04EE2D7E245C00D9F7A6 /* OuterView.swift */,
+				65AC04EF2D7E245C00D9F7A6 /* TestAlignment.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		65AC04F32D7E245C00D9F7A6 /* NewGameViews */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */,
+				65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */,
+			);
+			path = NewGameViews;
+			sourceTree = "<group>";
+		};
+		65AC04F52D7E245C00D9F7A6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04F42D7E245C00D9F7A6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		65AC04FE2D7E245C00D9F7A6 /* BackgammonScoreKeeper */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */,
+				65AC04DD2D7E245C00D9F7A6 /* Extensions */,
+				65AC04E82D7E245C00D9F7A6 /* Helpers */,
+				65AC04F02D7E245C00D9F7A6 /* MainView */,
+				65AC04F32D7E245C00D9F7A6 /* NewGameViews */,
+				65AC04F52D7E245C00D9F7A6 /* Preview Content */,
+				65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */,
+				65AC04F82D7E245C00D9F7A6 /* ContentViewXXXXX.swift */,
+				65AC04F92D7E245C00D9F7A6 /* ControllerView.swift */,
+				65AC04FA2D7E245C00D9F7A6 /* DayHorizontalPicker.swift */,
+				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
+				65AC04FC2D7E245C00D9F7A6 /* TypeOfMatch.swift */,
+				65AC04FD2D7E245C00D9F7A6 /* ViewModel.swift */,
+			);
+			path = BackgammonScoreKeeper;
+			sourceTree = "<group>";
+		};
 		65B3E9592D52C41900AB92FB = {
 			isa = PBXGroup;
 			children = (
-				65B3E9642D52C41900AB92FB /* BackgammonScoreKeeper */,
+				65AC04FE2D7E245C00D9F7A6 /* BackgammonScoreKeeper */,
 				65B3E9632D52C41900AB92FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,9 +208,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				65B3E9642D52C41900AB92FB /* BackgammonScoreKeeper */,
 			);
 			name = BackgammonScoreKeeper;
 			packageProductDependencies = (
@@ -133,6 +255,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AC051E2D7E245C00D9F7A6 /* Collection.swift in Resources */,
+				65AC051C2D7E245C00D9F7A6 /* Preview Assets.xcassets in Resources */,
+				65AC051D2D7E245C00D9F7A6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +268,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */,
+				65AC05012D7E245C00D9F7A6 /* String.swift in Sources */,
+				65AC05022D7E245C00D9F7A6 /* View.swift in Sources */,
+				65AC05032D7E245C00D9F7A6 /* Bindings.swift in Sources */,
+				65AC05042D7E245C00D9F7A6 /* Borders.swift in Sources */,
+				65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */,
+				65AC05052D7E245C00D9F7A6 /* CheckboxStyle.swift in Sources */,
+				65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */,
+				65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */,
+				65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */,
+				65AC05092D7E245C00D9F7A6 /* GamesBoxWidthKey.swift in Sources */,
+				65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */,
+				65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */,
+				65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */,
+				65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */,
+				65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */,
+				65AC050F2D7E245C00D9F7A6 /* MainView.swift in Sources */,
+				65AC05202D7E31E100D9F7A6 /* ButtonStyles.swift in Sources */,
+				65AC05102D7E245C00D9F7A6 /* MiddleView.swift in Sources */,
+				65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */,
+				65AC05122D7E245C00D9F7A6 /* TestAlignment.swift in Sources */,
+				65AC05132D7E245C00D9F7A6 /* ConfigureNamesView.swift in Sources */,
+				65AC05142D7E245C00D9F7A6 /* NewGameView.swift in Sources */,
+				65AC05152D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift in Sources */,
+				65AC05162D7E245C00D9F7A6 /* ContentViewXXXXX.swift in Sources */,
+				65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */,
+				65AC05182D7E245C00D9F7A6 /* DayHorizontalPicker.swift in Sources */,
+				65AC05192D7E245C00D9F7A6 /* MainMenu.swift in Sources */,
+				65AC051A2D7E245C00D9F7A6 /* TypeOfMatch.swift in Sources */,
+				65AC051B2D7E245C00D9F7A6 /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

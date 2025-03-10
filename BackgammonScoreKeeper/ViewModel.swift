@@ -13,15 +13,19 @@ class ViewModel {
     var deviceOrientation: UIDeviceOrientation = .portrait
 
     var owmerName: String = "Mark"
+    var ownerSecondName: String = "Adam"
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
 
-    var opponentName: String = "Alice"
+    var opponentName: String = ""
+    var opponentSecondName: String = ""
     var opponentGames: Int = 0
     var opponentPoints: Int = 0
     
-    var ownerSecondName: String = "Adam"
-    var opponentSecondName: String = "Steve"
+    var namesAreValid: Bool {
+        opponentName.isNotEmpty ? true : false
+    }
+    
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
