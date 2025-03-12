@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(ViewModel.self) var vm
-    @State private var menuBeingShown: Bool = false
+//    @State private var menuBeingShown: Bool = false
     
     var whichWayRound: WhichWayRound {
         switch vm.deviceOrientation {
@@ -52,12 +52,12 @@ struct MainView: View {
                         /// End of stuff to be removed before use
                         
                         Button {
-                            menuBeingShown.toggle()
+                            vm.mainMenuShowing.toggle()
                         } label: {
                             Image(systemName: "line.3.horizontal")
                                 .font(.system(size: 30))
                         }
-                        .disabled(menuBeingShown)
+                        .disabled(vm.mainMenuShowing)
                     }
                     .padding(.top, 2)
                     .padding(.bottom, 5)
@@ -81,10 +81,10 @@ struct MainView: View {
             }
         }
 //        .padding()
-        .opacity(menuBeingShown ? 0.2 : 1.0)
-        .disabled(menuBeingShown)
-        .overlay(mainMenu)
-        .overlay(vm.useDoublingCube && !menuBeingShown ? DealWithTheDoublingCubeView() : nil)
+        .opacity(vm.mainMenuShowing ? 0.2 : 1.0)
+        .disabled(vm.mainMenuShowing)
+        .overlay(vm.mainMenuShowing ? DealWithTheMainMenuView() : nil)
+        .overlay(vm.useDoublingCube && !vm.mainMenuShowing ? DealWithTheDoublingCubeView() : nil)
 //        .opacity(menuBeingShown ? 0 : 1)
 //        .disabled(menuBeingShown)
 
@@ -92,12 +92,20 @@ struct MainView: View {
 //        .ignoresSafeArea(.all)
     }
         
-    @ViewBuilder private var mainMenu: some View {
-        if menuBeingShown {
-            MainMenu(showMenu: $menuBeingShown)
-        }
-    }
+//    @ViewBuilder private var mainMenu: some View {
+//        if menuBeingShown {
+////            MainMenu(showMenu: $menuBeingShown)
+//            MainMenu(showMenu: $vm.mainMenuShowing)
+//        }
+//    }
     
+}
+
+struct DealWithTheMainMenuView: View {
+    @Environment(ViewModel.self) var vm
+    var body: some View {
+        MainMenu()
+    }
 }
 
 struct DealWithTheDoublingCubeView: View {
@@ -117,10 +125,6 @@ struct DealWithTheDoublingCubeView: View {
         }
     }
 }
-
-
-
-
 
 
 #Preview(traits: .landscapeLeft) {

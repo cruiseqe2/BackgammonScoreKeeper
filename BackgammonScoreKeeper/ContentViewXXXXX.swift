@@ -306,7 +306,7 @@ struct ContentViewXXXXX: View {
     
     @ViewBuilder private var mainMenu: some View {
         if showMenu {
-            MainMenu(showMenu: $showMenu)
+            MainMenu()
         }
     }
 }

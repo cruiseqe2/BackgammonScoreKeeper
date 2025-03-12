@@ -39,6 +39,7 @@ enum WinnerIs {
     case owner
     case opponent
     case noWinnerYet
+    case matchAbandoned
 }
 
 enum Side {
@@ -67,4 +68,16 @@ enum CrawfordStatus {
     case preCrawford
     case isCrawford
     case postCrawford
+}
+
+enum CurrentGameState {
+    case socialGameActive
+    case matchInProgress
+    case matchFinished
+    case matchAbandoned
+}
+
+enum ActionOnReturnFromNewGame {
+    case startGame
+    case cancel
 }

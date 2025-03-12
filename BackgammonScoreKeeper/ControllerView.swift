@@ -12,7 +12,7 @@ struct ControllerView: View {
     @State var showErrorScreen = false
     
     var wrongOrientation: Bool {
-        vm.deviceOrientation != .landscapeLeft && vm.deviceOrientation != .landscapeRight
+        vm.deviceOrientation != .landscapeLeft && vm.deviceOrientation != .landscapeRight && vm.deviceOrientation != .faceUp
     }
     
     var body: some View {

@@ -27,7 +27,7 @@
 		65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EE2D7E245C00D9F7A6 /* OuterView.swift */; };
 		65AC05122D7E245C00D9F7A6 /* TestAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EF2D7E245C00D9F7A6 /* TestAlignment.swift */; };
 		65AC05132D7E245C00D9F7A6 /* ConfigureNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */; };
-		65AC05142D7E245C00D9F7A6 /* NewGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */; };
+		65AC05142D7E245C00D9F7A6 /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F22D7E245C00D9F7A6 /* NewMatchView.swift */; };
 		65AC05152D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */; };
 		65AC05162D7E245C00D9F7A6 /* ContentViewXXXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F82D7E245C00D9F7A6 /* ContentViewXXXXX.swift */; };
 		65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04F92D7E245C00D9F7A6 /* ControllerView.swift */; };
@@ -64,7 +64,7 @@
 		65AC04EE2D7E245C00D9F7A6 /* OuterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterView.swift; sourceTree = "<group>"; };
 		65AC04EF2D7E245C00D9F7A6 /* TestAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAlignment.swift; sourceTree = "<group>"; };
 		65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureNamesView.swift; sourceTree = "<group>"; };
-		65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameView.swift; sourceTree = "<group>"; };
+		65AC04F22D7E245C00D9F7A6 /* NewMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		65AC04F42D7E245C00D9F7A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgammonScoreKeeperApp.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				65AC04F12D7E245C00D9F7A6 /* ConfigureNamesView.swift */,
-				65AC04F22D7E245C00D9F7A6 /* NewGameView.swift */,
+				65AC04F22D7E245C00D9F7A6 /* NewMatchView.swift */,
 			);
 			path = NewGameViews;
 			sourceTree = "<group>";
@@ -164,18 +164,26 @@
 				65AC04F72D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift */,
 				65AC04DD2D7E245C00D9F7A6 /* Extensions */,
 				65AC04E82D7E245C00D9F7A6 /* Helpers */,
-				65AC04F02D7E245C00D9F7A6 /* MainView */,
-				65AC04F32D7E245C00D9F7A6 /* NewGameViews */,
+				65AC05232D7E6A8F00D9F7A6 /* Views */,
 				65AC04F52D7E245C00D9F7A6 /* Preview Content */,
 				65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */,
 				65AC04F82D7E245C00D9F7A6 /* ContentViewXXXXX.swift */,
 				65AC04F92D7E245C00D9F7A6 /* ControllerView.swift */,
 				65AC04FA2D7E245C00D9F7A6 /* DayHorizontalPicker.swift */,
-				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
 				65AC04FC2D7E245C00D9F7A6 /* TypeOfMatch.swift */,
 				65AC04FD2D7E245C00D9F7A6 /* ViewModel.swift */,
 			);
 			path = BackgammonScoreKeeper;
+			sourceTree = "<group>";
+		};
+		65AC05232D7E6A8F00D9F7A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
+				65AC04F32D7E245C00D9F7A6 /* NewGameViews */,
+				65AC04F02D7E245C00D9F7A6 /* MainView */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		65B3E9592D52C41900AB92FB = {
@@ -290,7 +298,7 @@
 				65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */,
 				65AC05122D7E245C00D9F7A6 /* TestAlignment.swift in Sources */,
 				65AC05132D7E245C00D9F7A6 /* ConfigureNamesView.swift in Sources */,
-				65AC05142D7E245C00D9F7A6 /* NewGameView.swift in Sources */,
+				65AC05142D7E245C00D9F7A6 /* NewMatchView.swift in Sources */,
 				65AC05152D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift in Sources */,
 				65AC05162D7E245C00D9F7A6 /* ContentViewXXXXX.swift in Sources */,
 				65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  NewGameView 2.swift
+//  NewMatchView.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 06/03/2025.
@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct NewGameView: View {
+struct NewMatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
+//    @Binding var actionOnReturn: ActionOnReturnFromNewGame
     @State private var menuBeingShown: Bool = false
     @State private var isConfigurePlayersShown: Bool = false
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .systemIndigo
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemYellow], for: .normal)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemYellow, .font: UIFont.systemFont(ofSize: 20)], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20)], for: .selected)
     }
-        
+    
     var body: some View {
         
         @Bindable var vm = vm
@@ -37,20 +38,39 @@ struct NewGameView: View {
                 
                 Spacer()
                 
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                        .font(.system(size: 30))
+                HStack(spacing: 24) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                            .font(.system(size: 24))
+                    }
+                    .disabled(menuBeingShown)
+
+                    Button {
+                        vm.mainMenuShowing = false
+                        vm.startGame()
+                        dismiss()
+                    } label: {
+                        Text("Start")
+                            .font(.system(size: 26))
+                    }
+                    .disabled(menuBeingShown)
                 }
-                .disabled(menuBeingShown)
             }
             .padding(.top, 2)
             
             HStack {
-                Text("Current players - \(vm.ownerDisplayName) **versus** \(vm.opponentDisplayName)")
-                Spacer()
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    Text("Current players - ")
+                    Text(vm.ownerDisplayName)
+                        .font(.system(size: 26, weight: .black))
+                    Text(" **versus** ")
+                    Text(vm.opponentDisplayName)
+                        .font(.system(size: 26, weight: .black))
+                }
                 
+                Spacer()
                 
                 Button {
                     isConfigurePlayersShown.toggle()
@@ -180,6 +200,6 @@ struct PointsColumn: View {
 
 
 #Preview(traits: .landscapeLeft) {
-    NewGameView()
+    NewMatchView()
         .environment(ViewModel())
 }

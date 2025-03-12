@@ -26,6 +26,7 @@ class ViewModel {
         opponentName.isNotEmpty ? true : false
     }
     
+    var mainMenuShowing: Bool = false
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
@@ -148,6 +149,17 @@ class ViewModel {
         winnerIs = .noWinnerYet
         crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
     }
+    
+    func startGame() {
+        ownerGames = 0
+        opponentGames = 0
+        ownerPoints = 0
+        opponentPoints = 0
+        winnerIs = .noWinnerYet
+        crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
+    }
+    
+    
     
     
     func swapPositions() {

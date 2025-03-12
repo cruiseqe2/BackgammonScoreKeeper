@@ -9,12 +9,14 @@ import SwiftUI
 
 struct MainMenuButton: View {
     let buttonTitle: String
-    let action: () -> Void
     let color: Color
+    let isDisabled: Bool
+    let action: () -> Void
     
-    init(buttonTitle: String, color: Color = .purple, action: @escaping () -> Void ) {
+    init(buttonTitle: String, color: Color = .purple, isDisabled: Bool = false, action: @escaping () -> Void ) {
         self.buttonTitle = buttonTitle
         self.color = color
+        self.isDisabled = isDisabled
         self.action = action
     }
     
@@ -26,5 +28,7 @@ struct MainMenuButton: View {
             .foregroundStyle(.white)
             .background(color)
             .clipShape(Capsule())
+            .disabled(isDisabled)
+            .opacity(isDisabled ? 0.25 : 1)
     }
 }
