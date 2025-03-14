@@ -11,24 +11,11 @@ struct MainMenu: View {
     @Environment(ViewModel.self) var vm
     @State private var newMatchViewPresented = false
     @State private var showAbandonMatchAlert = false
-    
-    private var currentGameState: CurrentGameState {
-        if vm.winnerIs == .matchAbandoned {
-            return .matchAbandoned
-        }
-        if vm.winnerIs == .noWinnerYet {
-            if vm.typeOfMatch == .social {
-                return .socialGameActive
-            } else {
-                return .matchInProgress
-            }
-        } else {
-            return .matchFinished
-        }
-    }
+    @State private var notImplementedYet = false
+    //    @State private var animate = false
     
     private var topButtonTitle: String {
-        switch currentGameState {
+        switch vm.currentGameState {
         case .socialGameActive:
             "Stop Social Game"
         case .matchInProgress:
@@ -39,7 +26,7 @@ struct MainMenu: View {
     }
     
     private var topButtonColor: Color {
-        switch currentGameState {
+        switch vm.currentGameState {
         case .socialGameActive:
                 .orange
         case .matchInProgress:
@@ -48,7 +35,16 @@ struct MainMenu: View {
                 .green
         }
     }
-        
+    
+    private var matchUnderway: Bool {
+        vm.ownerPoints > 0 || vm.opponentPoints > 0      ||
+            vm .opponentPoints > 0 || vm.ownerGames > 0
+        }
+    
+    private var showHistoryAndSettings: Bool {
+        vm.currentGameState == .matchFinished || vm.currentGameState == .matchAbandoned
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -60,21 +56,33 @@ struct MainMenu: View {
             MainMenuButton(
                 buttonTitle: topButtonTitle,
                 color: topButtonColor) {
-                    switch currentGameState {
+                    switch vm.currentGameState {
                     case .socialGameActive:
-                        // TODO Log this 'result'
+                        if matchUnderway {
+                            // TODO: Log the result
+                        }
                         vm.winnerIs = .matchAbandoned
                     case .matchFinished, .matchAbandoned:
                         newMatchViewPresented.toggle()
                     case .matchInProgress:
-                        showAbandonMatchAlert.toggle()
+                        if matchUnderway {
+                            showAbandonMatchAlert.toggle()
+                        } else {        // Just abandon the match without warning
+                            vm.winnerIs = .matchAbandoned
+                        }
                     }
                 }
                 .opacity(showAbandonMatchAlert ? 0.25 : 1)
-            MainMenuButton(buttonTitle: "Adjust Scores", isDisabled: vm.winnerIs != .noWinnerYet) {}
+            MainMenuButton(buttonTitle: "Adjust Scores", color: .brown, isDisabled: vm.winnerIs != .noWinnerYet) {
+                notImplementedYet.toggle()
+            }
             MainMenuButton(buttonTitle: "History", isDisabled:
-                            currentGameState != .matchFinished) {}
-            MainMenuButton(buttonTitle: "Settings", isDisabled: currentGameState != .matchFinished) {}
+                            !showHistoryAndSettings) {
+                notImplementedYet.toggle()
+            }
+            MainMenuButton(buttonTitle: "Settings", isDisabled: !showHistoryAndSettings) {
+                notImplementedYet.toggle()
+            }
             MainMenuButton(buttonTitle: "Return", color: .blue) {
                 vm.mainMenuShowing = false
             }
@@ -82,13 +90,14 @@ struct MainMenu: View {
             
             Spacer()
         }
-        
         .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
             Button("Yes - Abondon", role: .destructive) {
+                // TODO: Log the 'result'
                 vm.winnerIs = .matchAbandoned
             }
-            Button("No - Just return", role: .cancel) {}
+            Button("No - Just return", role: .cancel) { }
         }
+        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
         
         .padding(16)
         .frame(width: 250, height: 400)
@@ -96,7 +105,7 @@ struct MainMenu: View {
         .fixedSize(horizontal: false, vertical: true)
         .cornerRadius(25)
         .fullScreenCover(isPresented: $newMatchViewPresented,
-                         content: NewMatchView.init )
+                         content: NewMatchView.init)
     }
     
 }
@@ -123,3 +132,28 @@ struct MainMenu: View {
 //extension ButtonStyle where Self == PrimaryButtonStyle {
 //    static var myAppPrimaryButton: PrimaryButtonStyle { .init() }
 //}
+
+struct TestView: View {
+    @State private var opacity: Double = 0.0
+    
+    var body: some View {
+        VStack {
+            MainMenuButton(buttonTitle: "Adjust Scores", isDisabled: true) {}
+                .opacity(opacity)
+            
+            
+            
+            Text("Hello, SwiftUI!")
+                .opacity(opacity)
+                .font(.largeTitle)
+                .padding()
+            
+            
+            Button(opacity == 0.0 ? "Fade In" : "Fade Out") {
+                withAnimation(.easeInOut(duration: 2)) {
+                    opacity = opacity == 0.0 ? 1.0 : 0.0
+                }
+            }
+        }
+    }
+}

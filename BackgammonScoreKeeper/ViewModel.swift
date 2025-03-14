@@ -12,18 +12,18 @@ import UIKit
 class ViewModel {
     var deviceOrientation: UIDeviceOrientation = .portrait
 
-    var owmerName: String = "Mark"
-    var ownerSecondName: String = "Adam"
+    var firstOwnerName: String = "Mark"
+    var secondOwnerName: String = "Adam"
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
 
-    var opponentName: String = ""
-    var opponentSecondName: String = ""
+    var firstOpponentName: String = ""
+    var secondOpponentName: String = ""
     var opponentGames: Int = 0
     var opponentPoints: Int = 0
     
     var namesAreValid: Bool {
-        opponentName.isNotEmpty ? true : false
+        firstOpponentName.isNotEmpty ? true : false
     }
     
     var mainMenuShowing: Bool = false
@@ -41,6 +41,22 @@ class ViewModel {
         guard let numberOfGamesOrPoints else { return nil }
         return Int(numberOfGamesOrPoints / 2) + 1
     }
+    
+    var currentGameState: CurrentGameState {
+        if winnerIs == .matchAbandoned {
+            return .matchAbandoned
+        }
+        if winnerIs == .noWinnerYet {
+            if typeOfMatch == .social {
+                return .socialGameActive
+            } else {
+                return .matchInProgress
+            }
+        } else {
+            return .matchFinished
+        }
+    }
+    
     
     var crawfordStatus: CrawfordStatus = .notPointsBased
     
@@ -60,11 +76,11 @@ class ViewModel {
     /// Populate the Left and Right hand side of the main display
     
     var ownerDisplayName: String {
-        return owmerName + (ownerSecondName.isNotEmpty ? " & " + ownerSecondName : "")
+        return firstOwnerName + (secondOwnerName.isNotEmpty ? " & " + secondOwnerName : "")
     }
     
     var opponentDisplayName: String {
-        return opponentName + (opponentSecondName.isNotEmpty ? " & " + opponentSecondName : "")
+        return firstOpponentName + (secondOpponentName.isNotEmpty ? " & " + secondOpponentName : "")
     }
     
     var LHSName: String {
@@ -258,6 +274,31 @@ class ViewModel {
                 }
             }
         }
+    }
+    
+    /// Log the matches
+    
+    func log() {
+        var whyDidMatchFinish: String
+        
+        switch currentGameState {
+        case .socialGameActive:
+            break     // Should never get here!
+        case .matchInProgress:
+            break     // Should never get here!
+        case .matchFinished:
+            whyDidMatchFinish = "match finished"
+        case .matchAbandoned:
+            whyDidMatchFinish = "match abandoned"
+        }
+        
+        
+        
+        
+        print("---------------")
+        print("Players: \(ownerDisplayName) vs \(opponentDisplayName)")
+        print("Type of Match: \(typeOfMatch)")
+        print("Result was ")
     }
     
 }

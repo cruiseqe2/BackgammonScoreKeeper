@@ -13,7 +13,7 @@ struct MainMenuButton: View {
     let isDisabled: Bool
     let action: () -> Void
     
-    init(buttonTitle: String, color: Color = .purple, isDisabled: Bool = false, action: @escaping () -> Void ) {
+    init(buttonTitle: String, color: Color = .purple, isDisabled: Bool = false, action: @escaping () -> Void) {
         self.buttonTitle = buttonTitle
         self.color = color
         self.isDisabled = isDisabled

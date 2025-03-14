@@ -42,14 +42,14 @@ struct MainView: View {
                         
                         Spacer()
                         
-                        /// This should be removed when finished
-                        Button {
-                            vm.showTestingButtons.toggle()
-                        } label: {
-                            Text(vm.showTestingButtons ? "Hide" : "Show")
-                        }
-                        Spacer()
-                        /// End of stuff to be removed before use
+//                        /// This should be removed when finished
+//                        Button {
+//                            vm.showTestingButtons.toggle()
+//                        } label: {
+//                            Text(vm.showTestingButtons ? "Hide" : "Show")
+//                        }
+//                        Spacer()
+//                        /// End of stuff to be removed before use
                         
                         Button {
                             vm.mainMenuShowing.toggle()
@@ -61,6 +61,8 @@ struct MainView: View {
                     }
                     .padding(.top, 2)
                     .padding(.bottom, 5)
+                
+                Spacer()
                 
                 HStack(spacing: 0) {
                     OuterView(sideToProcess: .leftHandSide)
@@ -83,7 +85,8 @@ struct MainView: View {
 //        .padding()
         .opacity(vm.mainMenuShowing ? 0.2 : 1.0)
         .disabled(vm.mainMenuShowing)
-        .overlay(vm.mainMenuShowing ? DealWithTheMainMenuView() : nil)
+        .overlay(vm.mainMenuShowing ? MainMenu() : nil)
+//        .overlay(vm.mainMenuShowing ? DealWithTheMainMenuView() : nil)
         .overlay(vm.useDoublingCube && !vm.mainMenuShowing ? DealWithTheDoublingCubeView() : nil)
 //        .opacity(menuBeingShown ? 0 : 1)
 //        .disabled(menuBeingShown)
@@ -101,12 +104,12 @@ struct MainView: View {
     
 }
 
-struct DealWithTheMainMenuView: View {
-    @Environment(ViewModel.self) var vm
-    var body: some View {
-        MainMenu()
-    }
-}
+//struct DealWithTheMainMenuView: View {
+//    @Environment(ViewModel.self) var vm
+//    var body: some View {
+//        MainMenu()
+//    }
+//}
 
 struct DealWithTheDoublingCubeView: View {
     @Environment(ViewModel.self) var vm

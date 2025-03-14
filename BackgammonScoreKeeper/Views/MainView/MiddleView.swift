@@ -75,11 +75,12 @@ struct MiddleView: View {
             Spacer()
             
         }
-        .overlay((vm.showTestingButtons ? testingButtons : nil), alignment: .bottom)
+//        .overlay((vm.showTestingButtons ? testingButtons : nil), alignment: .bottom)
         
     }
 }
 
+/****
 
 extension MiddleView {
     
@@ -190,6 +191,8 @@ extension MiddleView {
     }
     
 }
+ 
+ ******/
 
 #Preview(traits: .landscapeLeft) {
     MiddleView()

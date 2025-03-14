@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26D2D83095000E88963 /* NewMatchButton.swift */; };
+		6580A2702D83BB9E00E88963 /* NameTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */; };
 		65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DA2D7E245C00D9F7A6 /* Color.swift */; };
 		65AC05012D7E245C00D9F7A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DB2D7E245C00D9F7A6 /* String.swift */; };
 		65AC05022D7E245C00D9F7A6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DC2D7E245C00D9F7A6 /* View.swift */; };
@@ -38,11 +40,13 @@
 		65AC051C2D7E245C00D9F7A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04F42D7E245C00D9F7A6 /* Preview Assets.xcassets */; };
 		65AC051D2D7E245C00D9F7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */; };
 		65AC051E2D7E245C00D9F7A6 /* Collection.swift in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04D92D7E245C00D9F7A6 /* Collection.swift */; };
-		65AC05202D7E31E100D9F7A6 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */; };
+		65AC05202D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC051F2D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift */; };
 		65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6580A26D2D83095000E88963 /* NewMatchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchButton.swift; sourceTree = "<group>"; };
+		6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextfieldView.swift; sourceTree = "<group>"; };
 		65AC04D92D7E245C00D9F7A6 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		65AC04DA2D7E245C00D9F7A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		65AC04DB2D7E245C00D9F7A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -74,7 +78,7 @@
 		65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		65AC04FC2D7E245C00D9F7A6 /* TypeOfMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfMatch.swift; sourceTree = "<group>"; };
 		65AC04FD2D7E245C00D9F7A6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		65AC051F2D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigureChangeStyle.swift; sourceTree = "<group>"; };
 		65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		65B3E9622D52C41900AB92FB /* BackgammonScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgammonScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6580A26C2D8308A800E88963 /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				6580A26D2D83095000E88963 /* NewMatchButton.swift */,
+				65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */,
+				65AC051F2D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift */,
+			);
+			path = ButtonStyles;
+			sourceTree = "<group>";
+		};
 		65AC04DD2D7E245C00D9F7A6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,10 +118,11 @@
 		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */,
+				6580A26C2D8308A800E88963 /* ButtonStyles */,
 				65AC04DE2D7E245C00D9F7A6 /* Bindings.swift */,
 				65AC04DF2D7E245C00D9F7A6 /* Borders.swift */,
 				65AC04E02D7E245C00D9F7A6 /* CheckboxStyle.swift */,
+				6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */,
 				65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */,
 				65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */,
 				65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */,
@@ -115,7 +130,6 @@
 				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
 				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
 				65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */,
-				65AC051F2D7E31E100D9F7A6 /* ButtonStyles.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -281,11 +295,13 @@
 				65AC05022D7E245C00D9F7A6 /* View.swift in Sources */,
 				65AC05032D7E245C00D9F7A6 /* Bindings.swift in Sources */,
 				65AC05042D7E245C00D9F7A6 /* Borders.swift in Sources */,
+				6580A2702D83BB9E00E88963 /* NameTextfieldView.swift in Sources */,
 				65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */,
 				65AC05052D7E245C00D9F7A6 /* CheckboxStyle.swift in Sources */,
 				65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */,
 				65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */,
 				65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */,
+				6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */,
 				65AC05092D7E245C00D9F7A6 /* GamesBoxWidthKey.swift in Sources */,
 				65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */,
 				65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */,
@@ -293,7 +309,7 @@
 				65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */,
 				65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */,
 				65AC050F2D7E245C00D9F7A6 /* MainView.swift in Sources */,
-				65AC05202D7E31E100D9F7A6 /* ButtonStyles.swift in Sources */,
+				65AC05202D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift in Sources */,
 				65AC05102D7E245C00D9F7A6 /* MiddleView.swift in Sources */,
 				65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */,
 				65AC05122D7E245C00D9F7A6 /* TestAlignment.swift in Sources */,

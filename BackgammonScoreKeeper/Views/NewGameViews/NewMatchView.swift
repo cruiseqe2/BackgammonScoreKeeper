@@ -11,7 +11,7 @@ struct NewMatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
 //    @Binding var actionOnReturn: ActionOnReturnFromNewGame
-    @State private var menuBeingShown: Bool = false
+//    @State private var menuBeingShown: Bool = false
     @State private var isConfigurePlayersShown: Bool = false
     
     init() {
@@ -38,24 +38,27 @@ struct NewMatchView: View {
                 
                 Spacer()
                 
-                HStack(spacing: 24) {
+                HStack(spacing: 25) {
                     Button {
                         dismiss()
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .font(.system(size: 24))
                     }
-                    .disabled(menuBeingShown)
+                    .disabled(isConfigurePlayersShown)
+                    .opacity(isConfigurePlayersShown ? 0.25 : 1)
 
-                    Button {
-                        vm.mainMenuShowing = false
-                        vm.startGame()
-                        dismiss()
-                    } label: {
-                        Text("Start")
-                            .font(.system(size: 26))
-                    }
-                    .disabled(menuBeingShown)
+                    NewMatchButton(
+                        buttonTitle: "Start",
+                        bgColor: .green,
+                        fgColor: .black,
+                        isDisabled: isConfigurePlayersShown || !vm.namesAreValid) {
+                            vm.mainMenuShowing = false
+                            vm.startGame()
+//                            dismiss()
+                        }
+                        .frame(width: 100)
+                        .opacity(isConfigurePlayersShown || !vm.namesAreValid ? 0.30 : 1)
                 }
             }
             .padding(.top, 2)
@@ -69,6 +72,7 @@ struct NewMatchView: View {
                     Text(vm.opponentDisplayName)
                         .font(.system(size: 26, weight: .black))
                 }
+                .opacity(isConfigurePlayersShown ? 0 : 1)
                 
                 Spacer()
                 
@@ -78,7 +82,8 @@ struct NewMatchView: View {
                     Text("")
                 }
                 .controlSize(.small)
-                .buttonStyle(.xyz(isChange: vm.namesAreValid))
+                .buttonStyle(.configureChangeButton(isChange: vm.namesAreValid))
+                .opacity(isConfigurePlayersShown ? 0 : 1)
                 .popover(isPresented: $isConfigurePlayersShown) {
                     ConfigureNamesView()
                         .padding(30)
@@ -95,7 +100,6 @@ struct NewMatchView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.bottom, -20)
-                
                 
                 GeometryReader { geo in
                     HStack(spacing: 0) {
@@ -119,11 +123,15 @@ struct NewMatchView: View {
                 
                 Spacer()
             }
-            .opacity(vm.namesAreValid ? 1 : 0.25)
-            .disabled(!vm.namesAreValid)
+            .opacity((isConfigurePlayersShown || !vm.namesAreValid) ? 0.30 : 1)
+            .disabled(isConfigurePlayersShown || !vm.namesAreValid)
+            
+//            .opacity(vm.namesAreValid ? 1 : 0.25)
+//            .disabled(!vm.namesAreValid)
             
         }
     }
+    
 }
 
 struct SocialColumn: View {
@@ -131,7 +139,7 @@ struct SocialColumn: View {
         VStack(alignment: .leading) {
             Text("No Doubling Cube")
             Divider()
-            Text("Finish playing when 'STOP' is tapped")
+            Text("Finish playing when 'Stop Social Game' is tapped on the main menu")
             Divider()
             Text("Only Games are shown")
             
@@ -181,7 +189,7 @@ struct PointsColumn: View {
             }
             Divider()
             Toggle(isOn: $vm.showGamesBoxIfPointsBased, label: {
-                Text("Show Games Box")
+                Text("Show Game Boxes")
             })
             .toggleStyle(CheckboxStyle())
             

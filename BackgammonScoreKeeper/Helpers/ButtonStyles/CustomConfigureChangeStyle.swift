@@ -1,5 +1,5 @@
 //
-//  ButtonStyles.swift
+//  CustomConfigureChangeStyle.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 09/03/2025.
@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CustomConfigureChangeStyle: ButtonStyle {
     var isChange: Bool
+    
     init(isChange: Bool) {
         self.isChange = isChange
     }
+    
     func makeBody(configuration: Configuration) -> some View {
         Group {
             Text(isChange ? "Change" : "Configure")
@@ -24,11 +26,10 @@ struct CustomConfigureChangeStyle: ButtonStyle {
                 .opacity(configuration.isPressed ? 0.5 : 1)
         }
     }
-       
 }
 
 extension ButtonStyle where Self == CustomConfigureChangeStyle {
-    static func xyz(isChange: Bool = true) -> Self {
+    static func configureChangeButton(isChange: Bool = true) -> Self {
         .init(isChange: isChange)
     }
 }
