@@ -1,5 +1,5 @@
 //
-//  ConfigureNamesView.swift
+//  ConfigurePlayersView.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 06/03/2025.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ConfigureNamesView: View {
+struct ConfigurePlayersView: View {
     @Environment(ViewModel.self) var vm
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.dismiss) var dismiss
     
     @State private var oppName1: String = ""
     @State private var oppName2: String = ""
@@ -43,7 +43,7 @@ struct ConfigureNamesView: View {
                 Text("&")
                     .opacity(vm.secondOwnerName.isNotEmpty ? 1 : 0)
                 
-                NameTextfieldView($vm.secondOwnerName, prompt: "Enter \(vm.firstOwnerName)'s teammate")
+                NameTextfieldView($vm.secondOwnerName, prompt: "Enter \(vm.firstOwnerName)'s teammate", promptColor: .orange)
                 
             }
             .frame(width: 500)
@@ -53,12 +53,12 @@ struct ConfigureNamesView: View {
             
             HStack(spacing: 30) {
                 
-                NameTextfieldView($vm.firstOpponentName, prompt: "Enter First Opponent")
+                NameTextfieldView($vm.firstOpponentName, prompt: "Enter First Opponent", promptColor: .red)
 
                 Text("&")
                     .opacity(vm.secondOpponentName.isNotEmpty     && vm.firstOpponentName.isNotEmpty ? 1 : 0)
                 
-                NameTextfieldView($vm.secondOpponentName, prompt: "Enter \(vm.firstOpponentName)'s teammate")
+                NameTextfieldView($vm.secondOpponentName, prompt: "Enter \(vm.firstOpponentName)'s teammate", promptColor: .orange)
                     .opacity(vm.firstOpponentName.isNotEmpty ? 1 : 0)
                     .disabled(vm.firstOpponentName.isEmpty)
                 
@@ -71,28 +71,34 @@ struct ConfigureNamesView: View {
                     vm.firstOpponentName = oppName1
                     vm.secondOpponentName = oppName2
                     vm.secondOwnerName = ownName2
-                    dismiss()
+                    vm.isConfigurePlayersShown = false
+//                    dismiss()
                 } label: {
                     Text("Cancel")
                 }
                 .buttonStyle(.bordered)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
                 
                 Button {
-                    dismiss()
+                    vm.isConfigurePlayersShown = false
+//                    dismiss()
                 } label: {
                     Text("Continue")
                 }
                 .buttonStyle(.borderedProminent)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
+                .opacity(!entryIsValid ? 0 : 1)
                 .disabled(!entryIsValid)
                 
             }
             .padding(.top, 25)
+            .padding(.bottom, 20)
             
-            Spacer()
+//            Spacer()
             
         }
         .padding(.horizontal)
-        .border(.mint, width: 2)
+//        .border(.indigo, width: 2)
         .onAppear {
             oppName1 = vm.firstOpponentName
             oppName2 = vm.secondOpponentName
@@ -106,7 +112,7 @@ struct ConfigureNamesView: View {
 
 
 #Preview(traits: .landscapeLeft) {
-    ConfigureNamesView()
+    ConfigurePlayersView()
         .environment(ViewModel())
 }
 

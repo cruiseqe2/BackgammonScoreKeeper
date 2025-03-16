@@ -85,7 +85,7 @@ struct MainView: View {
 //        .padding()
         .opacity(vm.mainMenuShowing ? 0.2 : 1.0)
         .disabled(vm.mainMenuShowing)
-        .overlay(vm.mainMenuShowing ? MainMenu() : nil)
+        .overlay(vm.mainMenuShowing ? MainMenu().mintBorder() : nil)
 //        .overlay(vm.mainMenuShowing ? DealWithTheMainMenuView() : nil)
         .overlay(vm.useDoublingCube && !vm.mainMenuShowing ? DealWithTheDoublingCubeView() : nil)
 //        .opacity(menuBeingShown ? 0 : 1)

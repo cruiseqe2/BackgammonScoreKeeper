@@ -47,12 +47,13 @@ struct MainMenu: View {
     
     var body: some View {
         VStack {
-            Spacer()
+//            Spacer()
             Text("Main Menu")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            Spacer()
-            Spacer()
+                .padding(.top, 2)
+//            Spacer()
+//            Spacer()
             MainMenuButton(
                 buttonTitle: topButtonTitle,
                 color: topButtonColor) {
@@ -87,8 +88,8 @@ struct MainMenu: View {
                 vm.mainMenuShowing = false
             }
             .opacity(showAbandonMatchAlert ? 0.25 : 1)
+            .padding(.bottom, 2)
             
-            Spacer()
         }
         .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
             Button("Yes - Abondon", role: .destructive) {
@@ -97,13 +98,19 @@ struct MainMenu: View {
             }
             Button("No - Just return", role: .cancel) { }
         }
-        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
         
-        .padding(16)
-        .frame(width: 250, height: 400)
-        .background(.ultraThinMaterial)
-        .fixedSize(horizontal: false, vertical: true)
-        .cornerRadius(25)
+        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
+//        .padding(16)
+        .frame(width: 250)
+        .padding(.horizontal, 16)
+        .padding(15)
+        .background(.gray.opacity(0.9))
+//        .border(width: 1, edges: [.top, .bottom], color: .green)
+//        .padding(20)
+//        .border(width: 1, edges: [.top, .bottom], color: .red)
+//        .background(.ultraThinMaterial)
+//        .fixedSize(horizontal: false, vertical: true)
+//        .cornerRadius(25)
         .fullScreenCover(isPresented: $newMatchViewPresented,
                          content: NewMatchView.init)
     }

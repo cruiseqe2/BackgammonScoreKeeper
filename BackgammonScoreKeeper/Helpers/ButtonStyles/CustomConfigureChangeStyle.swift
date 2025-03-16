@@ -22,6 +22,7 @@ struct CustomConfigureChangeStyle: ButtonStyle {
                 .background(isChange ? .orange : .blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
                 .scaleEffect(configuration.isPressed ? 0.90 : 1)
                 .opacity(configuration.isPressed ? 0.5 : 1)
         }

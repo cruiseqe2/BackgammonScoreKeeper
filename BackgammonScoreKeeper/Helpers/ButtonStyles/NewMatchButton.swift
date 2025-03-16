@@ -30,6 +30,7 @@ struct NewMatchButton: View {
             .foregroundStyle(fgColor)
             .background(bgColor)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
             .disabled(isDisabled)
             .opacity(1.0)
     }

@@ -17,21 +17,28 @@ struct ControllerView: View {
     
     var body: some View {
         
-        MainView()
-            .background(Color.theme.background)
-            .fullScreenCover(isPresented: $showErrorScreen) {
+        Group {
+            switch vm.welcomeShown {
+            case false:
+                WelcomeView()
+                    .transition(.opacity)
+            case true:
+                MainView()
+                    .transition(.opacity)
+            }
+        }
+        .background(Color.theme.background)
+        .fullScreenCover(isPresented: $showErrorScreen) {
             Text("Please rotate the phone to Landscape")
         }
-//        .preferredColorScheme(.dark)
+        //        .preferredColorScheme(.dark)
         .onAppear {
             vm.deviceOrientation = getDeviceOrientation()
             showErrorScreen = (wrongOrientation ? true : false)
-//            print("On Appear", deviceOrientation.rawValue)
         }
         .onRotate { newOrientation in
             vm.deviceOrientation = newOrientation
             showErrorScreen = (wrongOrientation ? true : false)
-//            print("On Rotate", deviceOrientation.rawValue)
         }
     }
 }

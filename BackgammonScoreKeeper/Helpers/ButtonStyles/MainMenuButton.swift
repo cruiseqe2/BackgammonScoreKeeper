@@ -28,7 +28,8 @@ struct MainMenuButton: View {
             .foregroundStyle(.white)
             .background(color)
             .clipShape(Capsule())
+            .overlay(Capsule().stroke(style: StrokeStyle(lineWidth: 2)))
             .disabled(isDisabled)
-            .opacity(isDisabled ? 0.25 : 1)
+            .opacity(isDisabled ? 0.3 : 1)
     }
 }

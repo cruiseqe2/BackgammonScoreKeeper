@@ -13,7 +13,7 @@ class ViewModel {
     var deviceOrientation: UIDeviceOrientation = .portrait
 
     var firstOwnerName: String = "Mark"
-    var secondOwnerName: String = "Adam"
+    var secondOwnerName: String = ""
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
 
@@ -26,7 +26,7 @@ class ViewModel {
         firstOpponentName.isNotEmpty ? true : false
     }
     
-    var mainMenuShowing: Bool = false
+    var mainMenuShowing: Bool = true
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
@@ -57,6 +57,9 @@ class ViewModel {
         }
     }
     
+    var welcomeShown: Bool = false
+    var isConfigurePlayersShown: Bool = false
+    
     
     var crawfordStatus: CrawfordStatus = .notPointsBased
     
@@ -71,7 +74,7 @@ class ViewModel {
     var doublingCubeTotalWidth: CGFloat {
         (((gamesBoxWidth / 2 ) + 25) * 2) + middleColumnWidth
     }
-    var winnerIs: WinnerIs? = .noWinnerYet
+    var winnerIs: WinnerIs? = .matchAbandoned
     
     /// Populate the Left and Right hand side of the main display
     

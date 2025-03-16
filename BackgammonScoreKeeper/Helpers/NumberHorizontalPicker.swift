@@ -88,27 +88,27 @@ struct NumberHorizontalPicker: View {
     func numberItemView(number: Int, isSelected: Bool = false) -> some View {
             Group {
                 switch (isSelected) {
-                case (true): // Day selected
+                case (true):
                     Circle()
+//                        .fill(Color.clear)
                         .fill(Color.accentColor)
                         .overlay {
                             Text("\(number)")
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(.black)
+                                .font(.title3)
+
                         }
-                        .padding(8)
-                case (false): // Is current day but not selected
+                        .padding(6)
+                case (false):
                     Circle()
-                        .strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 2, dash: [5]))
+                        .fill(Color.clear)
+//                        .strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 2, dash: [5]))
                         .overlay {
                             Text("\(number)")
-                                .foregroundStyle(.yellow)
-                                .font(.title)
+                                .foregroundStyle(.gray)
+                                .font(.title3)
                         }
-                        .padding(8)
-                default: // Default day
-                    Text("\(number)")
-                        .padding()
-//                        .foregroundStyle(isWeekend ? .red : .primary)
+                        .padding(6)
                 }
             }
             .onTapGesture {

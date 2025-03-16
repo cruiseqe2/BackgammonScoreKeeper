@@ -10,17 +10,19 @@ import SwiftUI
 struct NameTextfieldView: View {
     let allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
     let prompt: String
+    let promptColor: Color
     
     // The Field itself
     @Binding var field: String
     
-    init(_ field: Binding<String>, prompt: String) {
+    init(_ field: Binding<String>, prompt: String, promptColor: Color) {
         self._field = field
         self.prompt = prompt
+        self.promptColor = promptColor
     }
     
     var body: some View {
-        TextField("", text: $field, prompt: Text(prompt).foregroundStyle(.red))
+        TextField("", text: $field, prompt: Text(prompt).foregroundStyle(promptColor.opacity(0.8)))
             .textFieldStyle(.roundedBorder)
             .clearButton(text: $field)
             .keyboardType(.asciiCapable)

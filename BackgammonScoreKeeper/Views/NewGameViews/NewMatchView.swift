@@ -10,9 +10,6 @@ import SwiftUI
 struct NewMatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
-//    @Binding var actionOnReturn: ActionOnReturnFromNewGame
-//    @State private var menuBeingShown: Bool = false
-    @State private var isConfigurePlayersShown: Bool = false
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .systemIndigo
@@ -45,52 +42,48 @@ struct NewMatchView: View {
                         Image(systemName: "arrow.counterclockwise")
                             .font(.system(size: 24))
                     }
-                    .disabled(isConfigurePlayersShown)
-                    .opacity(isConfigurePlayersShown ? 0.25 : 1)
-
+                    .disabled(vm.isConfigurePlayersShown)
+                    .opacity(vm.isConfigurePlayersShown ? 0.25 : 1)
+                    
                     NewMatchButton(
                         buttonTitle: "Start",
                         bgColor: .green,
                         fgColor: .black,
-                        isDisabled: isConfigurePlayersShown || !vm.namesAreValid) {
+                        isDisabled: vm.isConfigurePlayersShown || !vm.namesAreValid) {
                             vm.mainMenuShowing = false
                             vm.startGame()
-//                            dismiss()
+                            //                            dismiss()
                         }
                         .frame(width: 100)
-                        .opacity(isConfigurePlayersShown || !vm.namesAreValid ? 0.30 : 1)
+                        .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0.30 : 1)
                 }
             }
             .padding(.top, 2)
+            .opacity(vm.isConfigurePlayersShown ? 0.15 : 1)
             
             HStack {
-                HStack(alignment: .firstTextBaseline, spacing: 0) {
-                    Text("Current players - ")
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text("Current players: ")
                     Text(vm.ownerDisplayName)
                         .font(.system(size: 26, weight: .black))
                     Text(" **versus** ")
                     Text(vm.opponentDisplayName)
                         .font(.system(size: 26, weight: .black))
                 }
-                .opacity(isConfigurePlayersShown ? 0 : 1)
+                .opacity(vm.isConfigurePlayersShown ? 0 : 1)
                 
                 Spacer()
                 
                 Button {
-                    isConfigurePlayersShown.toggle()
+                    vm.isConfigurePlayersShown.toggle()
                 } label: {
                     Text("")
                 }
                 .controlSize(.small)
                 .buttonStyle(.configureChangeButton(isChange: vm.namesAreValid))
-                .opacity(isConfigurePlayersShown ? 0 : 1)
-                .popover(isPresented: $isConfigurePlayersShown) {
-                    ConfigureNamesView()
-                        .padding(30)
-                        .presentationCompactAdaptation(.popover)
-                        .interactiveDismissDisabled()
-                }
+                .opacity(vm.isConfigurePlayersShown ? 0 : 1)
             }
+            
             
             Group {
                 Picker("", selection: $vm.typeOfMatch) {
@@ -120,11 +113,14 @@ struct NewMatchView: View {
                             .border(vm.typeOfMatch == .points ? .green : .clear, width: 1)
                     }
                 }
-                
                 Spacer()
             }
-            .opacity((isConfigurePlayersShown || !vm.namesAreValid) ? 0.30 : 1)
-            .disabled(isConfigurePlayersShown || !vm.namesAreValid)
+            
+            .opacity((vm.isConfigurePlayersShown || !vm.namesAreValid) ? 0.1 : 1)
+            .disabled(vm.isConfigurePlayersShown || !vm.namesAreValid)
+            
+        }
+        .overlay(vm.isConfigurePlayersShown ? ConfigurePlayersView().mintBorder() : nil)
             
 //            .opacity(vm.namesAreValid ? 1 : 0.25)
 //            .disabled(!vm.namesAreValid)
@@ -132,7 +128,7 @@ struct NewMatchView: View {
         }
     }
     
-}
+
 
 struct SocialColumn: View {
     var body: some View {
@@ -164,10 +160,11 @@ struct GamesColumn: View {
             }
             .pickerStyle(.segmented)
             
-            if vm.typeOfMatch == .games {
-                NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: vm.numbersToShow, numberToDisplay: 4)
+//            if vm.typeOfMatch == .games {
+                NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: vm.numbersToShow, numberToDisplay: 5)
                     .accentColor(.green)
-            }
+                    .opacity(vm.typeOfMatch == .games ? 1 : 0)
+//            }
             
             Spacer()
         }
@@ -196,7 +193,7 @@ struct PointsColumn: View {
             if vm.typeOfMatch == .points {
                 HStack {
                     Text("First to: ")
-                    NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: .all, numberToDisplay: 3)
+                    NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: .all, numberToDisplay: 4)
                         .accentColor(.green)
                 }
             }
@@ -206,8 +203,8 @@ struct PointsColumn: View {
     }
 }
 
-
 #Preview(traits: .landscapeLeft) {
     NewMatchView()
         .environment(ViewModel())
 }
+
