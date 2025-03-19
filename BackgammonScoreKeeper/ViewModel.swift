@@ -69,10 +69,11 @@ class ViewModel {
     var showTestingButtons: Bool = false
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
-    var gamesBoxWidth: CGFloat = 0.0
+    var smallBoxWidth: CGFloat = 0.0
+    var largeBoxWidth: CGFloat = 0.0
     var middleColumnWidth: CGFloat = 0.0
     var doublingCubeTotalWidth: CGFloat {
-        (((gamesBoxWidth / 2 ) + 25) * 2) + middleColumnWidth
+        (((smallBoxWidth / 2 ) + 25) * 2) + middleColumnWidth
     }
     var winnerIs: WinnerIs? = .matchAbandoned
     

@@ -63,10 +63,16 @@ struct MiddleView: View {
                     .fontWeight(.black)
                 
                 if vm.typeOfMatch == .points {
-                    Toggle("Games", isOn: $vm.showGamesBoxIfPointsBased)
-                        .toggleStyle(SwitchToggleStyle(tint: .green.opacity(0.7)))
-                        .padding(.top, 5)
-                        .frame(width: vm.middleColumnWidth * 0.75)
+                    HStack {
+                        VStack(alignment: .center, spacing: 0) {
+                            Text("Show")
+                            Text("Games")
+                        }
+                        Spacer()
+                        ToggleView(isOn: $vm.showGamesBoxIfPointsBased, height: 32)
+                    }
+                    .padding(.top, 10)
+                    .frame(width: vm.middleColumnWidth * 0.8)
                 }
                     
             }

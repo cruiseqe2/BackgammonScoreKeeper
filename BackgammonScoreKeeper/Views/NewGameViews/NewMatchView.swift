@@ -13,8 +13,8 @@ struct NewMatchView: View {
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .systemIndigo
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemYellow, .font: UIFont.systemFont(ofSize: 20)], for: .normal)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemYellow, .font: UIFont.systemFont(ofSize: 18)], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 18)], for: .selected)
     }
     
     var body: some View {
@@ -43,7 +43,7 @@ struct NewMatchView: View {
                             .font(.system(size: 24))
                     }
                     .disabled(vm.isConfigurePlayersShown)
-                    .opacity(vm.isConfigurePlayersShown ? 0.25 : 1)
+                    .opacity(vm.isConfigurePlayersShown ? 0 : 1)
                     
                     NewMatchButton(
                         buttonTitle: "Start",
@@ -55,11 +55,11 @@ struct NewMatchView: View {
                             //                            dismiss()
                         }
                         .frame(width: 100)
-                        .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0.30 : 1)
+                        .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0 : 1)
                 }
             }
             .padding(.top, 2)
-            .opacity(vm.isConfigurePlayersShown ? 0.15 : 1)
+//            .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0 : 1)
             
             HStack {
                 HStack(alignment: .firstTextBaseline, spacing: 4) {
@@ -84,7 +84,6 @@ struct NewMatchView: View {
                 .opacity(vm.isConfigurePlayersShown ? 0 : 1)
             }
             
-            
             Group {
                 Picker("", selection: $vm.typeOfMatch) {
                     Text("Social").tag(TypeOfMatch.social)
@@ -95,52 +94,66 @@ struct NewMatchView: View {
                 .padding(.bottom, -20)
                 
                 GeometryReader { geo in
-                    HStack(spacing: 0) {
+                    HStack(alignment: .top, spacing: 0) {
                         SocialColumn()
                             .padding([.bottom, .leading, .trailing], 12)
                             .padding(.top, 8)
                             .frame(width: geo.size.width / 3, alignment: .leading)
-                            .border(vm.typeOfMatch == .social ? .green : .clear, width: 1)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(vm.typeOfMatch == .social ? .indigo : .clear,
+                                                  lineWidth: 1)
+                            )
                         GamesColumn()
                             .padding([.bottom, .leading, .trailing], 12)
                             .padding(.top, 8)
                             .frame(width: geo.size.width / 3, alignment: .leading)
-                            .border(vm.typeOfMatch == .games ? .green : .clear, width: 1)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(vm.typeOfMatch == .games ? .indigo : .clear,
+                                                  lineWidth: 1)
+                            )
                         PointsColumn()
                             .padding([.bottom, .leading, .trailing], 12)
                             .padding(.top, 8)
                             .frame(width: geo.size.width / 3, alignment: .leading)
-                            .border(vm.typeOfMatch == .points ? .green : .clear, width: 1)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(vm.typeOfMatch == .points ? .indigo : .clear,
+                                                  lineWidth: 1)
+                            )
                     }
+                    Spacer()
                 }
-                Spacer()
             }
-            
             .opacity((vm.isConfigurePlayersShown || !vm.namesAreValid) ? 0.1 : 1)
             .disabled(vm.isConfigurePlayersShown || !vm.namesAreValid)
             
         }
         .overlay(vm.isConfigurePlayersShown ? ConfigurePlayersView().mintBorder() : nil)
-            
-//            .opacity(vm.namesAreValid ? 1 : 0.25)
-//            .disabled(!vm.namesAreValid)
-            
-        }
+        
     }
-    
-
+}
 
 struct SocialColumn: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("No Doubling Cube")
-            Divider()
-            Text("Finish playing when 'Stop Social Game' is tapped on the main menu")
-            Divider()
-            Text("Only Games are shown")
-            
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("No Doubling Cube")
+            }
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("Finish playing when 'Stop Social Game' is tapped on the main menu")
+            }
+            .environment(\._lineHeightMultiple, 0.85)
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("Only Games are shown")
+            }
             Spacer()
         }
+//        .border(.mint, width: 1)
     }
 }
 
@@ -149,22 +162,33 @@ struct GamesColumn: View {
     @State private var number: Int = 1
     var body: some View {
         @Bindable var vm = vm
-        VStack(alignment: .leading) {
-            Text("No Doubling Cube")
-            Divider()
-            Text("Points are hidden")
-            Divider()
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("No Doubling Cube")
+            }
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("Points are hidden")
+            }
+            HStack(alignment: .top) {
+                Text("∙")
+                Text("No Gammons or Backgammons, only (single) wins")
+            }
+            .environment(\._lineHeightMultiple, 0.85)
+            .fixedSize(horizontal: false, vertical: true)
+                
             Picker("", selection: $vm.finishWhen) {
                 Text("Best Of").tag(FinishWhen .bestOf)
                 Text("First To").tag(FinishWhen .firstTo)
             }
             .pickerStyle(.segmented)
             
-//            if vm.typeOfMatch == .games {
+            if vm.typeOfMatch == .games {
                 NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: vm.numbersToShow, numberToDisplay: 5)
                     .accentColor(.green)
                     .opacity(vm.typeOfMatch == .games ? 1 : 0)
-//            }
+            }
             
             Spacer()
         }
@@ -175,20 +199,21 @@ struct PointsColumn: View {
     @Environment(ViewModel.self) var vm
     var body: some View {
         @Bindable var vm = vm
-        VStack(alignment: .leading) {
-            Toggle(isOn: $vm.useDoublingCube, label: {
-                Text("Use Doubling Cube")
-            })
-            .toggleStyle(CheckboxStyle())
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Use Doubling Cube?")
+                Spacer()
+                ToggleView(isOn: $vm.useDoublingCube, height: 35)
+            }
             .onChange(of: vm.useDoublingCube) { oldValue, newValue in
                 vm.useDoublingCube = newValue
                 vm.crawfordStatus = .preCrawford
             }
-            Divider()
-            Toggle(isOn: $vm.showGamesBoxIfPointsBased, label: {
-                Text("Show Game Boxes")
-            })
-            .toggleStyle(CheckboxStyle())
+            HStack {
+                Text("Show Game Boxes?")
+                Spacer()
+                ToggleView(isOn: $vm.showGamesBoxIfPointsBased, height: 35)
+            }
             
             if vm.typeOfMatch == .points {
                 HStack {

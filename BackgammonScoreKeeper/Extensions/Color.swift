@@ -16,3 +16,9 @@ struct ColorTheme {
     let foreground = Color.fgColour
     let background = Color.bgColour
 }
+
+struct Colors {
+    public static let mainColor = "mainColor"
+    public static let lightShadow = "lightShadow"
+    public static let darkShadow = "darkShadow"
+}

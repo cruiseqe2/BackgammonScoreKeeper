@@ -92,7 +92,7 @@ struct MainMenu: View {
             
         }
         .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
-            Button("Yes - Abondon", role: .destructive) {
+            Button("Yes - Abandon", role: .destructive) {
                 // TODO: Log the 'result'
                 vm.winnerIs = .matchAbandoned
             }

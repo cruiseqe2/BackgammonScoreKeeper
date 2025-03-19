@@ -76,7 +76,7 @@ struct ConfigurePlayersView: View {
                 } label: {
                     Text("Cancel")
                 }
-                .buttonStyle(.bordered)
+                .paddedButtonStyle(backgroundColor: Color.red.opacity(0.5))
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
                 
                 Button {
@@ -85,7 +85,7 @@ struct ConfigurePlayersView: View {
                 } label: {
                     Text("Continue")
                 }
-                .buttonStyle(.borderedProminent)
+                .paddedButtonStyle(backgroundColor: .blue)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
                 .opacity(!entryIsValid ? 0 : 1)
                 .disabled(!entryIsValid)
@@ -94,11 +94,8 @@ struct ConfigurePlayersView: View {
             .padding(.top, 25)
             .padding(.bottom, 20)
             
-//            Spacer()
-            
         }
         .padding(.horizontal)
-//        .border(.indigo, width: 2)
         .onAppear {
             oppName1 = vm.firstOpponentName
             oppName2 = vm.secondOpponentName

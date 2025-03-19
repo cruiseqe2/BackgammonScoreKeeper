@@ -76,8 +76,6 @@ struct OuterView: View {
                     if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
                         
                         Text(vm.typeOfMatch == .points ? "\(vm.LHSPoints)" : "\(vm.LHSGames)")
-                        
-//                        Text(vm.typeOfMatch == .points ? "\(vm.LHSPoints)") : "\(vm.LHSGames)")
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
@@ -90,6 +88,9 @@ struct OuterView: View {
                                 Text(vm.typeOfMatch == .points ? "Points" : "Games")
                                     .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
+                            }
+                            .getLargeBoxWidth { largeBoxWidth in
+                                vm.largeBoxWidth = largeBoxWidth
                             }
                             .onPointsBoxShown { topOfPointsBox in
                                 vm.doublingCubeYPosition = topOfPointsBox
@@ -113,8 +114,8 @@ struct OuterView: View {
                             .addWidthOfObject { gamesBoxWidth in
                                 vm.totalWidth += gamesBoxWidth
                             }
-                            .getGamesBoxWidth { gamesBoxWidth in
-                                vm.gamesBoxWidth = gamesBoxWidth
+                            .getSmallBoxWidth { smallBoxWidth in
+                                vm.smallBoxWidth = smallBoxWidth
                             }
                             .opacity(vm.typeOfMatch == .points  &&  vm.showGamesBoxIfPointsBased ? 1 : 0)
                         
@@ -144,7 +145,7 @@ struct OuterView: View {
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
-                            .frame(width: largeBoxWidth)
+                            .frame(width: vm.largeBoxWidth)
                             .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .strokeBorder(.mint, lineWidth: 4)
                             )
@@ -152,75 +153,99 @@ struct OuterView: View {
                                 Text(vm.typeOfMatch == .points ? "Points" : "Games")   .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
                             }
-                        
                     }
-                    
                 }
+                .padding(.bottom, 16)
                 
-                /// Deal with the button pressing
+                /// Deal with the 'winning' button(s) as appropriate'
                 
                 if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
                     
-                    HStack {
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 3)
-                        } label: {
-                            Text("Backgammon")
+                    Group {
+                        
+                        if vm.typeOfMatch == .points {
+                            HStack() {
+                                Button {
+                                    vm.WinningButtonTapped(side: buttonSide, value: 3)
+                                } label: {
+                                    Text("Backgammon")
+                                }
+                                .paddedButtonStyle()
+                                Spacer()
+                                Button {
+                                    vm.WinningButtonTapped(side: buttonSide, value: 2)
+                                } label: {
+                                    Text("Gammon")
+                                }
+                                .paddedButtonStyle()
+                                Spacer()
+                                Button {
+                                    vm.WinningButtonTapped(side: buttonSide, value: 1)
+                                } label: {
+                                    Text("Win")
+                                }
+                                .paddedButtonStyle()
+                            }
+                        } else {
+                            HStack() {
+                                Button {
+                                    vm.WinningButtonTapped(side: buttonSide, value: 1)
+                                } label: {
+                                    Text("Win")
+                                        .frame(maxWidth: vm.largeBoxWidth)
+                                }
+                                .paddedButtonStyle(naturalWidth: false)
+                                Spacer()
+                            }
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
-                        Spacer()
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 2)
-                        } label: {
-                            Text("Gammon")
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
-                        Spacer()
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 1)
-                        } label: {
-                            Text("Win")
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
                     }
                     .opacity(vm.winnerIs == .noWinnerYet ? 1 : 0)
                     .disabled(vm.winnerIs != .noWinnerYet)
                     
-                } else {  // We are now dealing with the Right Hand Side
+                } else {     // We are now dealing with the Right Hand Side
                     
                     HStack {
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 1)
-                        } label: {
-                            Text("Win")
+                        if vm.typeOfMatch == .points {
+                            Button {
+                                vm.WinningButtonTapped(side: buttonSide, value: 1)
+                            } label: {
+                                Text("Win")
+                            }
+                            .paddedButtonStyle()
+                            Spacer()
+                            Button {
+                                vm.WinningButtonTapped(side: buttonSide, value: 2)
+                            } label: {
+                                Text("Gammon")
+                            }
+                            .paddedButtonStyle()
+                            Spacer()
+                            Button {
+                                vm.WinningButtonTapped(side: buttonSide, value: 3)
+                            } label: {
+                                Text("Backgammon")
+                            }
+                            .paddedButtonStyle()
+                        } else {
+                            HStack {
+                                Spacer()
+                                Button {
+                                    vm.WinningButtonTapped(side: buttonSide, value: 1)
+                                } label: {
+                                    Text("Win")
+                                        .frame(maxWidth: vm.largeBoxWidth)
+                                }
+                                .paddedButtonStyle(naturalWidth: false)
+                            }
                         }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
-                        Spacer()
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 2)
-                        } label: {
-                            Text("Gammon")
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
-                        Spacer()
-                        Button {
-                            vm.WinningButtonTapped(side: buttonSide, value: 3)
-                        } label: {
-                            Text("Backgammon")
-                        }
-                        .buttonStyle(.bordered)
-                        .tint(.pink)
                     }
                     .opacity(vm.winnerIs == .noWinnerYet ? 1 : 0)
                     .disabled(vm.winnerIs != .noWinnerYet)
+                    
                 }
             }
         }
+        
     }
 }
 

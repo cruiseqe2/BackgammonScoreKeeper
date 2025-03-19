@@ -23,15 +23,18 @@ struct NewMatchButton: View {
     }
     
     var body: some View {
-        Button(buttonTitle, action: action)
-            .font(.system(.title3, design: .rounded))
-            .frame(maxWidth: 120, maxHeight: 44)
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-            .foregroundStyle(fgColor)
-            .background(bgColor)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
-            .disabled(isDisabled)
-            .opacity(1.0)
+        Button(action: action) {
+            Text(buttonTitle)
+                .frame(maxWidth: 120, maxHeight: 44)
+                .font(.system(.title3, design: .rounded))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                .foregroundStyle(fgColor)
+                .background(bgColor.gradient)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 2))
+                .contentShape(RoundedRectangle(cornerRadius: 10))
+                .disabled(isDisabled)
+                .opacity(1.0)
+        }
     }
 }

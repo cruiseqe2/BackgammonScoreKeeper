@@ -35,15 +35,28 @@ extension View {
             }
     }
     
-    func getGamesBoxWidth(action: @escaping (_ offset: CGFloat) -> Void) -> some View {
+    func getSmallBoxWidth(action: @escaping (_ offset: CGFloat) -> Void) -> some View {
         self
             .background(
                 GeometryReader { geo in
                     Text("")
-                        .preference(key: GamesBoxWidthKey.self, value: geo.size.width)
+                        .preference(key: SmallBoxWidthKey.self, value: geo.size.width)
                 }
             )
-            .onPreferenceChange(GamesBoxWidthKey.self) { value in
+            .onPreferenceChange(SmallBoxWidthKey.self) { value in
+                action(value)
+            }
+    }
+    
+    func getLargeBoxWidth(action: @escaping (_ offset: CGFloat) -> Void) -> some View {
+        self
+            .background(
+                GeometryReader { geo in
+                    Text("")
+                        .preference(key: LargeBoxWidthKey.self, value: geo.size.width)
+                }
+            )
+            .onPreferenceChange(LargeBoxWidthKey.self) { value in
                 action(value)
             }
     }

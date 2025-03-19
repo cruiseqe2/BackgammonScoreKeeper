@@ -16,6 +16,8 @@ struct BackgammonScoreKeeperApp: App {
         WindowGroup {
             ControllerView()
                 .environment(viewModel)
+                .preferredColorScheme(.dark)
+                .persistentSystemOverlays(.hidden)
         }
     }
 }

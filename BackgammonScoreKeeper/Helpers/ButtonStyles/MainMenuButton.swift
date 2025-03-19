@@ -21,15 +21,18 @@ struct MainMenuButton: View {
     }
     
     var body: some View {
-        Button(buttonTitle, action: action)
-            .frame(maxWidth: .infinity)
-            .font(.system(.title3, design: .rounded))
-            .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-            .foregroundStyle(.white)
-            .background(color)
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(style: StrokeStyle(lineWidth: 2)))
-            .disabled(isDisabled)
-            .opacity(isDisabled ? 0.3 : 1)
+        Button(action: action) {
+            Text(buttonTitle)
+                .frame(maxWidth: .infinity)
+                .font(.system(.title3, design: .rounded))
+                .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+                .foregroundStyle(.white)
+                .background(color.gradient)
+                .clipShape(Capsule())
+                .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                .contentShape(Capsule())
+                .disabled(isDisabled)
+                .opacity(isDisabled ? 0.3 : 1)
+        }
     }
 }

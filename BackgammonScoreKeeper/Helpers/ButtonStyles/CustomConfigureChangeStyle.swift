@@ -19,7 +19,7 @@ struct CustomConfigureChangeStyle: ButtonStyle {
             Text(isChange ? "Change" : "Configure")
                 .padding([.leading, .trailing], 15)
                 .frame(maxWidth: 120, maxHeight: 44)
-                .background(isChange ? .orange : .blue)
+                .background(isChange ? Color.orange.gradient : Color.blue.gradient)
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
