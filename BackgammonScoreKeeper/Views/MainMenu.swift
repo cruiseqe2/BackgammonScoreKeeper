@@ -38,8 +38,8 @@ struct MainMenu: View {
     
     private var matchUnderway: Bool {
         vm.ownerPoints > 0 || vm.opponentPoints > 0      ||
-            vm .opponentPoints > 0 || vm.ownerGames > 0
-        }
+        vm .opponentPoints > 0 || vm.ownerGames > 0
+    }
     
     private var showHistoryAndSettings: Bool {
         vm.currentGameState == .matchFinished || vm.currentGameState == .matchAbandoned
@@ -47,59 +47,113 @@ struct MainMenu: View {
     
     var body: some View {
         VStack {
-//            Spacer()
             Text("Main Menu")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 2)
-//            Spacer()
-//            Spacer()
-            MainMenuButton(
-                buttonTitle: topButtonTitle,
-                color: topButtonColor) {
-                    switch vm.currentGameState {
-                    case .socialGameActive:
-                        if matchUnderway {
-                            // TODO: Log the result
+            
+            Grid(horizontalSpacing: 25, verticalSpacing: 15) {
+                GridRow {
+                    MainMenuButton(
+                        buttonTitle: topButtonTitle,
+                        color: topButtonColor) {
+                            switch vm.currentGameState {
+                            case .socialGameActive:
+                                if matchUnderway {
+                                    // TODO: Log the result
+                                }
+                                vm.winnerIs = .matchAbandoned
+                            case .matchFinished, .matchAbandoned:
+                                newMatchViewPresented.toggle()
+                            case .matchInProgress:
+                                if matchUnderway {
+                                    showAbandonMatchAlert.toggle()
+                                } else {        // Just abandon the match without warning
+                                    vm.winnerIs = .matchAbandoned
+                                }
+                            }
                         }
-                        vm.winnerIs = .matchAbandoned
-                    case .matchFinished, .matchAbandoned:
-                        newMatchViewPresented.toggle()
-                    case .matchInProgress:
-                        if matchUnderway {
-                            showAbandonMatchAlert.toggle()
-                        } else {        // Just abandon the match without warning
-                            vm.winnerIs = .matchAbandoned
-                        }
+                        .opacity(showAbandonMatchAlert ? 0.25 : 1)
+                        .gridCellColumns(2)
+                }
+                
+                GridRow {
+                    MainMenuButton(buttonTitle: "Undo Last", color: .brown, isDisabled: vm.winnerIs != .noWinnerYet) {
+                        notImplementedYet.toggle()
+                    }
+                    MainMenuButton(buttonTitle: "History", color: .indigo, isDisabled:
+                                    !showHistoryAndSettings) {
+                        notImplementedYet.toggle()
                     }
                 }
-                .opacity(showAbandonMatchAlert ? 0.25 : 1)
-            MainMenuButton(buttonTitle: "Adjust Scores", color: .brown, isDisabled: vm.winnerIs != .noWinnerYet) {
-                notImplementedYet.toggle()
+                
+                GridRow {
+                    MainMenuButton(buttonTitle: "Rules", color: .gray) {
+                        notImplementedYet.toggle()
+                    }
+                    MainMenuButton(buttonTitle: "Layouts", color: .mint.opacity(0.5),isDisabled: !showHistoryAndSettings) {
+                        notImplementedYet.toggle()
+                    }
+                }
+                
+                GridRow {
+                    MainMenuButton(buttonTitle: "Settings", isDisabled: !showHistoryAndSettings) {
+                        notImplementedYet.toggle()
+                    }
+                    MainMenuButton(buttonTitle: "About", color: .gray) {
+                        notImplementedYet.toggle()
+                    }
+                }
+                
+                GridRow {
+                    MainMenuButton(buttonTitle: "Return", color: .blue) {
+                        vm.mainMenuShowing = false
+                    }
+                    //                    .opacity(showAbandonMatchAlert ? 0.25 : 1)
+                    .gridCellColumns(2)
+                }
             }
-            MainMenuButton(buttonTitle: "History", isDisabled:
-                            !showHistoryAndSettings) {
-                notImplementedYet.toggle()
-            }
-            MainMenuButton(buttonTitle: "Settings", isDisabled: !showHistoryAndSettings) {
-                notImplementedYet.toggle()
-            }
-            MainMenuButton(buttonTitle: "Return", color: .blue) {
-                vm.mainMenuShowing = false
-            }
-            .opacity(showAbandonMatchAlert ? 0.25 : 1)
-            .padding(.bottom, 2)
             
+            
+            //            MainMenuButton(
+            //                buttonTitle: topButtonTitle,
+            //                color: topButtonColor) {
+            //                    switch vm.currentGameState {
+            //                    case .socialGameActive:
+            //                        if matchUnderway {
+            //                            // TODO: Log the result
+            //                        }
+            //                        vm.winnerIs = .matchAbandoned
+            //                    case .matchFinished, .matchAbandoned:
+            //                        newMatchViewPresented.toggle()
+            //                    case .matchInProgress:
+            //                        if matchUnderway {
+            //                            showAbandonMatchAlert.toggle()
+            //                        } else {        // Just abandon the match without warning
+            //                            vm.winnerIs = .matchAbandoned
+            //                        }
+            //                    }
+            //                }
+            //                .opacity(showAbandonMatchAlert ? 0.25 : 1)
+            //            MainMenuButton(buttonTitle: "Adjust Scores", color: .brown, isDisabled: vm.winnerIs != .noWinnerYet) {
+            //                notImplementedYet.toggle()
+            //            }
+            //            MainMenuButton(buttonTitle: "History", isDisabled:
+            //                            !showHistoryAndSettings) {
+            //                notImplementedYet.toggle()
+            //            }
+            //            MainMenuButton(buttonTitle: "Settings", isDisabled: !showHistoryAndSettings) {
+            //                notImplementedYet.toggle()
+            //            }
+            //            MainMenuButton(buttonTitle: "Return", color: .blue) {
+            //                vm.mainMenuShowing = false
+            //            }
+            //            .opacity(showAbandonMatchAlert ? 0.25 : 1)
+            //            .padding(.bottom, 2)
+            //
         }
-        .opacity(notImplementedYet ? 0 : 1)
-        
-//        .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
-//            Button("Yes - Abandon", role: .destructive) {
-//                // TODO: Log the 'result'
-//                vm.winnerIs = .matchAbandoned
-//            }
-//            Button("No - Just return", role: .cancel) { }
-//        }
+        .disabled(notImplementedYet || showAbandonMatchAlert)
+        //        .opacity(notImplementedYet ? 0 : 1)
         
         .overlay(
             showAbandonMatchAlert ? CustomAlert.init(
@@ -129,15 +183,11 @@ struct MainMenu: View {
             ) : nil
         )
         
-        
-//        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
-        
-        
-        .padding(16)
-        .frame(width: 250)
+        //        .padding(16)
+        .frame(width: 400)
         .padding(.horizontal, 16)
-        .padding(15)
-        .background(.gray.opacity(0.7))
+        .padding(.vertical, 12)
+        //        .background(.gray.opacity(0.9))
         .fullScreenCover(isPresented: $newMatchViewPresented,
                          content: NewMatchView.init)
     }

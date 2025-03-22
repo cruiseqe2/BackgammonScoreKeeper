@@ -188,14 +188,14 @@ struct GamesColumn: View {
             }
             .environment(\._lineHeightMultiple, 0.85)
             .fixedSize(horizontal: false, vertical: true)
-                
-            Picker("", selection: $vm.finishWhen) {
-                Text("Best Of").tag(FinishWhen .bestOf)
-                Text("First To").tag(FinishWhen .firstTo)
-            }
-            .pickerStyle(.segmented)
             
             if vm.typeOfMatch == .games {
+                Picker("", selection: $vm.finishWhen) {
+                    Text("Best Of").tag(FinishWhen .bestOf)
+                    Text("First To").tag(FinishWhen .firstTo)
+                }
+                .pickerStyle(.segmented)
+                
                 NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: vm.numbersToShow, numberToDisplay: 5)
                     .accentColor(.green)
                     .opacity(vm.typeOfMatch == .games ? 1 : 0)
