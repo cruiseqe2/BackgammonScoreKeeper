@@ -91,26 +91,53 @@ struct MainMenu: View {
             .padding(.bottom, 2)
             
         }
-        .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
-            Button("Yes - Abandon", role: .destructive) {
-                // TODO: Log the 'result'
-                vm.winnerIs = .matchAbandoned
-            }
-            Button("No - Just return", role: .cancel) { }
-        }
+        .opacity(notImplementedYet ? 0 : 1)
         
-        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
-//        .padding(16)
+//        .alert("Are you sure you want to abandon this match?", isPresented: $showAbandonMatchAlert) {
+//            Button("Yes - Abandon", role: .destructive) {
+//                // TODO: Log the 'result'
+//                vm.winnerIs = .matchAbandoned
+//            }
+//            Button("No - Just return", role: .cancel) { }
+//        }
+        
+        .overlay(
+            showAbandonMatchAlert ? CustomAlert.init(
+                isShown: $showAbandonMatchAlert,
+                message: "Are you sure you want to abandon this match?",
+                button1Text: "Yes",
+                button2Text: "No",
+                alertWidth: 200,
+                alertHeight: 150,
+                action1: {
+                    vm.winnerIs = .matchAbandoned
+                },
+                action2: {}
+            ) : nil
+        )
+        
+        .overlay(
+            notImplementedYet ? CustomAlert.init(
+                isShown: $notImplementedYet,
+                message: "Sorry. This feature has not been implemented yet.",
+                button1Text: "OK",
+                button2Text: "",
+                alertWidth: 200,
+                alertHeight: 150,
+                action1: {},
+                action2: {}
+            ) : nil
+        )
+        
+        
+//        .alert("Sorry. This feature has not been implemented yet.", isPresented: $notImplementedYet) { }
+        
+        
+        .padding(16)
         .frame(width: 250)
         .padding(.horizontal, 16)
         .padding(15)
-        .background(.gray.opacity(0.9))
-//        .border(width: 1, edges: [.top, .bottom], color: .green)
-//        .padding(20)
-//        .border(width: 1, edges: [.top, .bottom], color: .red)
-//        .background(.ultraThinMaterial)
-//        .fixedSize(horizontal: false, vertical: true)
-//        .cornerRadius(25)
+        .background(.gray.opacity(0.7))
         .fullScreenCover(isPresented: $newMatchViewPresented,
                          content: NewMatchView.init)
     }

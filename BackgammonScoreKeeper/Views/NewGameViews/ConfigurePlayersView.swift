@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ConfigurePlayersView: View {
     @Environment(ViewModel.self) var vm
-//    @Environment(\.dismiss) var dismiss
     
     @State private var oppName1: String = ""
     @State private var oppName2: String = ""
     @State private var ownName2: String = ""
+    
+    @State private var showDialogue: Bool = false
+    @State private var fieldForDialogueEntry: String = ""
+    private var previousText: String {
+        vm.firstOpponentName.isNotEmpty ? "Current Name: \(vm.firstOpponentName)" : ""
+    }
     
     private var entryIsValid: Bool {
         vm.firstOpponentName.isNotEmpty
@@ -72,7 +77,6 @@ struct ConfigurePlayersView: View {
                     vm.secondOpponentName = oppName2
                     vm.secondOwnerName = ownName2
                     vm.isConfigurePlayersShown = false
-//                    dismiss()
                 } label: {
                     Text("Cancel")
                 }
@@ -80,8 +84,17 @@ struct ConfigurePlayersView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
                 
                 Button {
+                    withAnimation(.spring(duration: 1)) {
+                        showDialogue.toggle()
+                    }
+                } label: {
+                    Text("Test")
+                }
+                .paddedButtonStyle(backgroundColor: Color.green.opacity(0.5))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(style: StrokeStyle(lineWidth: 2)))
+
+                Button {
                     vm.isConfigurePlayersShown = false
-//                    dismiss()
                 } label: {
                     Text("Continue")
                 }
@@ -93,8 +106,23 @@ struct ConfigurePlayersView: View {
             }
             .padding(.top, 25)
             .padding(.bottom, 20)
-            
         }
+        .overlay(showDialogue ?
+                CustomDialogue.init(
+                    isShown: $showDialogue,
+                    inputText: $fieldForDialogueEntry,
+                    previousText: previousText,
+                    message: "Please enter the name of the principal player.\n\n(This will usually be the owner of the iPhone)",
+                    button1Text: "Cancel",
+                    button2Text: "Accept",
+                    dialogueWidth: 300,
+                    dialogueHeight: 300,
+                    action1: { },
+                    action2: { input in
+                        vm.firstOpponentName = input
+                    }
+                ) : nil )
+        
         .padding(.horizontal)
         .onAppear {
             oppName1 = vm.firstOpponentName
@@ -102,11 +130,7 @@ struct ConfigurePlayersView: View {
             ownName2 = vm.secondOwnerName
         }
     }
-    
 }
-
-
-
 
 #Preview(traits: .landscapeLeft) {
     ConfigurePlayersView()

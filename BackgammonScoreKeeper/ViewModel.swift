@@ -65,6 +65,7 @@ class ViewModel {
     
     var useDoublingCube: Bool = true
     var showGamesBoxIfPointsBased: Bool = true
+    var showCustomAlert: Bool = false
     
     var showTestingButtons: Bool = false
     var doublingCubeYPosition: CGFloat = 0.0
