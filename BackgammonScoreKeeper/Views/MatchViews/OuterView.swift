@@ -10,7 +10,10 @@ import SwiftUI
 struct OuterView: View {
     @Environment(ViewModel.self) var vm
     @State var sideToProcess: SideToProcess
-    @State private var smallBoxOpacity: Double = 0
+    
+    private var smallBoxOpacity: Double {
+        vm.typeOfMatch == .points && vm.showSmallBoxIfPointsBased ? 1.0 : 0.0
+    }
     
     private var buttonSide: Side {
         if sideToProcess == .leftHandSide {
@@ -29,7 +32,10 @@ struct OuterView: View {
     }
     
     private var backgroundColor: Color {
-        guard vm.winnerIs != .noWinnerYet && vm.winnerIs != .matchAbandoned else {
+        guard vm.winnerIs != .noWinnerYet        &&
+                vm.winnerIs != .matchAbandoned   &&
+                vm.winnerIs != .matchCancelledBeforeStarting
+        else {
             return Color.theme.background
         }
         
@@ -154,23 +160,9 @@ struct OuterView: View {
                             }
                     }
                 }
-                .onAppear {
-                    if vm.typeOfMatch == .points  &&  vm.showSmallBoxIfPointsBased {
-                        smallBoxOpacity = 1
-                    } else {
-                        smallBoxOpacity = 0
-                    }
-                }
-                .onChange(of: vm.showSmallBoxIfPointsBased) { _, _ in
-                    withAnimation(.linear(duration: 0.5)) {
-                        if vm.typeOfMatch == .points  &&  vm.showSmallBoxIfPointsBased {
-                            smallBoxOpacity = 1
-                        } else {
-                            smallBoxOpacity = 0
-                        }
-                    }
-                }
                 .padding(.bottom, 16)
+                .animation(.linear(duration: 0.5), value: smallBoxOpacity)
+                
                 
                 /// Deal with the 'winning' button(s) as appropriate'
                 

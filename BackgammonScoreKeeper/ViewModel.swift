@@ -51,7 +51,10 @@ class ViewModel {
         } else {  //  owner, opponent, match abandoned
             return .readyToStartMatch
         }
-//        
+    }
+        
+    var hideMatchViewAfterConfig = false
+//
 //        
 //        
 //        
@@ -68,7 +71,6 @@ class ViewModel {
 //        } else {
 //            return .matchFinished
 //        }
-    }
     
     var welcomeShown: Bool = false
     var isConfigurePlayersShown: Bool = false

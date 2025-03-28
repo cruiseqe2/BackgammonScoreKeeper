@@ -38,6 +38,7 @@ struct ConfigureMatchView: View {
                 HStack(spacing: 25) {
                     Button {
                         vm.screenToShow = .none
+                        vm.hideMatchViewAfterConfig = true
                         dismiss()
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
@@ -60,6 +61,7 @@ struct ConfigureMatchView: View {
                             
 //                            vm.showNewScreen = true
 //                            vm.screenToShow = .history
+                            vm.hideMatchViewAfterConfig = false
                             vm.screenToShow = .match(config: false)
                             dismiss()
                         }

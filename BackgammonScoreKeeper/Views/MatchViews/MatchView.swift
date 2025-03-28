@@ -80,42 +80,35 @@ struct MatchView: View {
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
         }
-//        .padding()
-        .opacity(showConfiguration ? 0.50 : 1.0)
+
+        .opacity(showConfiguration || vm.hideMatchViewAfterConfig ? 0 : 1.0)
         .disabled(showConfiguration)
         
-//        .onAppear {
-//            if vm.shouldShowConfigureMatchView {
-//                showConfiguration = true
-//            }
-//        }
-//        
-//        .fullScreenCover(isPresented: $showConfiguration) {
-//            ConfigureMatchView()
-//        }
-        
-        .fullScreenCover(isPresented: $showConfiguration, onDismiss: {
-            showConfiguration = false
-        }) {
+        .fullScreenCover(isPresented: $showConfiguration) {
             ConfigureMatchView()
         }
         
+        .overlay(vm.winnerIs != .noWinnerYet ? ShowResultOverylay() : nil)
+        .opacity(showConfiguration || vm.hideMatchViewAfterConfig ? 0 : 1.0)
         
-        
-//        .fullScreenCover(isPresented: $vm.mainMenuShowing) {
-//            MainMenu()
-//        }
-        
-        .overlay(vm.useDoublingCube ? DealWithTheDoublingCubeView() : nil)
+        .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet ? DealWithTheDoublingCubeView() : nil)
 //        .opacity(menuBeingShown ? 0 : 1)
 //        .disabled(menuBeingShown)
 
 //        .background(Color.theme.background)
 //        .ignoresSafeArea(.all)
     }
+        
     
 }
 
+struct ShowResultOverylay: View {
+    @Environment(ViewModel.self) var vm
+    var body: some View {
+        ResultOverlay()
+            .offset(y: vm.doublingCubeYPosition)
+    }
+}
 
 struct DealWithTheDoublingCubeView: View {
     @Environment(ViewModel.self) var vm
@@ -134,7 +127,6 @@ struct DealWithTheDoublingCubeView: View {
         }
     }
 }
-
 
 #Preview(traits: .landscapeLeft) {
     MatchView(showConfiguration: false)

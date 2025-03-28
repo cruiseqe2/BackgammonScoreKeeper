@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
+		657C9B012D96422A008B193C /* ViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B002D96422A008B193C /* ViewA.swift */; };
+		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
 		6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26D2D83095000E88963 /* NewMatchButton.swift */; };
 		6580A2702D83BB9E00E88963 /* NameTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */; };
 		6580A2722D83CD5300E88963 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A2712D83CD5300E88963 /* WelcomeView.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
+		657C9B002D96422A008B193C /* ViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewA.swift; sourceTree = "<group>"; };
+		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
 		6580A26D2D83095000E88963 /* NewMatchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchButton.swift; sourceTree = "<group>"; };
 		6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextfieldView.swift; sourceTree = "<group>"; };
 		6580A2712D83CD5300E88963 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		65AC04EB2D7E245C00D9F7A6 /* DoublingCubeOverlays */ = {
 			isa = PBXGroup;
 			children = (
+				657C9B022D971C01008B193C /* ResultOverlay.swift */,
 				65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */,
 				65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */,
 			);
@@ -228,6 +233,7 @@
 		65AC05232D7E6A8F00D9F7A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				657C9B002D96422A008B193C /* ViewA.swift */,
 				6580A2712D83CD5300E88963 /* WelcomeView.swift */,
 				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
 				65AC04F22D7E245C00D9F7A6 /* ConfigureMatchView.swift */,
@@ -337,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657C9B012D96422A008B193C /* ViewA.swift in Sources */,
 				65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */,
 				65B6A4E12D90B5D2002D97AB /* Glow.swift in Sources */,
 				65AC05012D7E245C00D9F7A6 /* String.swift in Sources */,
@@ -353,6 +360,7 @@
 				65B6A4D62D8D8C3E002D97AB /* MovingBorderView.swift in Sources */,
 				65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */,
 				6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */,
+				657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */,
 				65B6A4C82D89BD47002D97AB /* LargeBoxWidthKey.swift in Sources */,
 				65AC05092D7E245C00D9F7A6 /* SmallBoxWidthKey.swift in Sources */,
 				65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */,
