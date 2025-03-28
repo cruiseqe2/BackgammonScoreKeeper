@@ -46,7 +46,11 @@ struct CustomAlert: View {
                         .frame(height: 50)
                 }
         }
-        .flashyBorder(cornerRadius: 20, width: alertWidth, height: alertHeight)
+        .applyBorder(borderType: .glowing, radius: 20)
+//        .glow(color: .white, radius: 1)
+//        .glowEffect(width: alertWidth, height: alertHeight)
+        
+//        .flashyBorder(cornerRadius: 20, width: alertWidth, height: alertHeight)
     }
 }
 
@@ -90,7 +94,9 @@ struct OneButton: View {
             .frame(height: 50)
             .overlay(
                 Button(action: {
-                    isShown = false
+                    withAnimation(.linear(duration: 1)) {
+                        isShown = false
+                    }
                     action1()
                 }) {
                     Text(button1Text)

@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MatchView: View {
     @Environment(ViewModel.self) var vm
+    @Environment(\.dismiss) var dismiss
 //    @State private var menuBeingShown: Bool = false
+    @State var showConfiguration: Bool
+
     
     var whichWayRound: WhichWayRound {
         switch vm.deviceOrientation {
@@ -23,6 +26,9 @@ struct MainView: View {
     }
     
     var body: some View {
+        
+        @Bindable var vm = vm
+        
         GeometryReader { geometry in
             
             let outerColumnWidth = geometry.size.width * 0.40
@@ -42,22 +48,14 @@ struct MainView: View {
                         
                         Spacer()
                         
-//                        /// This should be removed when finished
-//                        Button {
-//                            vm.showTestingButtons.toggle()
-//                        } label: {
-//                            Text(vm.showTestingButtons ? "Hide" : "Show")
-//                        }
-//                        Spacer()
-//                        /// End of stuff to be removed before use
-                        
                         Button {
-                            vm.mainMenuShowing.toggle()
+                            vm.screenToShow = .none
+                            dismiss()
                         } label: {
                             Image(systemName: "line.3.horizontal")
                                 .font(.system(size: 30))
                         }
-                        .disabled(vm.mainMenuShowing)
+//                        .disabled(vm.mainMenuShowing)
                     }
                     .padding(.top, 2)
                     .padding(.bottom, 5)
@@ -83,33 +81,41 @@ struct MainView: View {
             }
         }
 //        .padding()
-        .opacity(vm.mainMenuShowing ? 0 : 1.0)
-        .disabled(vm.mainMenuShowing)
-        .overlay(vm.mainMenuShowing ? MainMenu() : nil)
-//        .overlay(vm.mainMenuShowing ? DealWithTheMainMenuView() : nil)
-        .overlay(vm.useDoublingCube && !vm.mainMenuShowing ? DealWithTheDoublingCubeView() : nil)
+        .opacity(showConfiguration ? 0.50 : 1.0)
+        .disabled(showConfiguration)
+        
+//        .onAppear {
+//            if vm.shouldShowConfigureMatchView {
+//                showConfiguration = true
+//            }
+//        }
+//        
+//        .fullScreenCover(isPresented: $showConfiguration) {
+//            ConfigureMatchView()
+//        }
+        
+        .fullScreenCover(isPresented: $showConfiguration, onDismiss: {
+            showConfiguration = false
+        }) {
+            ConfigureMatchView()
+        }
+        
+        
+        
+//        .fullScreenCover(isPresented: $vm.mainMenuShowing) {
+//            MainMenu()
+//        }
+        
+        .overlay(vm.useDoublingCube ? DealWithTheDoublingCubeView() : nil)
 //        .opacity(menuBeingShown ? 0 : 1)
 //        .disabled(menuBeingShown)
 
 //        .background(Color.theme.background)
 //        .ignoresSafeArea(.all)
     }
-        
-//    @ViewBuilder private var mainMenu: some View {
-//        if menuBeingShown {
-////            MainMenu(showMenu: $menuBeingShown)
-//            MainMenu(showMenu: $vm.mainMenuShowing)
-//        }
-//    }
     
 }
 
-//struct DealWithTheMainMenuView: View {
-//    @Environment(ViewModel.self) var vm
-//    var body: some View {
-//        MainMenu()
-//    }
-//}
 
 struct DealWithTheDoublingCubeView: View {
     @Environment(ViewModel.self) var vm
@@ -131,6 +137,6 @@ struct DealWithTheDoublingCubeView: View {
 
 
 #Preview(traits: .landscapeLeft) {
-    MainView()
+    MatchView(showConfiguration: false)
         .environment(ViewModel())
 }

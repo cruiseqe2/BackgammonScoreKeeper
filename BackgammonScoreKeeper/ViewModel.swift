@@ -11,6 +11,9 @@ import UIKit
 @Observable
 class ViewModel {
     var deviceOrientation: UIDeviceOrientation = .portrait
+    
+    var appStages: AppStages = .welcomeScreen
+    var appPhase: AppPhase = .welcome
 
     var firstOwnerName: String = "Mark"
     var secondOwnerName: String = ""
@@ -26,7 +29,7 @@ class ViewModel {
         firstOpponentName.isNotEmpty ? true : false
     }
     
-    var mainMenuShowing: Bool = true
+//    var mainMenuShowing: Bool = true
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
@@ -43,28 +46,40 @@ class ViewModel {
     }
     
     var currentGameState: CurrentGameState {
-        if winnerIs == .matchAbandoned {
-            return .matchAbandoned
-        }
         if winnerIs == .noWinnerYet {
-            if typeOfMatch == .social {
-                return .socialGameActive
-            } else {
-                return .matchInProgress
-            }
-        } else {
-            return .matchFinished
+            return .matchInProgress
+        } else {  //  owner, opponent, match abandoned
+            return .readyToStartMatch
         }
+//        
+//        
+//        
+//        
+//        
+//        if winnerIs == .matchAbandoned {
+//            return .matchFinished
+//        }
+//        if winnerIs == .noWinnerYet {
+//            if typeOfMatch == .social {
+//                return .socialGameActive
+//            } else {
+//                return .matchInProgress
+//            }
+//        } else {
+//            return .matchFinished
+//        }
     }
     
     var welcomeShown: Bool = false
     var isConfigurePlayersShown: Bool = false
-    
+    var shouldShowConfigureMatchView: Bool = false
+    var screenToShow: Screen = .none
+    var showNewScreen: Bool = false
     
     var crawfordStatus: CrawfordStatus = .notPointsBased
     
     var useDoublingCube: Bool = true
-    var showGamesBoxIfPointsBased: Bool = true
+    var showSmallBoxIfPointsBased: Bool = true
     var showCustomAlert: Bool = false
     
     var showTestingButtons: Bool = false
@@ -284,26 +299,26 @@ class ViewModel {
     /// Log the matches
     
     func log() {
-        var whyDidMatchFinish: String
-        
-        switch currentGameState {
-        case .socialGameActive:
-            break     // Should never get here!
-        case .matchInProgress:
-            break     // Should never get here!
-        case .matchFinished:
-            whyDidMatchFinish = "match finished"
-        case .matchAbandoned:
-            whyDidMatchFinish = "match abandoned"
-        }
-        
-        
+//        var whyDidMatchFinish: String
+//        
+//        switch currentGameState {
+//        case .socialGameActive:
+//            break     // Should never get here!
+//        case .matchInProgress:
+//            break     // Should never get here!
+//        case .matchFinished:
+//            whyDidMatchFinish = "match finished"
+//        case .matchAbandoned:
+//            whyDidMatchFinish = "match abandoned"
+//        }
         
         
-        print("---------------")
-        print("Players: \(ownerDisplayName) vs \(opponentDisplayName)")
-        print("Type of Match: \(typeOfMatch)")
-        print("Result was ")
+        
+        
+//        print("---------------")
+//        print("Players: \(ownerDisplayName) vs \(opponentDisplayName)")
+//        print("Type of Match: \(typeOfMatch)")
+//        print("Result was ")
     }
     
 }

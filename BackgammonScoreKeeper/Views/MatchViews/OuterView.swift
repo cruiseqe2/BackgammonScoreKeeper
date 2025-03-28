@@ -10,6 +10,7 @@ import SwiftUI
 struct OuterView: View {
     @Environment(ViewModel.self) var vm
     @State var sideToProcess: SideToProcess
+    @State private var smallBoxOpacity: Double = 0
     
     private var buttonSide: Side {
         if sideToProcess == .leftHandSide {
@@ -27,10 +28,8 @@ struct OuterView: View {
         }
     }
     
-    
-    
     private var backgroundColor: Color {
-        guard vm.winnerIs != .noWinnerYet else {
+        guard vm.winnerIs != .noWinnerYet && vm.winnerIs != .matchAbandoned else {
             return Color.theme.background
         }
         
@@ -65,7 +64,7 @@ struct OuterView: View {
                     .frame(maxWidth: columnWidth)
                     .foregroundStyle(Color.theme.foreground)
                     .background(backgroundColor)
-                    .border(width: 3, edges: [.bottom], color:
+                    .edgeBorder(width: 3, edges: [.bottom], color:
                                 Color.theme.foreground
                     )
                     .padding(.bottom, 8)
@@ -117,7 +116,7 @@ struct OuterView: View {
                             .getSmallBoxWidth { smallBoxWidth in
                                 vm.smallBoxWidth = smallBoxWidth
                             }
-                            .opacity(vm.typeOfMatch == .points  &&  vm.showGamesBoxIfPointsBased ? 1 : 0)
+                            .opacity(smallBoxOpacity)
                         
                     } else {  // We are now dealing with the Right Hand Side
                         
@@ -137,7 +136,7 @@ struct OuterView: View {
                             .addWidthOfObject { gamesBoxWidth in
                                 vm.totalWidth += gamesBoxWidth
                             }
-                            .opacity(vm.typeOfMatch == .points  &&  vm.showGamesBoxIfPointsBased ? 1 : 0)
+                            .opacity(smallBoxOpacity)
                         
                         Spacer()
                         
@@ -153,6 +152,22 @@ struct OuterView: View {
                                 Text(vm.typeOfMatch == .points ? "Points" : "Games")   .font(.system(size: 20, weight: .black))
                                     .offset(y: 10)
                             }
+                    }
+                }
+                .onAppear {
+                    if vm.typeOfMatch == .points  &&  vm.showSmallBoxIfPointsBased {
+                        smallBoxOpacity = 1
+                    } else {
+                        smallBoxOpacity = 0
+                    }
+                }
+                .onChange(of: vm.showSmallBoxIfPointsBased) { _, _ in
+                    withAnimation(.linear(duration: 0.5)) {
+                        if vm.typeOfMatch == .points  &&  vm.showSmallBoxIfPointsBased {
+                            smallBoxOpacity = 1
+                        } else {
+                            smallBoxOpacity = 0
+                        }
                     }
                 }
                 .padding(.bottom, 16)

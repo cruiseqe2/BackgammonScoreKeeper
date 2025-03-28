@@ -1,5 +1,5 @@
 //
-//  Borders.swift
+//  EdgeBorder.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 19/02/2025.
@@ -24,7 +24,7 @@ struct EdgeBorder: Shape {
 }
 
 extension View {
-    func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
+    func edgeBorder(width: CGFloat, edges: [Edge], color: Color) -> some View {
         overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
     }
 }

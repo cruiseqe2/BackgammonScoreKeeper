@@ -45,7 +45,8 @@ struct CustomDialogue: View {
                         .frame(height: 50)
                 }
         }
-        .flashyBorder(cornerRadius: 20, width: dialogueWidth, height: dialogueHeight)
+        .applyBorder(borderType: .glowing, radius: 20)
+//        .flashyBorder(cornerRadius: 20, width: dialogueWidth, height: dialogueHeight)
     }
 }
 
@@ -118,8 +119,8 @@ struct DialogueButtons: View {
                             .font(.system(size: 20, weight: .bold, design: .default))
                             .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
                             .contentShape(UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20)))
-                            .disabled(newText.isEmpty)
                     }
+                        .disabled(newText.isEmpty)
                 )
         }
         .overlay(alignment: .center) {

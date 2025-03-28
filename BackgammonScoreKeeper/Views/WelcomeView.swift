@@ -21,8 +21,9 @@ struct WelcomeView: View {
             Text("I sincerely hope you enjoy this App")
             Spacer()
             Button("Done") {
-                withAnimation {
-                    vm.welcomeShown = true
+                vm.welcomeShown = true
+                withAnimation(.linear(duration: 4.75)) {
+                    vm.appStages = .mainGamePlay
                 }
             }
             Spacer()

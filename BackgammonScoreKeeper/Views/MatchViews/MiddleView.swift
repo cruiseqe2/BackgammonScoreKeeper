@@ -69,7 +69,7 @@ struct MiddleView: View {
                             Text("Games")
                         }
                         Spacer()
-                        ToggleView(isOn: $vm.showGamesBoxIfPointsBased, height: 32)
+                        ToggleView(isOn: $vm.showSmallBoxIfPointsBased, height: 32)
                     }
                     .padding(.top, 10)
                     .frame(width: vm.middleColumnWidth * 0.8)

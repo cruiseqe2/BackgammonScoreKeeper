@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewMatchView: View {
+struct ConfigureMatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
     
@@ -37,6 +37,7 @@ struct NewMatchView: View {
                 
                 HStack(spacing: 25) {
                     Button {
+                        vm.screenToShow = .none
                         dismiss()
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
@@ -45,14 +46,22 @@ struct NewMatchView: View {
                     .disabled(vm.isConfigurePlayersShown)
                     .opacity(vm.isConfigurePlayersShown ? 0 : 1)
                     
+//                    vm.shouldShowConfigureMatchView = false
+                    
+                    
                     NewMatchButton(
                         buttonTitle: "Start",
                         bgColor: .green,
                         fgColor: .black,
                         isDisabled: vm.isConfigurePlayersShown || !vm.namesAreValid) {
-                            vm.mainMenuShowing = false
+//                            vm.shouldShowConfigureMatchView = false
+//                            vm.mainMenuShowing = false
                             vm.startGame()
-                            //                            dismiss()
+                            
+//                            vm.showNewScreen = true
+//                            vm.screenToShow = .history
+                            vm.screenToShow = .match(config: false)
+                            dismiss()
                         }
                         .frame(width: 100)
                         .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0 : 1)
@@ -141,7 +150,10 @@ struct NewMatchView: View {
             .disabled(vm.isConfigurePlayersShown || !vm.namesAreValid)
             
         }
-        .overlay(vm.isConfigurePlayersShown ? ConfigurePlayersView().mintBorder() : nil)
+        
+        .fullScreenCover(isPresented: $vm.isConfigurePlayersShown) {
+            ConfigurePlayersView().applyBorder(borderType: .mint, radius: 20)
+        }
         
     }
 }
@@ -174,17 +186,25 @@ struct GamesColumn: View {
     var body: some View {
         @Bindable var vm = vm
         VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .top) {
-                Text("∙")
-                Text("No Doubling Cube")
-            }
-            HStack(alignment: .top) {
-                Text("∙")
-                Text("Points are hidden")
-            }
-            HStack(alignment: .top) {
-                Text("∙")
-                Text("No Gammons or Backgammons, only (single) wins")
+            Group {
+                HStack(alignment: .top) {
+                    Text("∙")
+                    Text("No Doubling Cube")
+                }
+                HStack(alignment: .top) {
+                    Text("∙")
+                    Text("Points are hidden")
+                }
+                HStack(alignment: .top) {
+                    Text("∙")
+                    Text("No Gammons or Backgammons, only (single) wins")
+                }
+                if vm.typeOfMatch != .games {
+                    HStack(alignment: .top) {
+                        Text("∙")
+                        Text("Choice of Best Of or First To")
+                    }
+                }
             }
             .environment(\._lineHeightMultiple, 0.85)
             .fixedSize(horizontal: false, vertical: true)
@@ -223,7 +243,7 @@ struct PointsColumn: View {
             HStack {
                 Text("Show Game Boxes?")
                 Spacer()
-                ToggleView(isOn: $vm.showGamesBoxIfPointsBased, height: 35)
+                ToggleView(isOn: $vm.showSmallBoxIfPointsBased, height: 35)
             }
             
             if vm.typeOfMatch == .points {
@@ -240,7 +260,7 @@ struct PointsColumn: View {
 }
 
 #Preview(traits: .landscapeLeft) {
-    NewMatchView()
+    ConfigureMatchView()
         .environment(ViewModel())
 }
 

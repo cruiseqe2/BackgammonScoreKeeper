@@ -17,16 +17,60 @@ struct ControllerView: View {
     
     var body: some View {
         
-        Group {
-            switch vm.welcomeShown {
-            case false:
-                WelcomeView()
-                    .transition(.opacity)
-            case true:
-                MainView()
-                    .transition(.opacity)
-            }
+        ZStack {
+            WelcomeView()
+                .opacity(vm.appStages == .welcomeScreen ? 1 : 0)
+                .transition(.move(edge: .trailing))
+            MainMenu()
+                .opacity(vm.appStages == .mainGamePlay ? 1 : 0)
+                .transition(.move(edge: .trailing))
         }
+        .animation(.linear(duration: 1.5), value: vm.appStages)
+        
+        
+        
+        
+//        Group {
+//            switch vm.appStages {
+//            case .welcomeScreen:
+//                WelcomeView()
+//                    .transition(AnyTransition.scale.animation(.easeInOut(duration: 3.5)))
+//                //                    .transition(.move(edge: .trailing))
+//            case .setupOwnerName:
+//                EmptyView()
+//            case .mainGamePlay:
+//                MainView()
+//                //                    .withAnimation(.easeInOut(duration: 0.5)) {
+//                    .transition(AnyTransition.scale.animation(.easeInOut(duration: 3.5)))
+//                //                    }
+//                //                    .animation(.easeInOut(duration: 0.5))
+//                //            }
+//                //                .withAnimation(.easeInOut(duration: 0.5)) {
+//                //                    .transition(.move(edge: .trailing))
+//            }
+//        }
+//        .animation(.linear(duration: 6), value: vm.appStages)
+//            
+            
+            
+            
+//            switch vm.welcomeShown {
+//            case false:
+//                WelcomeView()
+//                    .transition(.opacity)
+//            case true:
+//                MainView()
+//                    .transition(.opacity)
+//            }
+//        }
+        
+        
+//        VStack {
+//            Rectangle()
+//                .frame(width: 100, height: 100)
+//                .transition(.
+//        }
+        
         .background(Color.theme.background)
         .fullScreenCover(isPresented: $showErrorScreen) {
             Text("Please rotate the phone to Landscape")

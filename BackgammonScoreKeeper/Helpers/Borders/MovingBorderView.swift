@@ -20,11 +20,6 @@ struct MovingBorderView: View {
             .frame(width: 160, height: 54)
             .flashyBorder(cornerRadius: 27, width: 160, height: 54)
             
-            
-//            let cornerRadius: CGFloat = 27
-//            let width: CGFloat = 160
-//            let height: CGFloat = 54
-            
             ZStack {
                 Button {
                     

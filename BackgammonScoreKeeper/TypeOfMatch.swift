@@ -7,6 +7,28 @@
 
 import Foundation
 
+enum Screen: Equatable {
+    case none
+    case match(config: Bool)
+    case history
+    case rules
+    case layouts
+    case settings
+    case about
+}
+
+enum AppStages {
+    case welcomeScreen
+    case setupOwnerName
+    case mainGamePlay
+}
+
+enum AppPhase {
+    case welcome
+    case setupOwnerName
+    case mainGamePlay
+}
+
 enum TypeOfMatch: CaseIterable {
     case social
     case games
@@ -40,6 +62,7 @@ enum WinnerIs {
     case opponent
     case noWinnerYet
     case matchAbandoned
+    case matchCancelledBeforeStarting
 }
 
 enum Side {
@@ -71,13 +94,16 @@ enum CrawfordStatus {
 }
 
 enum CurrentGameState {
-    case socialGameActive
     case matchInProgress
-    case matchFinished
-    case matchAbandoned
+    case readyToStartMatch
 }
 
 enum ActionOnReturnFromNewGame {
     case startGame
     case cancel
+}
+
+enum BorderTypes {
+    case mint
+    case glowing
 }
