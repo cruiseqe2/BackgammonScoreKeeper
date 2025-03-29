@@ -14,10 +14,7 @@ struct BackgammonScoreKeeperApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            TestCascade()
-            
-            
-            ControllerView()
+           ControllerView()
                 .environment(viewModel)
                 .preferredColorScheme(.dark)
                 .persistentSystemOverlays(.hidden)

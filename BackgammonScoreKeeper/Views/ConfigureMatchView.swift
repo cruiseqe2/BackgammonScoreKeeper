@@ -139,7 +139,7 @@ struct ConfigureMatchView: View {
                     Spacer()
                 }
             }
-            .opacity((vm.isConfigurePlayersShown || !vm.namesAreValid) ? 0.1 : 1)
+            .opacity((vm.isConfigurePlayersShown || !vm.namesAreValid) ? 0 : 1)
             .disabled(vm.isConfigurePlayersShown || !vm.namesAreValid)
             
         }

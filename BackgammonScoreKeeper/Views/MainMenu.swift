@@ -12,7 +12,6 @@ struct MainMenu: View {
     @Environment(ViewModel.self) var vm
     @State private var showAbandonMatchAlert = false
     @State private var notImplementedYet = false
-    @State private var opacityOfGameBoard = 0.7
     
     private var verticalTextOffset: CGFloat {
         UIScreen.main.bounds.width / 4 + 15
@@ -67,7 +66,7 @@ struct MainMenu: View {
         @Bindable var vm = vm
         
         HStack {
-            TriangleRow(colors: [.red.opacity(opacityOfGameBoard), .green.opacity(opacityOfGameBoard)])
+            TriangleRow(colors: [.red.opacity(vm.opacityOfGameBoard), .green.opacity(vm.opacityOfGameBoard)])
                 .frame(width: UIScreen.main.bounds.width / 6)
             
             Spacer()
@@ -170,11 +169,11 @@ struct MainMenu: View {
                         }
                         MainMenuButton(buttonTitle: "About", color: .gray) {
                             withAnimation(.linear(duration: 1)) {
-                                notImplementedYet.toggle()
+                                vm.screenToShow = .about
                             }
                         }
                     }
-                    
+                
                     GridRow {
                         MainMenuButton(buttonTitle: bottomButtonTitle, color: .blue) {
                             withAnimation(.linear(duration: 1)) {
@@ -227,7 +226,7 @@ struct MainMenu: View {
             
             Spacer()
             
-            TriangleRow(colors: [.red.opacity(opacityOfGameBoard), .green.opacity(opacityOfGameBoard)])
+            TriangleRow(colors: [.red.opacity(vm.opacityOfGameBoard), .green.opacity(vm.opacityOfGameBoard)])
                 .frame(width: UIScreen.main.bounds.width / 6)
                 .rotationEffect(Angle(degrees: 180))
             
@@ -287,7 +286,7 @@ struct MainMenu: View {
             case .settings:
                 DebugView(text: "Settings")
             case .about:
-                DebugView(text: "About")
+                AboutView()
             }
         }
     }

@@ -14,12 +14,12 @@ class ViewModel {
     
     var appStages: AppStages = .welcomeScreen
     var appPhase: AppPhase = .welcome
-
+    
     var firstOwnerName: String = "Mark"
     var secondOwnerName: String = ""
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
-
+    
     var firstOpponentName: String = ""
     var secondOpponentName: String = ""
     var opponentGames: Int = 0
@@ -30,6 +30,13 @@ class ViewModel {
     }
     
     var positionOfOwner: PositionOfOwner = .leftHandSide
+    
+    var kVersion: String = "CFBundleShortVersionString"
+    var kBuild: String = "CFBundleVersion"
+    var version: String {
+        getVersion()
+    }
+    var opacityOfGameBoard: CGFloat = 0.7
     
     var typeOfMatch: TypeOfMatch = .points
     var finishWhen: FinishWhen = .firstTo
@@ -46,7 +53,7 @@ class ViewModel {
     var currentGameState: CurrentGameState {
         winnerIs == .noWinnerYet ? .matchInProgress : .readyToStartMatch
     }
-        
+    
     var hideMatchViewAfterConfig = false
     var welcomeShown: Bool = false
     var isConfigurePlayersShown: Bool = false
@@ -121,7 +128,7 @@ class ViewModel {
         guard typeOfMatch != .social else { return "" }
         return (typeOfMatch == .games ? "Games" : "Points")
     }
-
+    
     /// Should BumpUp be visible
     var bumpUpVisible: Bool {
         guard winnerIs == .noWinnerYet else { return false }
@@ -136,14 +143,14 @@ class ViewModel {
         
         if typeOfMatch == .points {
             return numberOfGamesOrPoints > ownerPoints + 1        &&
-                   numberOfGamesOrPoints > opponentPoints + 1
+            numberOfGamesOrPoints > opponentPoints + 1
             ? true : false
         }
         
         if typeOfMatch == .games {
             if finishWhen == .firstTo {
                 return numberOfGamesOrPoints > ownerGames + 1     &&
-                       numberOfGamesOrPoints > opponentGames + 1
+                numberOfGamesOrPoints > opponentGames + 1
                 ? true : false
             } else {     // .BestOf
                 return winningScoreIfBestOfGames! > ownerGames + opponentGames ? true : false
@@ -169,7 +176,7 @@ class ViewModel {
             positionOfOwner = .rightHandSide
         }
     }
-
+    
     /// Handle the 'bumping' buttons
     
     func bumpUp() {
@@ -188,7 +195,7 @@ class ViewModel {
     }
     
     /// Handle the 'winning' buttons
-
+    
     func WinningButtonTapped(side: Side, value: Int) {
         
         if side == .owner {
@@ -202,7 +209,7 @@ class ViewModel {
         checkForCrawford()
         checkForWinner()
     }
-
+    
     /// Update the Crawford details.
     
     func checkForCrawford() {
@@ -263,29 +270,35 @@ class ViewModel {
     /// Log the matches
     
     func log() {
-//        var whyDidMatchFinish: String
-//        
-//        switch currentGameState {
-//        case .socialGameActive:
-//            break     // Should never get here!
-//        case .matchInProgress:
-//            break     // Should never get here!
-//        case .matchFinished:
-//            whyDidMatchFinish = "match finished"
-//        case .matchAbandoned:
-//            whyDidMatchFinish = "match abandoned"
-//        }
+        //        var whyDidMatchFinish: String
+        //
+        //        switch currentGameState {
+        //        case .socialGameActive:
+        //            break     // Should never get here!
+        //        case .matchInProgress:
+        //            break     // Should never get here!
+        //        case .matchFinished:
+        //            whyDidMatchFinish = "match finished"
+        //        case .matchAbandoned:
+        //            whyDidMatchFinish = "match abandoned"
+        //        }
         
         
         
         
-//        print("---------------")
-//        print("Players: \(ownerDisplayName) vs \(opponentDisplayName)")
-//        print("Type of Match: \(typeOfMatch)")
-//        print("Result was ")
+        //        print("---------------")
+        //        print("Players: \(ownerDisplayName) vs \(opponentDisplayName)")
+        //        print("Type of Match: \(typeOfMatch)")
+        //        print("Result was ")
+    }
+    
+    func getVersion() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary[kVersion] as! String
+        let build = dictionary[kBuild] as! String
+        return "\(version) (\(build))"
     }
     
 }
-
 
 
