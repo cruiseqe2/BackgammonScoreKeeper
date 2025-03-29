@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ControllerView: View {
     @Environment(ViewModel.self) var vm
+    @Environment(\.scenePhase) var scenePhase
     @State var showErrorScreen = false
     
     var wrongOrientation: Bool {
@@ -26,6 +27,16 @@ struct ControllerView: View {
                 .transition(.move(edge: .trailing))
         }
         .animation(.linear(duration: 1.5), value: vm.appStages)
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            switch newPhase {
+            case .background, .inactive:
+                disableSleepMode(false)
+            case .active:
+                disableSleepMode(true)
+            @unknown default:
+                fatalError()
+            }
+        }
         
         
         
@@ -85,6 +96,11 @@ struct ControllerView: View {
             showErrorScreen = (wrongOrientation ? true : false)
         }
     }
+    
+    func disableSleepMode(_ isOn: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = isOn
+    }
+    
 }
 
 
