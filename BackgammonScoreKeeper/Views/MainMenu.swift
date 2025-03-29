@@ -238,10 +238,10 @@ struct MainMenu: View {
             vm.showNewScreen = newValue != .none
         }
         
-        .overlay(VerticalText(string: "BACKGAMMON", size: 15)
+        .overlay(VerticalText(string: "BACKGAMMON", size: 16)
             .offset(x: -verticalTextOffset, y: 20))
         
-        .overlay(VerticalText(string: "SCORE KEEPER", size: 12)
+        .overlay(VerticalText(string: "SCORE KEEPER", size: 13)
             .offset(x: verticalTextOffset, y: 20))
         
         .overlay(

@@ -20,9 +20,14 @@ struct VerticalText: View {
     
     var body: some View {
         VStack {
-            ForEach(lettersArray) { element in
-                Text("\(element.char)\n")
-                    .font(.system(size: size, weight: .bold, design: .default))
+            ForEach(lettersArray.indices, id: \.self) { index in
+                if index != lettersArray.count - 1 {
+                    Text("\(lettersArray[index].char)\n")
+                        .font(.system(size: size, weight: .bold, design: .default))
+                } else {
+                    Text("\(lettersArray[index].char)")
+                        .font(.system(size: size, weight: .bold, design: .default))
+                }
             }
         }
         .onAppear {
@@ -36,9 +41,9 @@ struct VerticalText: View {
 #Preview(traits: .landscapeLeft) {
     HStack {
         Spacer()
-        VerticalText(string: "BACKGAMMON", size: 15)
+        VerticalText(string: "BACKGAMMON", size: 16)
         Spacer()
-        VerticalText(string: "SCORE KEEPER", size: 12)
+        VerticalText(string: "SCORE KEEPER", size: 13)
         Spacer()
     }
 }
