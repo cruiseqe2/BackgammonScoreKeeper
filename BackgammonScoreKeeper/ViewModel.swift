@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 @Observable
 class ViewModel {
@@ -199,11 +200,15 @@ class ViewModel {
     func WinningButtonTapped(side: Side, value: Int) {
         
         if side == .owner {
-            ownerPoints += value
-            ownerGames += 1
+            withAnimation {
+                ownerPoints += value
+                ownerGames += 1
+            }
         } else {
-            opponentPoints += value
-            opponentGames += 1
+            withAnimation {
+                opponentPoints += value
+                opponentGames += 1
+            }
         }
         
         checkForCrawford()

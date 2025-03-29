@@ -82,6 +82,7 @@ struct OuterView: View {
                     if sideToProcess == .leftHandSide { // Deal with the Left Hand Side
                         
                         Text(vm.typeOfMatch == .points ? "\(vm.LHSPoints)" : "\(vm.LHSGames)")
+                            .contentTransition(.numericText())
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
@@ -105,6 +106,7 @@ struct OuterView: View {
                         Spacer()
                         
                         Text("\(vm.LHSGames)")
+                            .contentTransition(.numericText())
                             .font(.system(size: 56))
                             .padding(15)
                             .offset(y: 15)
@@ -128,6 +130,7 @@ struct OuterView: View {
                     } else {  // We are now dealing with the Right Hand Side
                         
                         Text("\(vm.RHSGames)")
+                            .contentTransition(.numericText())
                             .font(.system(size: 56))
                             .padding(15)
                             .offset(y: 15)
@@ -148,6 +151,7 @@ struct OuterView: View {
                         Spacer()
                         
                         Text(vm.typeOfMatch == .points ? "\(vm.RHSPoints)" : "\(vm.RHSGames)")
+                            .contentTransition(.numericText())
                             .font(.system(size: 110, weight: .bold))
                             .padding(15)
                             .offset(y: 15)
