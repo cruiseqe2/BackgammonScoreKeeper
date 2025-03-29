@@ -29,8 +29,6 @@ class ViewModel {
         firstOpponentName.isNotEmpty ? true : false
     }
     
-//    var mainMenuShowing: Bool = true
-    
     var positionOfOwner: PositionOfOwner = .leftHandSide
     
     var typeOfMatch: TypeOfMatch = .points
@@ -46,35 +44,12 @@ class ViewModel {
     }
     
     var currentGameState: CurrentGameState {
-        if winnerIs == .noWinnerYet {
-            return .matchInProgress
-        } else {  //  owner, opponent, match abandoned
-            return .readyToStartMatch
-        }
+        winnerIs == .noWinnerYet ? .matchInProgress : .readyToStartMatch
     }
         
     var hideMatchViewAfterConfig = false
-//
-//        
-//        
-//        
-//        
-//        if winnerIs == .matchAbandoned {
-//            return .matchFinished
-//        }
-//        if winnerIs == .noWinnerYet {
-//            if typeOfMatch == .social {
-//                return .socialGameActive
-//            } else {
-//                return .matchInProgress
-//            }
-//        } else {
-//            return .matchFinished
-//        }
-    
     var welcomeShown: Bool = false
     var isConfigurePlayersShown: Bool = false
-    var shouldShowConfigureMatchView: Bool = false
     var screenToShow: Screen = .none
     var showNewScreen: Bool = false
     
@@ -84,7 +59,6 @@ class ViewModel {
     var showSmallBoxIfPointsBased: Bool = true
     var showCustomAlert: Bool = false
     
-    var showTestingButtons: Bool = false
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
     var smallBoxWidth: CGFloat = 0.0
@@ -179,7 +153,7 @@ class ViewModel {
         return false     // We should never get here!!!!!
     }
     
-    func clearGame() {
+    func startMatch() {
         ownerGames = 0
         opponentGames = 0
         ownerPoints = 0
@@ -187,18 +161,6 @@ class ViewModel {
         winnerIs = .noWinnerYet
         crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
     }
-    
-    func startGame() {
-        ownerGames = 0
-        opponentGames = 0
-        ownerPoints = 0
-        opponentPoints = 0
-        winnerIs = .noWinnerYet
-        crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
-    }
-    
-    
-    
     
     func swapPositions() {
         if positionOfOwner == .rightHandSide {

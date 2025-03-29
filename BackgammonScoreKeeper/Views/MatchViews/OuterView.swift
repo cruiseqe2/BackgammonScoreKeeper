@@ -32,9 +32,10 @@ struct OuterView: View {
     }
     
     private var backgroundColor: Color {
-        guard vm.winnerIs != .noWinnerYet        &&
-                vm.winnerIs != .matchAbandoned   &&
-                vm.winnerIs != .matchCancelledBeforeStarting
+        guard vm.winnerIs != .noWinnerYet                     &&
+                vm.winnerIs != .matchAbandoned                &&
+                vm.winnerIs != .matchCancelledBeforeStarting  &&
+                vm.winnerIs != .socialMatchesStopped
         else {
             return Color.theme.background
         }

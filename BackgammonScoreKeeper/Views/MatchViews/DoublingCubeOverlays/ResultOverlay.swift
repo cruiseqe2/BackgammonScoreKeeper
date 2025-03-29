@@ -5,22 +5,6 @@
 //  Created by Mark Oelbaum on 28/03/2025.
 //
 
-
-//
-//  CrawfordGameView.swift
-//  BackgammonScoreKeeper
-//
-//  Created by Mark Oelbaum on 08/03/2025.
-//
-
-
-//
-//  DoublingCubeView.swift
-//  BackgammonScoreKeeper
-//
-//  Created by Mark Oelbaum on 24/02/2025.
-//
-
 import SwiftUI
 
 struct ResultOverlay: View {
@@ -30,6 +14,7 @@ struct ResultOverlay: View {
         switch vm.winnerIs {
         case .matchAbandoned: "Match Abandoned"
         case .matchCancelledBeforeStarting: "Match Cancelled"
+        case .socialMatchesStopped: "Social Match Stopped"
         case .owner: vm.ownerDisplayName + " won!"
         case .opponent: vm.opponentDisplayName + " won!"
         default: ""

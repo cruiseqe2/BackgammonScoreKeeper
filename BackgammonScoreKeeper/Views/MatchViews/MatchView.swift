@@ -10,7 +10,6 @@ import SwiftUI
 struct MatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
-//    @State private var menuBeingShown: Bool = false
     @State var showConfiguration: Bool
 
     
@@ -55,7 +54,6 @@ struct MatchView: View {
                             Image(systemName: "line.3.horizontal")
                                 .font(.system(size: 30))
                         }
-//                        .disabled(vm.mainMenuShowing)
                     }
                     .padding(.top, 2)
                     .padding(.bottom, 5)
@@ -91,9 +89,7 @@ struct MatchView: View {
         .overlay(vm.winnerIs != .noWinnerYet ? ShowResultOverylay() : nil)
         .opacity(showConfiguration || vm.hideMatchViewAfterConfig ? 0 : 1.0)
         
-        .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet ? DealWithTheDoublingCubeView() : nil)
-//        .opacity(menuBeingShown ? 0 : 1)
-//        .disabled(menuBeingShown)
+        .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet  && !vm.hideMatchViewAfterConfig ? DealWithTheDoublingCubeView() : nil)
 
 //        .background(Color.theme.background)
 //        .ignoresSafeArea(.all)

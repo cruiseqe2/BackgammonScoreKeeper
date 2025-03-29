@@ -10,7 +10,6 @@ import UIKit
 
 struct MainMenu: View {
     @Environment(ViewModel.self) var vm
-//    @State private var newMatchViewPresented = false
     @State private var showAbandonMatchAlert = false
     @State private var notImplementedYet = false
     @State private var opacityOfGameBoard = 0.7
@@ -19,26 +18,16 @@ struct MainMenu: View {
         UIScreen.main.bounds.width / 4 + 15
     }
     
-
-//    @State private var showNewScreen: Bool = false
-    
     private var topButtonTitle: String {
         switch vm.currentGameState {
         case .readyToStartMatch:
             "New Match"
         case .matchInProgress:
             if vm.typeOfMatch == .social {
-                "Stop Social Game"
+                "Stop Social Match"
             } else {
                 "Abandon Match"
             }
-            
-//        case .socialGameActive:
-//            "Stop Social Game"
-//        case .matchInProgress:
-//            "Abandon Match"
-//        case .matchFinished:
-//            "New Match"
         }
     }
     
@@ -53,15 +42,15 @@ struct MainMenu: View {
                 .red
             }
         }
+    }
         
-//        switch vm.currentGameState {
-//        case .socialGameActive:
-//                .orange
-//        case .matchInProgress:
-//                .red
-//        case .matchFinished:
-//                .green
-//        }
+    private var bottomButtonTitle: String {
+        switch vm.currentGameState {
+        case .readyToStartMatch:
+            "Return to Score Board"
+        case .matchInProgress:
+            "Resume Match"
+        }
     }
     
     private var matchUnderway: Bool {
@@ -98,7 +87,7 @@ struct MainMenu: View {
                                 switch vm.currentGameState {
                                 case .matchInProgress:
                                     if vm.typeOfMatch == .social {
-                                        vm.winnerIs = .matchAbandoned
+                                        vm.winnerIs = .socialMatchesStopped
                                     } else {
                                         if matchUnderway {
                                             withAnimation {
@@ -109,7 +98,12 @@ struct MainMenu: View {
                                         }
                                     }
                                 case .readyToStartMatch:
-                                    vm.screenToShow = .match(config: true)
+                                    if vm.firstOpponentName.isNotEmpty {
+                                        vm.hideMatchViewAfterConfig = true
+                                    }
+                                    withAnimation(.linear(duration: 5)) {
+                                        vm.screenToShow = .match(config: true)
+                                    }
                                 }
                             }
                     }
@@ -127,9 +121,8 @@ struct MainMenu: View {
 //                        }
 //                        vm.winnerIs = .matchAbandoned
 //                    case .matchFinished:
-//                        //                                    vm.shouldShowConfigureMatchView = true
+//                        //                                    
 //                        vm.screenToShow = .match(config: true)
-//                        //                                    newMatchViewPresented.toggle()
 //                    case .matchInProgress:
 //                        if matchUnderway {
 //                            showAbandonMatchAlert.toggle()
@@ -150,8 +143,8 @@ struct MainMenu: View {
                         }
                         MainMenuButton(buttonTitle: "History", color: .indigo, isDisabled: !showHistoryAndSettings) {
                             withAnimation(.linear(duration: 1)) {
-                                vm.screenToShow = .history
-//                                notImplementedYet.toggle()
+//                                vm.screenToShow = .history
+                                notImplementedYet.toggle()
                             }
                         }
                     }
@@ -183,13 +176,11 @@ struct MainMenu: View {
                     }
                     
                     GridRow {
-                        MainMenuButton(buttonTitle: "Return to Score Board", color: .blue) {
+                        MainMenuButton(buttonTitle: bottomButtonTitle, color: .blue) {
                             withAnimation(.linear(duration: 1)) {
                                 vm.screenToShow = .match(config: false)
-//                                vm.mainMenuShowing = false
                             }
                         }
-                        //                    .opacity(showAbandonMatchAlert ? 0.25 : 1)
                         .gridCellColumns(2)
                         .opacity(vm.firstOpponentName.isNotEmpty ? 1 : 0)
                         .disabled(vm.firstOpponentName.isEmpty)
@@ -206,8 +197,6 @@ struct MainMenu: View {
                 //                            // TODO: Log the result
                 //                        }
                 //                        vm.winnerIs = .matchAbandoned
-                //                    case .matchFinished, .matchAbandoned:
-                //                        newMatchViewPresented.toggle()
                 //                    case .matchInProgress:
                 //                        if matchUnderway {
                 //                            showAbandonMatchAlert.toggle()
@@ -226,9 +215,6 @@ struct MainMenu: View {
                 //            }
                 //            MainMenuButton(buttonTitle: "Settings", isDisabled: !showHistoryAndSettings) {
                 //                notImplementedYet.toggle()
-                //            }
-                //            MainMenuButton(buttonTitle: "Return", color: .blue) {
-                //                vm.mainMenuShowing = false
                 //            }
                 //            .opacity(showAbandonMatchAlert ? 0.25 : 1)
                 //            .padding(.bottom, 2)
@@ -264,8 +250,8 @@ struct MainMenu: View {
                 message: "Are you sure you want to abandon this match?",
                 button1Text: "Yes",
                 button2Text: "No",
-                alertWidth: 200,
-                alertHeight: 150,
+                alertWidth: 300,
+                alertHeight: 200,
                 action1: {
                     vm.winnerIs = .matchAbandoned
                 },
@@ -279,16 +265,12 @@ struct MainMenu: View {
                 message: "Sorry. This feature has not been implemented yet.",
                 button1Text: "OK",
                 button2Text: "",
-                alertWidth: 200,
-                alertHeight: 150,
+                alertWidth: 300,
+                alertHeight: 200,
                 action1: {},
                 action2: {}
             ) : nil
         )
-        
-//        .fullScreenCover(isPresented: $newMatchViewPresented) {
-//            ConfigureMatchView()
-//        }
         
         .fullScreenCover(isPresented: $vm.showNewScreen) {
             switch vm.screenToShow {

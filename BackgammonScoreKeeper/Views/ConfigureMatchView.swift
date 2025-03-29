@@ -47,20 +47,12 @@ struct ConfigureMatchView: View {
                     .disabled(vm.isConfigurePlayersShown)
                     .opacity(vm.isConfigurePlayersShown ? 0 : 1)
                     
-//                    vm.shouldShowConfigureMatchView = false
-                    
-                    
                     NewMatchButton(
                         buttonTitle: "Start",
                         bgColor: .green,
                         fgColor: .black,
                         isDisabled: vm.isConfigurePlayersShown || !vm.namesAreValid) {
-//                            vm.shouldShowConfigureMatchView = false
-//                            vm.mainMenuShowing = false
-                            vm.startGame()
-                            
-//                            vm.showNewScreen = true
-//                            vm.screenToShow = .history
+                            vm.startMatch()
                             vm.hideMatchViewAfterConfig = false
                             vm.screenToShow = .match(config: false)
                             dismiss()
@@ -70,7 +62,6 @@ struct ConfigureMatchView: View {
                 }
             }
             .padding(.top, 2)
-//            .opacity(vm.isConfigurePlayersShown || !vm.namesAreValid ? 0 : 1)
             
             HStack {
                 HStack(alignment: .firstTextBaseline, spacing: 4) {

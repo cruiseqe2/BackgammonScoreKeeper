@@ -5,14 +5,6 @@
 //  Created by Mark Oelbaum on 08/03/2025.
 //
 
-
-//
-//  DoublingCubeView.swift
-//  BackgammonScoreKeeper
-//
-//  Created by Mark Oelbaum on 24/02/2025.
-//
-
 import SwiftUI
 
 struct CrawfordGameView: View {

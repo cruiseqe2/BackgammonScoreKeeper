@@ -63,6 +63,7 @@ enum WinnerIs {
     case noWinnerYet
     case matchAbandoned
     case matchCancelledBeforeStarting
+    case socialMatchesStopped
 }
 
 enum Side {
