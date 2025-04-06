@@ -21,7 +21,7 @@ class ViewModel {
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
     
-    var firstOpponentName: String = "HHHH"
+    var firstOpponentName: String = "kkj"
     var secondOpponentName: String = ""
     var opponentGames: Int = 0
     var opponentPoints: Int = 0
@@ -65,7 +65,6 @@ class ViewModel {
     
     var useDoublingCube: Bool = true
     var showSmallBoxIfPointsBased: Bool = true
-    var showCustomAlert: Bool = false
     
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE

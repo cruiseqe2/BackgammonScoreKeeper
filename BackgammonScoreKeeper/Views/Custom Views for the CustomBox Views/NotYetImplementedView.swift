@@ -1,5 +1,13 @@
 //
-//  ConfirmWishToMakeOffer 2.swift
+//  AbandonMatchView 2.swift
+//  BackgammonScoreKeeper
+//
+//  Created by Mark Oelbaum on 06/04/2025.
+//
+
+
+//
+//  NotYetImplementedView.swift
 //  BackgammonScoreKeeper
 //
 //  Created by Mark Oelbaum on 06/04/2025.
@@ -7,7 +15,7 @@
 
 import SwiftUI
 
-struct AbandonMatchView: View {
+struct NotYetImplementedView: View {
     @Environment(ViewModel.self) var vm
     
     var body: some View {
@@ -15,7 +23,7 @@ struct AbandonMatchView: View {
             VStack {
                 Spacer()
                     .frame(height: 5)
-                Text("Are you sure you wish to abandon this match?")
+                Text("Sorry. This feature has not been implemented yet.")
                     .font(.title3)
                     .frame(width: 250)
                     .multilineTextAlignment(.center)

@@ -96,14 +96,18 @@ struct MainMenu: View {
                                 switch vm.currentGameState {
                                 case .matchInProgress:
                                     if vm.typeOfMatch == .social {
-                                        vm.winnerIs = .socialMatchesStopped
+                                        withAnimation(.linear(duration: 1)) {
+                                            vm.winnerIs = .socialMatchesStopped
+                                        }
                                     } else {
                                         if matchUnderway {
                                             withAnimation(.linear(duration: 1)) {
                                                 showAbandonMatchAlert.toggle()
                                             }
                                         } else {  // Match not started yet!
-                                            vm.winnerIs = .matchCancelledBeforeStarting
+                                            withAnimation(.linear(duration: 1)) {
+                                                vm.winnerIs = .matchCancelledBeforeStarting
+                                            }
                                         }
                                     }
                                 case .readyToStartMatch:
@@ -269,24 +273,21 @@ struct MainMenu: View {
                             showAbandonMatchAlert = false
                         }
                     },
-                    content: {
-                        AbandonMatchView()
-                    }
+                    content: { AbandonMatchView() }
                  )
                  : nil )
         
-        .overlay(
-            notImplementedYet ? CustomAlert.init(
-                isShown: $notImplementedYet,
-                message: "Sorry. This feature has not been implemented yet.",
-                button1Text: "OK",
-                button2Text: "",
-                alertWidth: 300,
-                alertHeight: 200,
-                action1: {},
-                action2: {}
-            ) : nil
-        )
+        .overlay(notImplementedYet ?
+                 CustomBoxWith1Button.init(
+                    button: "OK",
+                    action: {
+                        withAnimation(.linear(duration: 1)) {
+                            notImplementedYet = false
+                        }
+                    },
+                    content: { NotYetImplementedView() }
+                 )
+                 : nil)
         
         .fullScreenCover(isPresented: $vm.showNewScreen) {
             switch vm.screenToShow {

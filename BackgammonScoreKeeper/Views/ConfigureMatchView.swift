@@ -85,17 +85,6 @@ struct ConfigureMatchView: View {
                 .buttonStyle(.configureChangeButton(isChange: vm.namesAreValid))
                 .opacity(vm.isConfigurePlayersShown ? 0 : 1)
             }
-//            CustomAlert(
-//                isShown: $vm.showCustomAlert,
-////                newText: 
-//                message: "This is the message text",
-//                button1Text: "Cancel",
-//                button2Text: "Accept",
-//                previousText: "",
-//                alertWidth: 300,
-//                alertHeight: 200
-//            )
-                
             
             Group {
                 Picker("", selection: $vm.typeOfMatch) {

@@ -46,7 +46,6 @@ struct ShowDoublingOffer: View {
         .padding()
         .fixedSize(horizontal: true, vertical: false)
         .foregroundStyle(.white)
-
     }
 }
 

@@ -15,6 +15,8 @@
 		650998152DA3154A00C99305 /* ConfirmWishToMakeOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */; };
 		650998162DA3154A00C99305 /* ShowDoublingOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998132DA3154A00C99305 /* ShowDoublingOffer.swift */; };
 		650998182DA3281D00C99305 /* AbandonMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998172DA3281D00C99305 /* AbandonMatchView.swift */; };
+		6509981A2DA331D100C99305 /* CustomBoxWith1Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998192DA331D100C99305 /* CustomBoxWith1Button.swift */; };
+		6509981C2DA339E800C99305 /* NotYetImplementedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509981B2DA339E800C99305 /* NotYetImplementedView.swift */; };
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
 		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
 		657C9B052D98889C008B193C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B042D98889C008B193C /* AboutView.swift */; };
@@ -53,7 +55,6 @@
 		65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */; };
 		65B6A4CA2D89E08C002D97AB /* PaddedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4C92D89E08C002D97AB /* PaddedButtonStyle.swift */; };
 		65B6A4D22D8B49F1002D97AB /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D12D8B49F1002D97AB /* ToggleView.swift */; };
-		65B6A4D42D8B7104002D97AB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D32D8B7104002D97AB /* CustomAlert.swift */; };
 		65B6A4D62D8D8C3E002D97AB /* MovingBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D52D8D8C3E002D97AB /* MovingBorderView.swift */; };
 		65B6A4D82D8DEAB5002D97AB /* CustomDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D72D8DEAB5002D97AB /* CustomDialogue.swift */; };
 		65B6A4DA2D901CE2002D97AB /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D92D901CE2002D97AB /* Triangle.swift */; };
@@ -71,6 +72,8 @@
 		650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmWishToMakeOffer.swift; sourceTree = "<group>"; };
 		650998132DA3154A00C99305 /* ShowDoublingOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDoublingOffer.swift; sourceTree = "<group>"; };
 		650998172DA3281D00C99305 /* AbandonMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbandonMatchView.swift; sourceTree = "<group>"; };
+		650998192DA331D100C99305 /* CustomBoxWith1Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoxWith1Button.swift; sourceTree = "<group>"; };
+		6509981B2DA339E800C99305 /* NotYetImplementedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotYetImplementedView.swift; sourceTree = "<group>"; };
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
 		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
 		657C9B042D98889C008B193C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -111,7 +114,6 @@
 		65B3E9622D52C41900AB92FB /* BackgammonScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgammonScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B6A4C92D89E08C002D97AB /* PaddedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedButtonStyle.swift; sourceTree = "<group>"; };
 		65B6A4D12D8B49F1002D97AB /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
-		65B6A4D32D8B7104002D97AB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		65B6A4D52D8D8C3E002D97AB /* MovingBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingBorderView.swift; sourceTree = "<group>"; };
 		65B6A4D72D8DEAB5002D97AB /* CustomDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialogue.swift; sourceTree = "<group>"; };
 		65B6A4D92D901CE2002D97AB /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		650998142DA3154A00C99305 /* Custom Views for the CustomBox Views */ = {
 			isa = PBXGroup;
 			children = (
+				6509981B2DA339E800C99305 /* NotYetImplementedView.swift */,
 				650998172DA3281D00C99305 /* AbandonMatchView.swift */,
 				650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */,
 				650998132DA3154A00C99305 /* ShowDoublingOffer.swift */,
@@ -190,7 +193,6 @@
 		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */,
 				657C9AFF2D960C6E008B193C /* Borders */,
 				65B6A4DB2D90825C002D97AB /* Triangles */,
 				6580A26C2D8308A800E88963 /* ButtonStyles */,
@@ -201,7 +203,8 @@
 				6509980C2DA312C300C99305 /* PreferenceKeys */,
 				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
 				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
-				65B6A4D32D8B7104002D97AB /* CustomAlert.swift */,
+				650998192DA331D100C99305 /* CustomBoxWith1Button.swift */,
+				650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */,
 				65B6A4D72D8DEAB5002D97AB /* CustomDialogue.swift */,
 			);
 			path = Helpers;
@@ -371,7 +374,9 @@
 			files = (
 				65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */,
 				65B6A4E12D90B5D2002D97AB /* Glow.swift in Sources */,
+				6509981A2DA331D100C99305 /* CustomBoxWith1Button.swift in Sources */,
 				65AC05012D7E245C00D9F7A6 /* String.swift in Sources */,
+				6509981C2DA339E800C99305 /* NotYetImplementedView.swift in Sources */,
 				65AC05022D7E245C00D9F7A6 /* View.swift in Sources */,
 				65AC05032D7E245C00D9F7A6 /* Bindings.swift in Sources */,
 				65AC05042D7E245C00D9F7A6 /* EdgeBorder.swift in Sources */,
@@ -417,7 +422,6 @@
 				65AC05192D7E245C00D9F7A6 /* MainMenu.swift in Sources */,
 				6580A2722D83CD5300E88963 /* WelcomeView.swift in Sources */,
 				65AC051A2D7E245C00D9F7A6 /* TypeOfMatch.swift in Sources */,
-				65B6A4D42D8B7104002D97AB /* CustomAlert.swift in Sources */,
 				65AC051B2D7E245C00D9F7A6 /* ViewModel.swift in Sources */,
 				6580A2742D83D23900E88963 /* MainAppViewXXXXX.swift in Sources */,
 			);

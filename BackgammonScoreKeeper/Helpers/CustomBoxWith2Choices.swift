@@ -93,7 +93,6 @@ extension CustomBoxWith2Choices {
                             Text(button1Text)
                                 .font(.system(size: 20, weight: .bold, design: .default))
                                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
-                                .contentShape(UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20)))
                         }
                     )
                 UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20))
@@ -105,7 +104,6 @@ extension CustomBoxWith2Choices {
                             Text(button2Text)
                                 .font(.system(size: 20, weight: .bold, design: .default))
                                 .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
-                                .contentShape(UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20)))
                         }
                     )
             }
