@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65243DE72D9D93C2003C7764 /* AlertBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65243DE62D9D93C2003C7764 /* AlertBody.swift */; };
+		650998062DA310A300C99305 /* CustomBoxWith2Choices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */; };
+		6509980D2DA312C300C99305 /* DoublingCubeYPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998092DA312C300C99305 /* DoublingCubeYPosition.swift */; };
+		6509980E2DA312C300C99305 /* LargeBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509980A2DA312C300C99305 /* LargeBoxWidthKey.swift */; };
+		6509980F2DA312C300C99305 /* SmallBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */; };
+		650998112DA312DE00C99305 /* SizePreferanceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998102DA312DE00C99305 /* SizePreferanceKey.swift */; };
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
 		657C9B012D96422A008B193C /* ViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B002D96422A008B193C /* ViewA.swift */; };
 		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
@@ -23,8 +27,6 @@
 		65AC05042D7E245C00D9F7A6 /* EdgeBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DF2D7E245C00D9F7A6 /* EdgeBorder.swift */; };
 		65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */; };
 		65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */; };
-		65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */; };
-		65AC05092D7E245C00D9F7A6 /* SmallBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E42D7E245C00D9F7A6 /* SmallBoxWidthKey.swift */; };
 		65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */; };
 		65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */; };
 		65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */; };
@@ -47,7 +49,6 @@
 		65AC051D2D7E245C00D9F7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65AC04F62D7E245C00D9F7A6 /* Assets.xcassets */; };
 		65AC05202D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC051F2D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift */; };
 		65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */; };
-		65B6A4C82D89BD47002D97AB /* LargeBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4C72D89BD47002D97AB /* LargeBoxWidthKey.swift */; };
 		65B6A4CA2D89E08C002D97AB /* PaddedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4C92D89E08C002D97AB /* PaddedButtonStyle.swift */; };
 		65B6A4D22D8B49F1002D97AB /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D12D8B49F1002D97AB /* ToggleView.swift */; };
 		65B6A4D42D8B7104002D97AB /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4D32D8B7104002D97AB /* CustomAlert.swift */; };
@@ -60,7 +61,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		65243DE62D9D93C2003C7764 /* AlertBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBody.swift; sourceTree = "<group>"; };
+		650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoxWith2Choices.swift; sourceTree = "<group>"; };
+		650998092DA312C300C99305 /* DoublingCubeYPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublingCubeYPosition.swift; sourceTree = "<group>"; };
+		6509980A2DA312C300C99305 /* LargeBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeBoxWidthKey.swift; sourceTree = "<group>"; };
+		6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoxWidthKey.swift; sourceTree = "<group>"; };
+		650998102DA312DE00C99305 /* SizePreferanceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferanceKey.swift; sourceTree = "<group>"; };
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
 		657C9B002D96422A008B193C /* ViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewA.swift; sourceTree = "<group>"; };
 		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
@@ -77,8 +82,6 @@
 		65AC04DF2D7E245C00D9F7A6 /* EdgeBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBorder.swift; sourceTree = "<group>"; };
 		65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotation.swift; sourceTree = "<group>"; };
-		65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublingCubeYPosition.swift; sourceTree = "<group>"; };
-		65AC04E42D7E245C00D9F7A6 /* SmallBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoxWidthKey.swift; sourceTree = "<group>"; };
 		65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceOrientation.swift; sourceTree = "<group>"; };
 		65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberHorizontalPicker.swift; sourceTree = "<group>"; };
 		65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalWidthKey.swift; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		65AC051F2D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigureChangeStyle.swift; sourceTree = "<group>"; };
 		65AC05212D7E698A00D9F7A6 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
 		65B3E9622D52C41900AB92FB /* BackgammonScoreKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgammonScoreKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		65B6A4C72D89BD47002D97AB /* LargeBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeBoxWidthKey.swift; sourceTree = "<group>"; };
 		65B6A4C92D89E08C002D97AB /* PaddedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedButtonStyle.swift; sourceTree = "<group>"; };
 		65B6A4D12D8B49F1002D97AB /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
 		65B6A4D32D8B7104002D97AB /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 		65B6A4DE2D9092BC002D97AB /* VerticalText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalText.swift; sourceTree = "<group>"; };
 		65B6A4E02D90B5D2002D97AB /* Glow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Custom Views for the CustomBox Views";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		65B3E95F2D52C41900AB92FB /* Frameworks */ = {
@@ -125,6 +135,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6509980C2DA312C300C99305 /* PreferenceKeys */ = {
+			isa = PBXGroup;
+			children = (
+				65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */,
+				650998102DA312DE00C99305 /* SizePreferanceKey.swift */,
+				650998092DA312C300C99305 /* DoublingCubeYPosition.swift */,
+				6509980A2DA312C300C99305 /* LargeBoxWidthKey.swift */,
+				6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */,
+			);
+			path = PreferenceKeys;
+			sourceTree = "<group>";
+		};
 		657C9AFF2D960C6E008B193C /* Borders */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +184,7 @@
 		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */,
 				657C9AFF2D960C6E008B193C /* Borders */,
 				65B6A4DB2D90825C002D97AB /* Triangles */,
 				6580A26C2D8308A800E88963 /* ButtonStyles */,
@@ -169,12 +192,9 @@
 				6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */,
 				65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */,
 				65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */,
-				65AC04E32D7E245C00D9F7A6 /* DoublingCubeYPosition.swift */,
-				65AC04E42D7E245C00D9F7A6 /* SmallBoxWidthKey.swift */,
-				65B6A4C72D89BD47002D97AB /* LargeBoxWidthKey.swift */,
+				6509980C2DA312C300C99305 /* PreferenceKeys */,
 				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
 				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
-				65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */,
 				65B6A4D32D8B7104002D97AB /* CustomAlert.swift */,
 				65B6A4D72D8DEAB5002D97AB /* CustomDialogue.swift */,
 			);
@@ -233,6 +253,7 @@
 		65AC05232D7E6A8F00D9F7A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */,
 				657C9B002D96422A008B193C /* ViewA.swift */,
 				6580A2712D83CD5300E88963 /* WelcomeView.swift */,
 				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
@@ -240,7 +261,6 @@
 				65AC04F12D7E245C00D9F7A6 /* ConfigurePlayersView.swift */,
 				65AC04F02D7E245C00D9F7A6 /* MatchViews */,
 				657C9B042D98889C008B193C /* AboutView.swift */,
-				65243DE62D9D93C2003C7764 /* AlertBody.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +305,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */,
 			);
 			name = BackgammonScoreKeeper;
 			packageProductDependencies = (
@@ -358,13 +381,13 @@
 				65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */,
 				65B6A4D82D8DEAB5002D97AB /* CustomDialogue.swift in Sources */,
 				65B6A4D62D8D8C3E002D97AB /* MovingBorderView.swift in Sources */,
-				65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */,
 				6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */,
-				65243DE72D9D93C2003C7764 /* AlertBody.swift in Sources */,
 				657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */,
-				65B6A4C82D89BD47002D97AB /* LargeBoxWidthKey.swift in Sources */,
-				65AC05092D7E245C00D9F7A6 /* SmallBoxWidthKey.swift in Sources */,
+				6509980D2DA312C300C99305 /* DoublingCubeYPosition.swift in Sources */,
+				6509980E2DA312C300C99305 /* LargeBoxWidthKey.swift in Sources */,
+				6509980F2DA312C300C99305 /* SmallBoxWidthKey.swift in Sources */,
 				65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */,
+				650998112DA312DE00C99305 /* SizePreferanceKey.swift in Sources */,
 				657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */,
 				65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */,
 				65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */,
@@ -386,6 +409,7 @@
 				65B6A4DA2D901CE2002D97AB /* Triangle.swift in Sources */,
 				65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */,
 				65AC05182D7E245C00D9F7A6 /* DayHorizontalPicker.swift in Sources */,
+				650998062DA310A300C99305 /* CustomBoxWith2Choices.swift in Sources */,
 				65AC05192D7E245C00D9F7A6 /* MainMenu.swift in Sources */,
 				6580A2722D83CD5300E88963 /* WelcomeView.swift in Sources */,
 				65AC051A2D7E245C00D9F7A6 /* TypeOfMatch.swift in Sources */,

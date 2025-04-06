@@ -102,7 +102,7 @@ struct MatchView: View {
         .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet  && !vm.hideMatchViewAfterConfig ? DealWithTheDoublingCubeView() : nil)
 
         .overlay(vm.showDoublingCheck ?
-            Custom2ChoiceView.init(
+            CustomBoxWith2Choices.init(
                 buttonLeft: "Yes",
                 buttonRight: "No",
                 actionLeft: {
