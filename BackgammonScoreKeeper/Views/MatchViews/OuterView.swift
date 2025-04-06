@@ -75,7 +75,13 @@ struct OuterView: View {
                                 Color.theme.foreground
                     )
                     .padding(.bottom, 8)
-                    .clipped()
+                    .clipShape(UnevenRoundedRectangle(
+                        cornerRadii: .init(
+                            topLeading: 10,
+                            topTrailing: 10
+                        ),
+                        style: .continuous)
+                    )
                 
                 HStack(alignment: .bottom, spacing: 0) {
                     

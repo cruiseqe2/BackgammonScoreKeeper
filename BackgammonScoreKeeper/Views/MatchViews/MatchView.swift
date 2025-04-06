@@ -27,16 +27,13 @@ struct MatchView: View {
     var mainBodyOpacity: Double {
         if showConfiguration || vm.hideMatchViewAfterConfig {
             0.0
+        } else if vm.showDoublingCheck || vm.showDoublingOffer {
+            0.3
         } else {
-            if vm.showDoublingCheck || vm.showDoublingOffer {
-                0.3
-            } else {
-                1.0
-            }
+            1.0
         }
     }
-    
-    
+
     var body: some View {
         
         @Bindable var vm = vm
