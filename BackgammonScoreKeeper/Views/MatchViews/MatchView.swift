@@ -24,6 +24,19 @@ struct MatchView: View {
         }
     }
     
+    var mainBodyOpacity: Double {
+        if showConfiguration || vm.hideMatchViewAfterConfig {
+            0.0
+        } else {
+            if vm.showDoublingCheck || vm.showDoublingOffer {
+                0.3
+            } else {
+                1.0
+            }
+        }
+    }
+    
+    
     var body: some View {
         
         @Bindable var vm = vm
@@ -78,9 +91,9 @@ struct MatchView: View {
                 //            .offset(x: whichWayRound == .isLandscapeLeft ? 20 : -20)
             }
         }
-
-        .opacity(showConfiguration || vm.hideMatchViewAfterConfig ? 0 : 1.0)
-        .disabled(showConfiguration)
+        
+        .opacity(mainBodyOpacity)
+        .disabled(mainBodyOpacity != 1)
         
         .fullScreenCover(isPresented: $showConfiguration) {
             ConfigureMatchView()
@@ -91,11 +104,51 @@ struct MatchView: View {
         
         .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet  && !vm.hideMatchViewAfterConfig ? DealWithTheDoublingCubeView() : nil)
 
-//        .background(Color.theme.background)
-//        .ignoresSafeArea(.all)
-    }
+        .overlay(vm.showDoublingCheck ?
+            Custom2ChoiceView.init(
+                buttonLeft: "Yes",
+                buttonRight: "No",
+                actionLeft: {
+                    withAnimation(.linear(duration: 0.4)) {
+                        vm.showDoublingCheck = false
+                        vm.showDoublingOffer = true
+                    }
+                },
+                actionRight: {
+                    withAnimation(.linear(duration: 0.4)) {
+                        vm.showDoublingCheck = false
+                        vm.showDoublingOffer = false
+                    }
+                    vm.cubeOpacity = 1
+                },
+                content: {
+                    ConfirmWishToMakeOffer(offerMadeTo: vm.cubeOfferedTo)
+                }
+            )
+            : nil )
         
-    
+        .overlay(
+            vm.showDoublingOffer ? CustomAlert.init(
+                isShown: $vm.showDoublingOffer,
+                message: vm.offerMessage,
+                button1Text: "Accept",
+                button2Text: "Decline",
+                alertWidth: 300,
+                alertHeight: 200,
+                action1: {
+                    withAnimation(.linear(duration: 0.5)) {
+                        vm.doublingOfferAccpted(true)
+                    }
+                },
+                action2: {
+                    withAnimation(.linear(duration: 0.5)) {
+                        vm.doublingOfferAccpted(false)
+                    }
+                }
+            ) : nil
+        )
+        
+    }
 }
 
 struct ShowResultOverylay: View {
@@ -115,7 +168,7 @@ struct DealWithTheDoublingCubeView: View {
                 EmptyView()
             case .preCrawford, .postCrawford:
                 DoublingCubeView()
-                    .offset(y: vm.doublingCubeYPosition)
+                    .offset(x: vm.doublingCubeOffset, y:  vm.doublingCubeYPosition)
             case .isCrawford:
                 CrawfordGameView()
                     .offset(y: vm.doublingCubeYPosition)

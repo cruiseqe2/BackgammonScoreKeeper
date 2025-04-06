@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65243DE72D9D93C2003C7764 /* AlertBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65243DE62D9D93C2003C7764 /* AlertBody.swift */; };
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
 		657C9B012D96422A008B193C /* ViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B002D96422A008B193C /* ViewA.swift */; };
 		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65243DE62D9D93C2003C7764 /* AlertBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBody.swift; sourceTree = "<group>"; };
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
 		657C9B002D96422A008B193C /* ViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewA.swift; sourceTree = "<group>"; };
 		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				65AC04F12D7E245C00D9F7A6 /* ConfigurePlayersView.swift */,
 				65AC04F02D7E245C00D9F7A6 /* MatchViews */,
 				657C9B042D98889C008B193C /* AboutView.swift */,
+				65243DE62D9D93C2003C7764 /* AlertBody.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				65B6A4D62D8D8C3E002D97AB /* MovingBorderView.swift in Sources */,
 				65AC05082D7E245C00D9F7A6 /* DoublingCubeYPosition.swift in Sources */,
 				6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */,
+				65243DE72D9D93C2003C7764 /* AlertBody.swift in Sources */,
 				657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */,
 				65B6A4C82D89BD47002D97AB /* LargeBoxWidthKey.swift in Sources */,
 				65AC05092D7E245C00D9F7A6 /* SmallBoxWidthKey.swift in Sources */,

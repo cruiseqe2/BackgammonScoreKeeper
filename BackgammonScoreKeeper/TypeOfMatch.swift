@@ -108,3 +108,15 @@ enum BorderTypes {
     case mint
     case glowing
 }
+
+enum OfferCubeTo {
+    case owner
+    case opponent
+}
+
+enum WhoHasTheDoublingCube {
+    case owner
+    case opponent
+    case middle
+    
+}

@@ -21,7 +21,7 @@ class ViewModel {
     var ownerGames: Int = 0
     var ownerPoints: Int = 0
     
-    var firstOpponentName: String = ""
+    var firstOpponentName: String = "HHHH"
     var secondOpponentName: String = ""
     var opponentGames: Int = 0
     var opponentPoints: Int = 0
@@ -69,12 +69,34 @@ class ViewModel {
     
     var doublingCubeYPosition: CGFloat = 0.0
     var totalWidth: CGFloat = 0.0 /// NOT USED ANY MORE
+    var sizeOfContent: CGSize = .zero
     var smallBoxWidth: CGFloat = 0.0
     var largeBoxWidth: CGFloat = 0.0
     var middleColumnWidth: CGFloat = 0.0
     var doublingCubeTotalWidth: CGFloat {
         (((smallBoxWidth / 2 ) + 25) * 2) + middleColumnWidth
     }
+    
+    var showDoublingCheck: Bool = false
+    var showDoublingOffer: Bool = false
+    var cubeValue = 1
+    var offerMessage: String = ""
+    var cubeOfferedTo: OfferCubeTo = .owner  // this is just a random default to avoid init{}
+    
+    var cubeOpacity: Double = 1
+    var slideOpacity: Double = 1
+    var whoHasTheDoublingCube: WhoHasTheDoublingCube = .middle
+    var doublingCubeOffset: CGFloat {
+        switch whoHasTheDoublingCube {
+        case .owner:
+            return positionOfOwner == .leftHandSide ? -170.0 : 170.0
+        case .middle:
+            return 0.0
+        case .opponent:
+            return positionOfOwner == .leftHandSide ? 170.0 : -170.0
+        }
+    }
+    
     var winnerIs: WinnerIs? = .matchAbandoned
     
     /// Populate the Left and Right hand side of the main display
@@ -167,7 +189,39 @@ class ViewModel {
         ownerPoints = 0
         opponentPoints = 0
         winnerIs = .noWinnerYet
+        whoHasTheDoublingCube = .middle
+        cubeValue = 1
+        cubeOpacity = 1
+        slideOpacity = 1
         crawfordStatus = typeOfMatch == .points ? .preCrawford : .notPointsBased
+    }
+    
+    func startGame() {
+        whoHasTheDoublingCube = .middle
+        cubeValue = 1
+        cubeOpacity = 1
+        slideOpacity = 1
+    }
+    
+    func trigger(offerCubeTo: OfferCubeTo) -> Void {
+        offerMessage = offerCubeTo == .owner ? "Offering to the Owner" : "Offering to the Opposition"
+        cubeOfferedTo = offerCubeTo
+        withAnimation(.linear(duration: 0.4)) {
+            showDoublingCheck = true
+            showDoublingOffer = false
+        }
+    }
+    
+    func doublingOfferAccpted(_ accepted: Bool) {
+        if accepted {
+            whoHasTheDoublingCube = cubeOfferedTo == .owner ? .owner : .opponent
+            cubeOpacity = 1
+            withAnimation {
+                cubeValue *= 2
+            }
+        } else {
+            cubeOpacity = 1
+        }
     }
     
     func swapPositions() {
@@ -210,6 +264,7 @@ class ViewModel {
                 opponentGames += 1
             }
         }
+        startGame()
         
         checkForCrawford()
         checkForWinner()
