@@ -47,9 +47,13 @@ struct ConfirmWishToMakeOffer: View {
             }
         }
         .padding()
-        //        .frame(maxWidth: 500)
         .fixedSize(horizontal: true, vertical: false)
         .foregroundStyle(.white)
 
     }
+}
+
+#Preview(traits: .landscapeLeft) {
+    ConfirmWishToMakeOffer(offerMadeTo: .owner)
+        .environment(ViewModel())
 }

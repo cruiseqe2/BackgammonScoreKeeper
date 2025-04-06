@@ -12,8 +12,10 @@
 		6509980E2DA312C300C99305 /* LargeBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509980A2DA312C300C99305 /* LargeBoxWidthKey.swift */; };
 		6509980F2DA312C300C99305 /* SmallBoxWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */; };
 		650998112DA312DE00C99305 /* SizePreferanceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998102DA312DE00C99305 /* SizePreferanceKey.swift */; };
+		650998152DA3154A00C99305 /* ConfirmWishToMakeOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */; };
+		650998162DA3154A00C99305 /* ShowDoublingOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998132DA3154A00C99305 /* ShowDoublingOffer.swift */; };
+		650998182DA3281D00C99305 /* AbandonMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998172DA3281D00C99305 /* AbandonMatchView.swift */; };
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
-		657C9B012D96422A008B193C /* ViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B002D96422A008B193C /* ViewA.swift */; };
 		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
 		657C9B052D98889C008B193C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B042D98889C008B193C /* AboutView.swift */; };
 		6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26D2D83095000E88963 /* NewMatchButton.swift */; };
@@ -66,8 +68,10 @@
 		6509980A2DA312C300C99305 /* LargeBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeBoxWidthKey.swift; sourceTree = "<group>"; };
 		6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBoxWidthKey.swift; sourceTree = "<group>"; };
 		650998102DA312DE00C99305 /* SizePreferanceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferanceKey.swift; sourceTree = "<group>"; };
+		650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmWishToMakeOffer.swift; sourceTree = "<group>"; };
+		650998132DA3154A00C99305 /* ShowDoublingOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDoublingOffer.swift; sourceTree = "<group>"; };
+		650998172DA3281D00C99305 /* AbandonMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbandonMatchView.swift; sourceTree = "<group>"; };
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
-		657C9B002D96422A008B193C /* ViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewA.swift; sourceTree = "<group>"; };
 		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
 		657C9B042D98889C008B193C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		6580A26D2D83095000E88963 /* NewMatchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatchButton.swift; sourceTree = "<group>"; };
@@ -116,14 +120,6 @@
 		65B6A4E02D90B5D2002D97AB /* Glow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Custom Views for the CustomBox Views";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		65B3E95F2D52C41900AB92FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -145,6 +141,16 @@
 				6509980B2DA312C300C99305 /* SmallBoxWidthKey.swift */,
 			);
 			path = PreferenceKeys;
+			sourceTree = "<group>";
+		};
+		650998142DA3154A00C99305 /* Custom Views for the CustomBox Views */ = {
+			isa = PBXGroup;
+			children = (
+				650998172DA3281D00C99305 /* AbandonMatchView.swift */,
+				650998122DA3154A00C99305 /* ConfirmWishToMakeOffer.swift */,
+				650998132DA3154A00C99305 /* ShowDoublingOffer.swift */,
+			);
+			path = "Custom Views for the CustomBox Views";
 			sourceTree = "<group>";
 		};
 		657C9AFF2D960C6E008B193C /* Borders */ = {
@@ -253,8 +259,7 @@
 		65AC05232D7E6A8F00D9F7A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */,
-				657C9B002D96422A008B193C /* ViewA.swift */,
+				650998142DA3154A00C99305 /* Custom Views for the CustomBox Views */,
 				6580A2712D83CD5300E88963 /* WelcomeView.swift */,
 				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
 				65AC04F22D7E245C00D9F7A6 /* ConfigureMatchView.swift */,
@@ -305,9 +310,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				650998072DA311AA00C99305 /* Custom Views for the CustomBox Views */,
 			);
 			name = BackgammonScoreKeeper;
 			packageProductDependencies = (
@@ -367,7 +369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657C9B012D96422A008B193C /* ViewA.swift in Sources */,
 				65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */,
 				65B6A4E12D90B5D2002D97AB /* Glow.swift in Sources */,
 				65AC05012D7E245C00D9F7A6 /* String.swift in Sources */,
@@ -379,6 +380,8 @@
 				65B6A4DF2D9092BC002D97AB /* VerticalText.swift in Sources */,
 				65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */,
 				65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */,
+				650998152DA3154A00C99305 /* ConfirmWishToMakeOffer.swift in Sources */,
+				650998162DA3154A00C99305 /* ShowDoublingOffer.swift in Sources */,
 				65B6A4D82D8DEAB5002D97AB /* CustomDialogue.swift in Sources */,
 				65B6A4D62D8D8C3E002D97AB /* MovingBorderView.swift in Sources */,
 				6580A26E2D83095000E88963 /* NewMatchButton.swift in Sources */,
@@ -394,6 +397,7 @@
 				65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */,
 				65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */,
 				65AC050F2D7E245C00D9F7A6 /* MatchView.swift in Sources */,
+				650998182DA3281D00C99305 /* AbandonMatchView.swift in Sources */,
 				65B6A4DD2D908283002D97AB /* TriangleRow.swift in Sources */,
 				65B6A4D22D8B49F1002D97AB /* ToggleView.swift in Sources */,
 				657C9B052D98889C008B193C /* AboutView.swift in Sources */,

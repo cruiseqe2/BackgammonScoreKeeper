@@ -204,7 +204,6 @@ class ViewModel {
     }
     
     func trigger(offerCubeTo: OfferCubeTo) -> Void {
-        offerMessage = offerCubeTo == .owner ? "Offering to the Owner" : "Offering to the Opposition"
         cubeOfferedTo = offerCubeTo
         withAnimation(.linear(duration: 0.4)) {
             showDoublingCheck = true
@@ -213,6 +212,7 @@ class ViewModel {
     }
     
     func doublingOfferAccpted(_ accepted: Bool) {
+        showDoublingOffer = false
         if accepted {
             whoHasTheDoublingCube = cubeOfferedTo == .owner ? .owner : .opponent
             cubeOpacity = 1

@@ -11,7 +11,7 @@ struct MatchView: View {
     @Environment(ViewModel.self) var vm
     @Environment(\.dismiss) var dismiss
     @State var showConfiguration: Bool
-
+    
     
     var whichWayRound: WhichWayRound {
         switch vm.deviceOrientation {
@@ -33,7 +33,7 @@ struct MatchView: View {
             1.0
         }
     }
-
+    
     var body: some View {
         
         @Bindable var vm = vm
@@ -45,28 +45,28 @@ struct MatchView: View {
             
             VStack(spacing: 0) {
                 
-                    HStack(alignment: .firstTextBaseline) {
-                        Text("BACKGAMMON")
-                            .foregroundStyle(Color.theme.foreground)
-                            .font(.system(size: 36, weight: .black))
-                            .kerning(8)
-                        Text("Score Keeper")
-                            .foregroundStyle(Color.theme.foreground)
-                            .font(.system(size: 24, weight: .black))
-                            .kerning(5)
-                        
-                        Spacer()
-                        
-                        Button {
-                            vm.screenToShow = .none
-                            dismiss()
-                        } label: {
-                            Image(systemName: "line.3.horizontal")
-                                .font(.system(size: 30))
-                        }
+                HStack(alignment: .firstTextBaseline) {
+                    Text("BACKGAMMON")
+                        .foregroundStyle(Color.theme.foreground)
+                        .font(.system(size: 36, weight: .black))
+                        .kerning(8)
+                    Text("Score Keeper")
+                        .foregroundStyle(Color.theme.foreground)
+                        .font(.system(size: 24, weight: .black))
+                        .kerning(5)
+                    
+                    Spacer()
+                    
+                    Button {
+                        vm.screenToShow = .none
+                        dismiss()
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.system(size: 30))
                     }
-                    .padding(.top, 2)
-                    .padding(.bottom, 5)
+                }
+                .padding(.top, 2)
+                .padding(.bottom, 5)
                 
                 Spacer()
                 
@@ -100,50 +100,49 @@ struct MatchView: View {
         .opacity(showConfiguration || vm.hideMatchViewAfterConfig ? 0 : 1.0)
         
         .overlay(vm.useDoublingCube && vm.winnerIs == .noWinnerYet  && !vm.hideMatchViewAfterConfig ? DealWithTheDoublingCubeView() : nil)
-
-        .overlay(vm.showDoublingCheck ?
-            CustomBoxWith2Choices.init(
-                buttonLeft: "Yes",
-                buttonRight: "No",
-                actionLeft: {
-                    withAnimation(.linear(duration: 0.4)) {
-                        vm.showDoublingCheck = false
-                        vm.showDoublingOffer = true
-                    }
-                },
-                actionRight: {
-                    withAnimation(.linear(duration: 0.4)) {
-                        vm.showDoublingCheck = false
-                        vm.showDoublingOffer = false
-                    }
-                    vm.cubeOpacity = 1
-                },
-                content: {
-                    ConfirmWishToMakeOffer(offerMadeTo: vm.cubeOfferedTo)
-                }
-            )
-            : nil )
         
-        .overlay(
-            vm.showDoublingOffer ? CustomAlert.init(
-                isShown: $vm.showDoublingOffer,
-                message: vm.offerMessage,
-                button1Text: "Accept",
-                button2Text: "Decline",
-                alertWidth: 300,
-                alertHeight: 200,
-                action1: {
-                    withAnimation(.linear(duration: 0.5)) {
-                        vm.doublingOfferAccpted(true)
+        .overlay(vm.showDoublingCheck ?
+                 CustomBoxWith2Choices.init(
+                    buttonLeft: "Yes",
+                    buttonRight: "No",
+                    actionLeft: {
+                        withAnimation(.linear(duration: 0.4)) {
+                            vm.showDoublingCheck = false
+                            vm.showDoublingOffer = true
+                        }
+                    },
+                    actionRight: {
+                        withAnimation(.linear(duration: 0.4)) {
+                            vm.showDoublingCheck = false
+                            vm.showDoublingOffer = false
+                        }
+                        vm.cubeOpacity = 1
+                    },
+                    content: {
+                        ConfirmWishToMakeOffer(offerMadeTo: vm.cubeOfferedTo)
                     }
-                },
-                action2: {
-                    withAnimation(.linear(duration: 0.5)) {
-                        vm.doublingOfferAccpted(false)
+                 )
+                 : nil )
+        
+        .overlay(vm.showDoublingOffer ?
+                 CustomBoxWith2Choices.init(
+                    buttonLeft: "Accept",
+                    buttonRight: "Reject",
+                    actionLeft: {
+                        withAnimation(.linear(duration: 0.5)) {
+                            vm.doublingOfferAccpted(true)
+                        }
+                    },
+                    actionRight: {
+                        withAnimation(.linear(duration: 0.5)) {
+                            vm.doublingOfferAccpted(false)
+                        }
+                    },
+                    content: {
+                        ShowDoublingOffer(offerMadeTo: vm.cubeOfferedTo)
                     }
-                }
-            ) : nil
-        )
+                 )
+                 : nil )
         
     }
 }

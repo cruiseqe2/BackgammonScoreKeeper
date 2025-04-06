@@ -52,6 +52,16 @@ struct MainMenu: View {
         }
     }
     
+    private var bottomButtonOpacity: Double {
+        if vm.firstOpponentName.isEmpty {
+            0
+        } else if showAbandonMatchAlert || notImplementedYet {
+            0.7
+        } else {
+            1
+        }
+    }
+    
     private var matchUnderway: Bool {
         vm.ownerPoints > 0 || vm.opponentPoints > 0      ||
         vm .opponentPoints > 0 || vm.ownerGames > 0
@@ -89,7 +99,7 @@ struct MainMenu: View {
                                         vm.winnerIs = .socialMatchesStopped
                                     } else {
                                         if matchUnderway {
-                                            withAnimation {
+                                            withAnimation(.linear(duration: 1)) {
                                                 showAbandonMatchAlert.toggle()
                                             }
                                         } else {  // Match not started yet!
@@ -181,7 +191,8 @@ struct MainMenu: View {
                             }
                         }
                         .gridCellColumns(2)
-                        .opacity(vm.firstOpponentName.isNotEmpty ? 1 : 0)
+                        .opacity(bottomButtonOpacity)
+//                        .opacity(vm.firstOpponentName.isNotEmpty ? 1 : 0)
                         .disabled(vm.firstOpponentName.isEmpty)
                     }
                 }
@@ -222,7 +233,7 @@ struct MainMenu: View {
             .frame(width: 350)
             .disabled(notImplementedYet || showAbandonMatchAlert)
             //        .opacity(notImplementedYet ? 0 : 1)
-            .opacity(notImplementedYet ? 0.2 : 1)
+            .opacity(notImplementedYet || showAbandonMatchAlert ? 0.2 : 1)
             
             Spacer()
             
@@ -243,20 +254,26 @@ struct MainMenu: View {
         .overlay(VerticalText(string: "SCORE KEEPER", size: 13)
             .offset(x: verticalTextOffset, y: 20))
         
-        .overlay(
-            showAbandonMatchAlert ? CustomAlert.init(
-                isShown: $showAbandonMatchAlert,
-                message: "Are you sure you want to abandon this match?",
-                button1Text: "Yes",
-                button2Text: "No",
-                alertWidth: 300,
-                alertHeight: 200,
-                action1: {
-                    vm.winnerIs = .matchAbandoned
-                },
-                action2: {}
-            ) : nil
-        )
+        .overlay(showAbandonMatchAlert ?
+                 CustomBoxWith2Choices.init(
+                    buttonLeft: "Yes",
+                    buttonRight: "No",
+                    actionLeft: {
+                        vm.winnerIs = .matchAbandoned
+                        withAnimation(.linear(duration: 1)) {
+                            showAbandonMatchAlert = false
+                        }
+                    },
+                    actionRight: {
+                        withAnimation(.linear(duration: 1)) {
+                            showAbandonMatchAlert = false
+                        }
+                    },
+                    content: {
+                        AbandonMatchView()
+                    }
+                 )
+                 : nil )
         
         .overlay(
             notImplementedYet ? CustomAlert.init(
@@ -292,11 +309,6 @@ struct MainMenu: View {
     }
 }
 
-#Preview(traits: .landscapeLeft) {
-    MainMenu()
-        .environment(ViewModel())
-}
-
 struct DebugView: View {
     @State var text: String
     var body: some View {
@@ -304,30 +316,9 @@ struct DebugView: View {
     }
 }
 
+#Preview(traits: .landscapeLeft) {
+    MainMenu()
+        .environment(ViewModel())
+}
 
 
-
-//struct TestView: View {
-//    @State private var opacity: Double = 0.0
-//    
-//    var body: some View {
-//        VStack {
-//            MainMenuButton(buttonTitle: "Adjust Scores", isDisabled: true) {}
-//                .opacity(opacity)
-//            
-//            
-//            
-//            Text("Hello, SwiftUI!")
-//                .opacity(opacity)
-//                .font(.largeTitle)
-//                .padding()
-//            
-//            
-//            Button(opacity == 0.0 ? "Fade In" : "Fade Out") {
-//                withAnimation(.easeInOut(duration: 2)) {
-//                    opacity = opacity == 0.0 ? 1.0 : 0.0
-//                }
-//            }
-//        }
-//    }
-//}

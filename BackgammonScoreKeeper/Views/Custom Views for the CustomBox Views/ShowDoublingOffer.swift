@@ -49,3 +49,8 @@ struct ShowDoublingOffer: View {
 
     }
 }
+
+#Preview(traits: .landscapeLeft) {
+    ShowDoublingOffer(offerMadeTo: .owner)
+        .environment(ViewModel())
+}
