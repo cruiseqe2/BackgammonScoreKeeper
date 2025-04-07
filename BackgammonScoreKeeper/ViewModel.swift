@@ -264,14 +264,18 @@ class ViewModel {
     
     func WinningButtonTapped(side: Side, value: Int) {
         
+        var newValue: Int {
+            value * cubeValue
+        }
+        
         if side == .owner {
             withAnimation {
-                ownerPoints += value
+                ownerPoints += newValue
                 ownerGames += 1
             }
         } else {
             withAnimation {
-                opponentPoints += value
+                opponentPoints += newValue
                 opponentGames += 1
             }
         }
