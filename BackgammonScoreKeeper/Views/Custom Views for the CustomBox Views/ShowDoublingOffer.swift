@@ -12,6 +12,26 @@ struct ShowDoublingOffer: View {
     
     var offerMadeTo: OfferCubeTo
     
+    var lhsBox: Int {
+        if offerMadeTo == .owner {
+            vm.positionOfOwner == .leftHandSide ? vm.cubeValue * 2 : vm.cubeValue
+        } else {   // offer made to opponent}
+            vm.positionOfOwner == .leftHandSide ? vm.cubeValue : vm.cubeValue * 2
+        }
+    }
+    
+    var rhsBox: Int {
+        if offerMadeTo == .owner {
+            vm.positionOfOwner == .rightHandSide ? vm.cubeValue * 2 : vm.cubeValue
+        } else {   // offer made to opponent}
+            vm.positionOfOwner == .rightHandSide ? vm.cubeValue : vm.cubeValue * 2
+        }
+    }
+    
+    var angleOfArrow: Double {
+        rhsBox > lhsBox ? 0 : 180
+    }
+    
     var body: some View {
         Group {
             VStack {
@@ -29,16 +49,36 @@ struct ShowDoublingOffer: View {
                 Text(offerMadeTo == .owner ? vm.opponentDisplayName : vm.ownerDisplayName)
                     .font(.title)
                 Spacer()
-                    .frame(height: 15)
-                Text("If you do accept it, the new value\nof the Doubling Cube change to")
-                    .multilineTextAlignment(.center)
-                    .font(.caption)
-                    .foregroundStyle(.yellow)
-                Spacer()
-                    .frame(height: 8)
-                Text("\(vm.cubeValue * 2)")
-                    .font(.title)
-                    .foregroundStyle(.yellow)
+                    .frame(height: 20)
+                Group {
+                    HStack {
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .fill(.clear)
+                            .strokeBorder(Color.yellow, lineWidth: 2)
+                            .frame(width: 50, height: 50)
+                            .overlay(
+                                Text("\(lhsBox)")
+                                .font(.title)
+                                .foregroundStyle(.yellow)
+                            )
+                            .opacity(lhsBox == 1 ? 0 : 1)
+                        Spacer()
+                            .frame(width: 150)
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .fill(.clear)
+                            .strokeBorder(Color.yellow, lineWidth: 2)
+                            .frame(width: 50, height: 50)
+                            .overlay(
+                                Text("\(rhsBox)")
+                                .font(.title)
+                                .foregroundStyle(.yellow)
+                            )
+                            .opacity(rhsBox == 1 ? 0 : 1)
+                    }
+                    .overlay(AnimatedArrow()
+                        .rotationEffect(.degrees(angleOfArrow)))
+                    .frame(alignment: .leading)
+                }
                 Spacer()
                     .frame(height: 5)
             }
