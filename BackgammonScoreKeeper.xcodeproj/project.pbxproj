@@ -195,15 +195,16 @@
 		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				650998212DA4423A00C99305 /* AnimatedArrow.swift */,
 				657C9AFF2D960C6E008B193C /* Borders */,
 				65B6A4DB2D90825C002D97AB /* Triangles */,
 				6580A26C2D8308A800E88963 /* ButtonStyles */,
+				6509980C2DA312C300C99305 /* PreferenceKeys */,
+				650998212DA4423A00C99305 /* AnimatedArrow.swift */,
+				65B6A4DE2D9092BC002D97AB /* VerticalText.swift */,
 				65AC04DE2D7E245C00D9F7A6 /* Bindings.swift */,
 				6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */,
 				65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */,
 				65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */,
-				6509980C2DA312C300C99305 /* PreferenceKeys */,
 				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
 				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
 				650998192DA331D100C99305 /* CustomBoxWith1Button.swift */,
@@ -297,7 +298,6 @@
 			children = (
 				65B6A4D92D901CE2002D97AB /* Triangle.swift */,
 				65B6A4DC2D908283002D97AB /* TriangleRow.swift */,
-				65B6A4DE2D9092BC002D97AB /* VerticalText.swift */,
 			);
 			path = Triangles;
 			sourceTree = "<group>";

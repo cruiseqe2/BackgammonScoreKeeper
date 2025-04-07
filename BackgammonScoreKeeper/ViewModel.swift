@@ -219,6 +219,18 @@ class ViewModel {
                 cubeValue *= 2
             }
         } else {
+            if cubeOfferedTo == .owner {
+                withAnimation(.linear(duration: 0.4)) {
+                    opponentPoints += cubeValue
+                    opponentGames += 1
+                }
+            } else {
+                withAnimation(.linear(duration: 0.4)) {
+                    ownerPoints += cubeValue
+                    ownerGames += 1
+                }
+            }
+            startGame()
             cubeOpacity = 1
         }
     }
