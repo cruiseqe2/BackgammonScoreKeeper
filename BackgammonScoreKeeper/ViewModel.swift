@@ -88,11 +88,11 @@ class ViewModel {
     var doublingCubeOffset: CGFloat {
         switch whoHasTheDoublingCube {
         case .owner:
-            return positionOfOwner == .leftHandSide ? -170.0 : 170.0
+            return positionOfOwner == .leftHandSide ? -doublingCubeTotalWidth / 2.0  : doublingCubeTotalWidth / 2.0
         case .middle:
             return 0.0
         case .opponent:
-            return positionOfOwner == .leftHandSide ? 170.0 : -170.0
+            return positionOfOwner == .leftHandSide ? doublingCubeTotalWidth / 2.0 : -doublingCubeTotalWidth / 2.0
         }
     }
     
