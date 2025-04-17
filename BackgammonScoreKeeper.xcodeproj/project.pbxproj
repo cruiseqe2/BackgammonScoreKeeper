@@ -18,6 +18,7 @@
 		6509981A2DA331D100C99305 /* CustomBoxWith1Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998192DA331D100C99305 /* CustomBoxWith1Button.swift */; };
 		6509981C2DA339E800C99305 /* NotYetImplementedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6509981B2DA339E800C99305 /* NotYetImplementedView.swift */; };
 		650998222DA4423A00C99305 /* AnimatedArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998212DA4423A00C99305 /* AnimatedArrow.swift */; };
+		650998242DA45DDD00C99305 /* ChooseANumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650998232DA45DDD00C99305 /* ChooseANumberView.swift */; };
 		657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */; };
 		657C9B032D971C01008B193C /* ResultOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B022D971C01008B193C /* ResultOverlay.swift */; };
 		657C9B052D98889C008B193C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C9B042D98889C008B193C /* AboutView.swift */; };
@@ -25,6 +26,8 @@
 		6580A2702D83BB9E00E88963 /* NameTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */; };
 		6580A2722D83CD5300E88963 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A2712D83CD5300E88963 /* WelcomeView.swift */; };
 		6580A2742D83D23900E88963 /* MainAppViewXXXXX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580A2732D83D23900E88963 /* MainAppViewXXXXX.swift */; };
+		658AF2C62DA841A50009A6A3 /* OnFirstAppearModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658AF2C52DA841A50009A6A3 /* OnFirstAppearModifier.swift */; };
+		658AF2CC2DABCA0B0009A6A3 /* StrippedBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658AF2CB2DABCA0B0009A6A3 /* StrippedBack.swift */; };
 		65AC05002D7E245C00D9F7A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DA2D7E245C00D9F7A6 /* Color.swift */; };
 		65AC05012D7E245C00D9F7A6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DB2D7E245C00D9F7A6 /* String.swift */; };
 		65AC05022D7E245C00D9F7A6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04DC2D7E245C00D9F7A6 /* View.swift */; };
@@ -33,7 +36,6 @@
 		65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */; };
 		65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */; };
 		65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */; };
-		65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */; };
 		65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */; };
 		65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */; };
 		65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */; };
@@ -76,6 +78,7 @@
 		650998192DA331D100C99305 /* CustomBoxWith1Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoxWith1Button.swift; sourceTree = "<group>"; };
 		6509981B2DA339E800C99305 /* NotYetImplementedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotYetImplementedView.swift; sourceTree = "<group>"; };
 		650998212DA4423A00C99305 /* AnimatedArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedArrow.swift; sourceTree = "<group>"; };
+		650998232DA45DDD00C99305 /* ChooseANumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseANumberView.swift; sourceTree = "<group>"; };
 		657C9AFD2D95DCAC008B193C /* ApplyBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBorder.swift; sourceTree = "<group>"; };
 		657C9B022D971C01008B193C /* ResultOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverlay.swift; sourceTree = "<group>"; };
 		657C9B042D98889C008B193C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		6580A26F2D83BB9E00E88963 /* NameTextfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTextfieldView.swift; sourceTree = "<group>"; };
 		6580A2712D83CD5300E88963 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		6580A2732D83D23900E88963 /* MainAppViewXXXXX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewXXXXX.swift; sourceTree = "<group>"; };
+		658AF2C52DA841A50009A6A3 /* OnFirstAppearModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnFirstAppearModifier.swift; sourceTree = "<group>"; };
+		658AF2CB2DABCA0B0009A6A3 /* StrippedBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrippedBack.swift; sourceTree = "<group>"; };
 		65AC04D92D7E245C00D9F7A6 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		65AC04DA2D7E245C00D9F7A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		65AC04DB2D7E245C00D9F7A6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -92,7 +97,6 @@
 		65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotation.swift; sourceTree = "<group>"; };
 		65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceOrientation.swift; sourceTree = "<group>"; };
-		65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberHorizontalPicker.swift; sourceTree = "<group>"; };
 		65AC04E72D7E245C00D9F7A6 /* TotalWidthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalWidthKey.swift; sourceTree = "<group>"; };
 		65AC04E92D7E245C00D9F7A6 /* CrawfordGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawfordGameView.swift; sourceTree = "<group>"; };
 		65AC04EA2D7E245C00D9F7A6 /* DoublingCubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublingCubeView.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		65AC04E82D7E245C00D9F7A6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				658AF2C52DA841A50009A6A3 /* OnFirstAppearModifier.swift */,
 				657C9AFF2D960C6E008B193C /* Borders */,
 				65B6A4DB2D90825C002D97AB /* Triangles */,
 				6580A26C2D8308A800E88963 /* ButtonStyles */,
@@ -206,10 +211,10 @@
 				65AC04E12D7E245C00D9F7A6 /* ClearButton.swift */,
 				65AC04E22D7E245C00D9F7A6 /* DeviceRotation.swift */,
 				65AC04E52D7E245C00D9F7A6 /* getDeviceOrientation.swift */,
-				65AC04E62D7E245C00D9F7A6 /* NumberHorizontalPicker.swift */,
 				650998192DA331D100C99305 /* CustomBoxWith1Button.swift */,
 				650998052DA310A300C99305 /* CustomBoxWith2Choices.swift */,
 				65B6A4D72D8DEAB5002D97AB /* CustomDialogue.swift */,
+				650998232DA45DDD00C99305 /* ChooseANumberView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				65AC04F12D7E245C00D9F7A6 /* ConfigurePlayersView.swift */,
 				65AC04F02D7E245C00D9F7A6 /* MatchViews */,
 				657C9B042D98889C008B193C /* AboutView.swift */,
+				658AF2CB2DABCA0B0009A6A3 /* StrippedBack.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +391,7 @@
 				65AC05042D7E245C00D9F7A6 /* EdgeBorder.swift in Sources */,
 				6580A2702D83BB9E00E88963 /* NameTextfieldView.swift in Sources */,
 				65AC05222D7E698A00D9F7A6 /* MainMenuButton.swift in Sources */,
+				658AF2C62DA841A50009A6A3 /* OnFirstAppearModifier.swift in Sources */,
 				65B6A4DF2D9092BC002D97AB /* VerticalText.swift in Sources */,
 				65AC05062D7E245C00D9F7A6 /* ClearButton.swift in Sources */,
 				65AC05072D7E245C00D9F7A6 /* DeviceRotation.swift in Sources */,
@@ -401,13 +408,13 @@
 				65AC050A2D7E245C00D9F7A6 /* getDeviceOrientation.swift in Sources */,
 				650998112DA312DE00C99305 /* SizePreferanceKey.swift in Sources */,
 				657C9AFE2D95DCAC008B193C /* ApplyBorder.swift in Sources */,
-				65AC050B2D7E245C00D9F7A6 /* NumberHorizontalPicker.swift in Sources */,
 				65AC050C2D7E245C00D9F7A6 /* TotalWidthKey.swift in Sources */,
 				65AC050D2D7E245C00D9F7A6 /* CrawfordGameView.swift in Sources */,
 				65AC050E2D7E245C00D9F7A6 /* DoublingCubeView.swift in Sources */,
 				65AC050F2D7E245C00D9F7A6 /* MatchView.swift in Sources */,
 				650998182DA3281D00C99305 /* AbandonMatchView.swift in Sources */,
 				65B6A4DD2D908283002D97AB /* TriangleRow.swift in Sources */,
+				650998242DA45DDD00C99305 /* ChooseANumberView.swift in Sources */,
 				65B6A4D22D8B49F1002D97AB /* ToggleView.swift in Sources */,
 				657C9B052D98889C008B193C /* AboutView.swift in Sources */,
 				65AC05202D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift in Sources */,
@@ -420,6 +427,7 @@
 				65AC05152D7E245C00D9F7A6 /* BackgammonScoreKeeperApp.swift in Sources */,
 				65AC05162D7E245C00D9F7A6 /* ContentViewXXXXX.swift in Sources */,
 				65B6A4DA2D901CE2002D97AB /* Triangle.swift in Sources */,
+				658AF2CC2DABCA0B0009A6A3 /* StrippedBack.swift in Sources */,
 				65AC05172D7E245C00D9F7A6 /* ControllerView.swift in Sources */,
 				65AC05182D7E245C00D9F7A6 /* DayHorizontalPicker.swift in Sources */,
 				650998062DA310A300C99305 /* CustomBoxWith2Choices.swift in Sources */,
@@ -559,7 +567,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BackgammonScoreKeeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 93V8HP98P5;
 				ENABLE_PREVIEWS = YES;
@@ -574,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = MarkOelbaum.BackgammonScoreKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -593,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BackgammonScoreKeeper/Preview Content\"";
 				DEVELOPMENT_TEAM = 93V8HP98P5;
 				ENABLE_PREVIEWS = YES;
@@ -608,7 +616,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.0;
+				MARKETING_VERSION = 0.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = MarkOelbaum.BackgammonScoreKeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

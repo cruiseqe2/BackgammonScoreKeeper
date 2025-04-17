@@ -29,10 +29,10 @@ enum AppPhase {
     case mainGamePlay
 }
 
-enum TypeOfMatch: CaseIterable {
-    case social
-    case games
-    case points
+enum TypeOfMatch: String, RawRepresentable, CaseIterable {
+    case social   = "Social"
+    case games    = "Games"
+    case points   = "Points"
 }
 
 enum PositionOfOwner {
@@ -40,10 +40,10 @@ enum PositionOfOwner {
     case rightHandSide
 }
 
-enum FinishWhen {
-    case bestOf
-    case firstTo
-    case social
+enum FinishWhen: String, RawRepresentable, CaseIterable {
+    case bestOf   = "Best Of"
+    case firstTo  = "First To"
+    case social   = "Social"
 }
 
 enum WhichWayRound {

@@ -158,13 +158,14 @@ struct SocialColumn: View {
             }
             Spacer()
         }
-//        .border(.mint, width: 1)
+        //        .border(.mint, width: 1)
     }
 }
 
 struct GamesColumn: View {
     @Environment(ViewModel.self) var vm
     @State private var number: Int = 1
+    
     var body: some View {
         @Bindable var vm = vm
         VStack(alignment: .leading, spacing: 10) {
@@ -192,21 +193,43 @@ struct GamesColumn: View {
             .fixedSize(horizontal: false, vertical: true)
             
             if vm.typeOfMatch == .games {
-                Picker("", selection: $vm.finishWhen) {
-                    Text("Best Of").tag(FinishWhen .bestOf)
-                    Text("First To").tag(FinishWhen .firstTo)
-                }
-                .pickerStyle(.segmented)
                 
-                NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: vm.numbersToShow, numberToDisplay: 5)
-                    .accentColor(.green)
-                    .opacity(vm.typeOfMatch == .games ? 1 : 0)
+                VStack(spacing: 0) {
+                    
+                    Picker("", selection: $vm.finishWhen) {
+                        Text("Best Of").tag(FinishWhen.bestOf)
+                        Text("First To").tag(FinishWhen.firstTo)
+                    }
+                    .pickerStyle(.segmented)
+                    
+                    Group {
+                        if vm.typeOfMatch == .games {
+                            if vm.finishWhen == .bestOf {
+                                ChooseANumberView(
+                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                    rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                    size: 31,
+                                    show: 7
+                                )
+                            } else {   // .firstTo
+                                ChooseANumberView(
+                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                    rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                    size: 31,
+                                    show: 7
+                                )
+                            }
+                        }
+                    }
+                    .offset(y: 10)
+                }
             }
             
             Spacer()
         }
     }
 }
+
 
 struct PointsColumn: View {
     @Environment(ViewModel.self) var vm
@@ -228,14 +251,27 @@ struct PointsColumn: View {
                 ToggleView(isOn: $vm.showSmallBoxIfPointsBased, height: 35)
             }
             
+            Spacer()
+                .frame(height: 1)
+            
             if vm.typeOfMatch == .points {
-                HStack {
-                    Text("First to: ")
-                    NumberHorizontalPicker(selection: $vm.numberOfGamesOrPoints ?? 0, in: Array(1...50), validGamesOrPoints: .all, numberToDisplay: 4)
-                        .accentColor(.green)
+                VStack {
+                    HStack(spacing: 0) {
+                        Text("First to: ")
+                        Spacer()
+                        
+                        if vm.typeOfMatch == .points {
+                            ChooseANumberView(
+                                numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                size: 31,
+                                show: 5
+                            )
+                        }
+                    }
                 }
             }
-                      
+            
             Spacer()
         }
     }

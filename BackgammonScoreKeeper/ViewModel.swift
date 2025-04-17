@@ -40,15 +40,30 @@ class ViewModel {
     var opacityOfGameBoard: CGFloat = 0.7
     
     var typeOfMatch: TypeOfMatch = .points
-    var finishWhen: FinishWhen = .firstTo
-    var numbersToShow: ValidGamesOrPoints {
-        finishWhen == .bestOf ? .oddsOnly : .all
-    }
+    var finishWhen: FinishWhen = .bestOf
+//    var numbersToShow: ValidGamesOrPoints {
+//        finishWhen == .bestOf ? .oddsOnly : .all
+//    }
     var doublingCubeStatus: DoublingCubeStatus = .hide
-    var numberOfGamesOrPoints: Int? = 5
+    var numberOfGamesOrPoints: Int? = 7
     var winningScoreIfBestOfGames: Int? {
         guard let numberOfGamesOrPoints else { return nil }
         return Int(numberOfGamesOrPoints / 2) + 1
+    }
+    
+    var strideBy: Int {
+        switch typeOfMatch {
+        case .social:
+            1  // Should never be used
+        case .games:
+            finishWhen == .firstTo ? 1 : 2
+        case .points:
+            1
+        }
+    }
+    
+    var rangeOfValidNumbers: [Int] {
+        Array(stride(from: 1, through: 100, by: strideBy))
     }
     
     var currentGameState: CurrentGameState {
