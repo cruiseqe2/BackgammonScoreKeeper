@@ -41,14 +41,10 @@ class ViewModel {
     
     var typeOfMatch: TypeOfMatch = .points
     var finishWhen: FinishWhen = .bestOf
-//    var numbersToShow: ValidGamesOrPoints {
-//        finishWhen == .bestOf ? .oddsOnly : .all
-//    }
     var doublingCubeStatus: DoublingCubeStatus = .hide
-    var numberOfGamesOrPoints: Int? = 7
-    var winningScoreIfBestOfGames: Int? {
-        guard let numberOfGamesOrPoints else { return nil }
-        return Int(numberOfGamesOrPoints / 2) + 1
+    var numberOfGamesOrPoints: Int = 5
+    var winningScoreIfBestOfGames: Int {
+        Int(numberOfGamesOrPoints / 2) + 1
     }
     
     var strideBy: Int {
@@ -158,7 +154,7 @@ class ViewModel {
     
     var line2: String {
         guard typeOfMatch != .social else { return "" }
-        return ("\(numberOfGamesOrPoints ?? 0)")
+        return ("\(numberOfGamesOrPoints)")
     }
     
     var line3: String {
@@ -176,7 +172,7 @@ class ViewModel {
     /// Should BumpDown be visible
     var bumpDownVisible: Bool {
         guard bumpUpVisible else { return false }
-        guard let numberOfGamesOrPoints else { return false }
+//        guard let numberOfGamesOrPoints else { return false }
         
         if typeOfMatch == .points {
             return numberOfGamesOrPoints > ownerPoints + 1        &&
@@ -190,7 +186,7 @@ class ViewModel {
                 numberOfGamesOrPoints > opponentGames + 1
                 ? true : false
             } else {     // .BestOf
-                return winningScoreIfBestOfGames! > ownerGames + opponentGames ? true : false
+                return winningScoreIfBestOfGames > ownerGames + opponentGames ? true : false
             }
         }
         
@@ -261,17 +257,17 @@ class ViewModel {
     /// Handle the 'bumping' buttons
     
     func bumpUp() {
-        numberOfGamesOrPoints! += (finishWhen == .bestOf ? 2 : 1)
+        numberOfGamesOrPoints += (finishWhen == .bestOf ? 2 : 1)
     }
     
     func bumpDown() {
-        numberOfGamesOrPoints! -= (finishWhen == .bestOf ? 2 : 1)
+        numberOfGamesOrPoints -= (finishWhen == .bestOf ? 2 : 1)
         
         // Ensure that if we are bumping down and are points based AND
         // it is a .bestOf scenario AND we have landed on an EVEN
         // number, then add 1 to ensure that it is ODD.
-        if typeOfMatch == .points && finishWhen == .bestOf && !(numberOfGamesOrPoints! .isMultiple(of: 2)) {
-            numberOfGamesOrPoints! += 1
+        if typeOfMatch == .points && finishWhen == .bestOf && !(numberOfGamesOrPoints.isMultiple(of: 2)) {
+            numberOfGamesOrPoints += 1
         }
     }
     
@@ -303,7 +299,7 @@ class ViewModel {
     /// Update the Crawford details.
     
     func checkForCrawford() {
-        guard let numberOfGamesOrPoints else { return }
+//        guard let numberOfGamesOrPoints else { return }
         switch crawfordStatus {
         case .notPointsBased:
             break
@@ -326,30 +322,30 @@ class ViewModel {
         guard typeOfMatch != .social else { return }
         
         if typeOfMatch == .points {
-            if ownerPoints >= numberOfGamesOrPoints!  {
+            if ownerPoints >= numberOfGamesOrPoints  {
                 winnerIs = .owner
                 return
             }
-            if opponentPoints >= numberOfGamesOrPoints!  {
+            if opponentPoints >= numberOfGamesOrPoints  {
                 winnerIs = .opponent
                 return
             }
         } else {  // typeOfMatch = .games as .social has been ruled out by the guard statement
             if finishWhen == .bestOf {
-                if ownerGames >= winningScoreIfBestOfGames!  {
+                if ownerGames >= winningScoreIfBestOfGames  {
                     winnerIs = .owner
                     return
                 }
-                if opponentGames >= winningScoreIfBestOfGames!  {
+                if opponentGames >= winningScoreIfBestOfGames  {
                     winnerIs = .opponent
                     return
                 }
             } else {  // finishWhen = .firstTo
-                if ownerGames >= numberOfGamesOrPoints!  {
+                if ownerGames >= numberOfGamesOrPoints  {
                     winnerIs = .owner
                     return
                 }
-                if opponentGames >= numberOfGamesOrPoints!  {
+                if opponentGames >= numberOfGamesOrPoints  {
                     winnerIs = .opponent
                     return
                 }

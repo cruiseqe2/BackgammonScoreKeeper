@@ -25,7 +25,7 @@ struct ChooseANumberView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 0) {
+            HStack(spacing: 0) {
                 Color.clear.frame(width: CGsize * CGoffsetPadding)
                 ForEach(rangeOfValidNumbers, id: \.self) { index in
                     Rectangle()
@@ -51,7 +51,7 @@ struct ChooseANumberView: View {
                 .frame(width: CGsize, height: CGsize + 2)
             , alignment: .center
         )
-        .onChange(of: numberSelected ?? 57) { _, newValue in
+        .onChange(of: numberSelected ?? 1) { _, newValue in
             numberOfGamesOrPoints = newValue
         }
         .onAppear {
@@ -65,7 +65,7 @@ struct ChooseANumberView: View {
 
 #Preview(traits: .landscapeLeft) {
     struct PreviewWrapper: View {
-        @State var selectedNumber = 57
+        @State var selectedNumber = 5
         var body: some View {
             ChooseANumberView(
                 numberOfGamesOrPoints: $selectedNumber,

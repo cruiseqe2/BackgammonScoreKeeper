@@ -206,14 +206,14 @@ struct GamesColumn: View {
                         if vm.typeOfMatch == .games {
                             if vm.finishWhen == .bestOf {
                                 ChooseANumberView(
-                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
                                     rangeOfValidNumbers: vm.rangeOfValidNumbers,
                                     size: 31,
                                     show: 7
                                 )
                             } else {   // .firstTo
                                 ChooseANumberView(
-                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                    numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
                                     rangeOfValidNumbers: vm.rangeOfValidNumbers,
                                     size: 31,
                                     show: 7
@@ -262,7 +262,7 @@ struct PointsColumn: View {
                         
                         if vm.typeOfMatch == .points {
                             ChooseANumberView(
-                                numberOfGamesOrPoints: $vm.numberOfGamesOrPoints ?? 57,
+                                numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
                                 rangeOfValidNumbers: vm.rangeOfValidNumbers,
                                 size: 31,
                                 show: 5
