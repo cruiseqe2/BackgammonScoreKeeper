@@ -8,25 +8,23 @@
 import SwiftUI
 
 struct ChooseANumberView: View {
-    
     @Binding var numberOfGamesOrPoints: Int
     @State var rangeOfValidNumbers: [Int]
-    
     @State var size: Int
-    var CGsize: CGFloat { CGFloat(size) }
-    
     @State var show: Int
-    private var CGshow: CGFloat { CGFloat(show) }
     
-    private var offsetPadding: Int { Int(show / 2) }
-    private var CGoffsetPadding: CGFloat { CGFloat(offsetPadding) }
+    private var CGsize: CGFloat { CGFloat(size) }
+    private var CGshow: CGFloat { CGFloat(show) }
+    private var contentMargin: CGFloat {
+        let offsetPadding = CGFloat( Int(show / 2) )
+        return CGsize * offsetPadding
+    }
     
     @State private var numberSelected: Int?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
-                Color.clear.frame(width: CGsize * CGoffsetPadding)
                 ForEach(rangeOfValidNumbers, id: \.self) { index in
                     Rectangle()
                         .fill(Color.clear)
@@ -36,10 +34,10 @@ struct ChooseANumberView: View {
                         )
                         .id(index)
                 }
-                Color.clear.frame(width: CGsize * CGoffsetPadding)
             }
             .scrollTargetLayout()
         }
+        .contentMargins(.horizontal, contentMargin)
         .scrollPosition(id: $numberSelected, anchor: .center)
         .scrollTargetBehavior(.viewAligned)
         .animation(.smooth, value: numberSelected)
