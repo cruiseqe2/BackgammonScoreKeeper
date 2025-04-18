@@ -132,11 +132,9 @@ struct ConfigureMatchView: View {
             .disabled(vm.isConfigurePlayersShown || !vm.namesAreValid)
             
         }
-        
         .fullScreenCover(isPresented: $vm.isConfigurePlayersShown) {
             ConfigurePlayersView().applyBorder(borderType: .mint, radius: 20)
         }
-        
     }
 }
 
@@ -195,9 +193,10 @@ struct GamesColumn: View {
                 
                 VStack(spacing: 0) {
                     
-                    Picker("", selection: $vm.finishWhen) {
-                        Text("Best Of").tag(FinishWhen.bestOf)
-                        Text("First To").tag(FinishWhen.firstTo)
+                    Picker("", selection: $vm.gamesFinishConditon) {
+                        ForEach(GamesFinishCondition.allCases, id:\.self) { item in
+                            Text("\(item.rawValue)")
+                        }
                     }
                     .pickerStyle(.segmented)
                     

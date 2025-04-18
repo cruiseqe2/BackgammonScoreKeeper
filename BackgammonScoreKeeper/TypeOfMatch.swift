@@ -40,10 +40,15 @@ enum PositionOfOwner {
     case rightHandSide
 }
 
-enum FinishWhen: String, RawRepresentable, CaseIterable {
-    case bestOf   = "Best Of"
-    case firstTo  = "First To"
-    case social   = "Social"
+enum FinishWhen {
+    case bestOf
+    case firstTo
+    case social
+}
+
+enum GamesFinishCondition: String, RawRepresentable, CaseIterable {
+    case GFCBestOf   = "Best Of"
+    case GFCFirstTo  = "First To"
 }
 
 enum WhichWayRound {

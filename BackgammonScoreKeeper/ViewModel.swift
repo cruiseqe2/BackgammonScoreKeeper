@@ -40,7 +40,19 @@ class ViewModel {
     var opacityOfGameBoard: CGFloat = 0.7
     
     var typeOfMatch: TypeOfMatch = .points
-    var finishWhen: FinishWhen = .bestOf
+    
+    var finishWhen: FinishWhen {
+        switch typeOfMatch {
+        case .social:
+            .social
+        case .games:
+            gamesFinishConditon == .GFCBestOf ? .bestOf : .firstTo
+        case .points:
+            .firstTo
+        }
+    }
+    
+    var gamesFinishConditon: GamesFinishCondition = .GFCBestOf
     var doublingCubeStatus: DoublingCubeStatus = .hide
     var numberOfGamesOrPoints: Int = 7
     var winningScoreIfBestOfGames: Int {
@@ -155,11 +167,15 @@ class ViewModel {
     
     var line3: String {
         guard typeOfMatch != .social else { return "" }
-        return (typeOfMatch == .games ? "Games" : "Points")
+        switch numberOfGamesOrPoints {
+        case 1:  return (typeOfMatch == .games ? "Game" : "Point")
+        default : return (typeOfMatch == .games ? "Games" : "Points")
+        }
     }
     
     /// Should BumpUp be visible
     var bumpUpVisible: Bool {
+        return false
         guard winnerIs == .noWinnerYet else { return false }
         guard typeOfMatch != .social else { return false }
         return true
@@ -167,8 +183,9 @@ class ViewModel {
     
     /// Should BumpDown be visible
     var bumpDownVisible: Bool {
+        return false
         guard bumpUpVisible else { return false }
-//        guard let numberOfGamesOrPoints else { return false }
+        guard numberOfGamesOrPoints > 1 else { return false }
         
         if typeOfMatch == .points {
             return numberOfGamesOrPoints > ownerPoints + 1        &&
@@ -182,7 +199,7 @@ class ViewModel {
                 numberOfGamesOrPoints > opponentGames + 1
                 ? true : false
             } else {     // .BestOf
-                return winningScoreIfBestOfGames > ownerGames + opponentGames ? true : false
+                return winningScoreIfBestOfGames >= max(ownerGames, opponentGames)
             }
         }
         
@@ -259,12 +276,12 @@ class ViewModel {
     func bumpDown() {
         numberOfGamesOrPoints -= (finishWhen == .bestOf ? 2 : 1)
         
-        // Ensure that if we are bumping down and are points based AND
+        // Ensure that if we are bumping down and are games based AND
         // it is a .bestOf scenario AND we have landed on an EVEN
         // number, then add 1 to ensure that it is ODD.
-        if typeOfMatch == .points && finishWhen == .bestOf && !(numberOfGamesOrPoints.isMultiple(of: 2)) {
-            numberOfGamesOrPoints += 1
-        }
+//        if typeOfMatch == .games && finishWhen == .bestOf && !(numberOfGamesOrPoints.isMultiple(of: 2)) {
+//            numberOfGamesOrPoints += 1
+//        }
     }
     
     /// Handle the 'winning' buttons
@@ -295,7 +312,6 @@ class ViewModel {
     /// Update the Crawford details.
     
     func checkForCrawford() {
-//        guard let numberOfGamesOrPoints else { return }
         switch crawfordStatus {
         case .notPointsBased:
             break
