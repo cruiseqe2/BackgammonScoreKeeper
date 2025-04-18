@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ChooseANumberView: View {
     @Binding var numberOfGamesOrPoints: Int
-    @State var rangeOfValidNumbers: [Int]
-    @State var size: Int
-    @State var show: Int
+    let strideBy: Int
+    let size: Int
+    let show: Int
     
     private var CGsize: CGFloat { CGFloat(size) }
     private var CGshow: CGFloat { CGFloat(show) }
@@ -19,13 +19,16 @@ struct ChooseANumberView: View {
         let offsetPadding = CGFloat( Int(show / 2) )
         return CGsize * offsetPadding
     }
+    private var arrayOfValidNumbers: [Int] {
+        Array(stride(from: 1, through: 100, by: strideBy))
+    }
     
     @State private var numberSelected: Int?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
-                ForEach(rangeOfValidNumbers, id: \.self) { index in
+                ForEach(arrayOfValidNumbers, id: \.self) { index in
                     Rectangle()
                         .fill(Color.clear)
                         .frame(width: CGsize, height: CGsize)
@@ -54,7 +57,7 @@ struct ChooseANumberView: View {
         }
         .onAppear {
             numberSelected = numberOfGamesOrPoints
-            if rangeOfValidNumbers.contains(numberSelected!) == false {
+            if arrayOfValidNumbers.contains(numberSelected!) == false {
                 numberSelected! -= 1
             }
         }
@@ -67,7 +70,7 @@ struct ChooseANumberView: View {
         var body: some View {
             ChooseANumberView(
                 numberOfGamesOrPoints: $selectedNumber,
-                rangeOfValidNumbers: Array(stride(from: 1, through: 100, by: 1)),
+                strideBy: 2,
                 size: 39,
                 show: 5
             )

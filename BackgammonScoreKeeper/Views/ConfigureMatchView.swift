@@ -158,7 +158,6 @@ struct SocialColumn: View {
             }
             Spacer()
         }
-        //        .border(.mint, width: 1)
     }
 }
 
@@ -207,14 +206,14 @@ struct GamesColumn: View {
                             if vm.finishWhen == .bestOf {
                                 ChooseANumberView(
                                     numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
-                                    rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                    strideBy: vm.strideBy,
                                     size: 31,
                                     show: 7
                                 )
                             } else {   // .firstTo
                                 ChooseANumberView(
                                     numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
-                                    rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                    strideBy: vm.strideBy,
                                     size: 31,
                                     show: 7
                                 )
@@ -229,7 +228,6 @@ struct GamesColumn: View {
         }
     }
 }
-
 
 struct PointsColumn: View {
     @Environment(ViewModel.self) var vm
@@ -263,7 +261,7 @@ struct PointsColumn: View {
                         if vm.typeOfMatch == .points {
                             ChooseANumberView(
                                 numberOfGamesOrPoints: $vm.numberOfGamesOrPoints,
-                                rangeOfValidNumbers: vm.rangeOfValidNumbers,
+                                strideBy: vm.strideBy,
                                 size: 31,
                                 show: 5
                             )

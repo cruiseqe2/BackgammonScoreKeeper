@@ -64,6 +64,7 @@
 		65B6A4DD2D908283002D97AB /* TriangleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4DC2D908283002D97AB /* TriangleRow.swift */; };
 		65B6A4DF2D9092BC002D97AB /* VerticalText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4DE2D9092BC002D97AB /* VerticalText.swift */; };
 		65B6A4E12D90B5D2002D97AB /* Glow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6A4E02D90B5D2002D97AB /* Glow.swift */; };
+		65F372BA2DB197BB00CBE354 /* StrippedBackRevisited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F372B92DB197BB00CBE354 /* StrippedBackRevisited.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		65B6A4DC2D908283002D97AB /* TriangleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleRow.swift; sourceTree = "<group>"; };
 		65B6A4DE2D9092BC002D97AB /* VerticalText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalText.swift; sourceTree = "<group>"; };
 		65B6A4E02D90B5D2002D97AB /* Glow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glow.swift; sourceTree = "<group>"; };
+		65F372B92DB197BB00CBE354 /* StrippedBackRevisited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrippedBackRevisited.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 		65AC05232D7E6A8F00D9F7A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				65F372B92DB197BB00CBE354 /* StrippedBackRevisited.swift */,
 				650998142DA3154A00C99305 /* Custom Views for the CustomBox Views */,
 				6580A2712D83CD5300E88963 /* WelcomeView.swift */,
 				65AC04FB2D7E245C00D9F7A6 /* MainMenu.swift */,
@@ -419,6 +422,7 @@
 				657C9B052D98889C008B193C /* AboutView.swift in Sources */,
 				65AC05202D7E31E100D9F7A6 /* CustomConfigureChangeStyle.swift in Sources */,
 				65AC05102D7E245C00D9F7A6 /* MiddleView.swift in Sources */,
+				65F372BA2DB197BB00CBE354 /* StrippedBackRevisited.swift in Sources */,
 				65AC05112D7E245C00D9F7A6 /* OuterView.swift in Sources */,
 				65AC05122D7E245C00D9F7A6 /* TestAlignmentXXXXX.swift in Sources */,
 				65AC05132D7E245C00D9F7A6 /* ConfigurePlayersView.swift in Sources */,

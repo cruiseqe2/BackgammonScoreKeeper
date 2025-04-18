@@ -42,7 +42,7 @@ class ViewModel {
     var typeOfMatch: TypeOfMatch = .points
     var finishWhen: FinishWhen = .bestOf
     var doublingCubeStatus: DoublingCubeStatus = .hide
-    var numberOfGamesOrPoints: Int = 5
+    var numberOfGamesOrPoints: Int = 7
     var winningScoreIfBestOfGames: Int {
         Int(numberOfGamesOrPoints / 2) + 1
     }
@@ -56,10 +56,6 @@ class ViewModel {
         case .points:
             1
         }
-    }
-    
-    var rangeOfValidNumbers: [Int] {
-        Array(stride(from: 1, through: 100, by: strideBy))
     }
     
     var currentGameState: CurrentGameState {
