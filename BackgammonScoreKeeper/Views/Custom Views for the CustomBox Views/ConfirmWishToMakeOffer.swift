@@ -10,7 +10,7 @@ import SwiftUI
 struct ConfirmWishToMakeOffer: View {
     @Environment(ViewModel.self) var vm
     
-    var offerMadeTo: OfferCubeTo
+    let offerMadeTo: OfferCubeTo
     
     var body: some View {
         Group {

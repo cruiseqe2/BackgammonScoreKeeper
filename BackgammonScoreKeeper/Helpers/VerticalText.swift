@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct VerticalText: View {
-    var string: String
-    var size: CGFloat
+    let string: String
+    let size: CGFloat
     
     struct LettersArray: Identifiable {
         let id = UUID()

@@ -161,8 +161,6 @@ struct SocialColumn: View {
 
 struct GamesColumn: View {
     @Environment(ViewModel.self) var vm
-    @State private var number: Int = 1
-    
     var body: some View {
         @Bindable var vm = vm
         VStack(alignment: .leading, spacing: 10) {

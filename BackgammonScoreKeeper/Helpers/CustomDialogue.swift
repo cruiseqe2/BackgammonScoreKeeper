@@ -12,14 +12,14 @@ struct CustomDialogue: View {
     @Binding var isShown: Bool
     @Binding var inputText: String
     
-    var previousText: String = ""
-    var message: String
-    var button1Text: String
-    var button2Text: String
-    var dialogueWidth: CGFloat
-    var dialogueHeight: CGFloat
-    var action1: () -> Void = {}
-    var action2: (String) -> Void = { _ in }
+    let previousText: String
+    let message: String
+    let button1Text: String
+    let button2Text: String
+    let dialogueWidth: CGFloat
+    let dialogueHeight: CGFloat
+    var action1: () -> Void
+    var action2: (String) -> Void
     
     @State private var buttonBoxHeight: CGFloat = 50
     
@@ -46,7 +46,6 @@ struct CustomDialogue: View {
                 }
         }
         .applyBorder(borderType: .glowing, radius: 20)
-//        .flashyBorder(cornerRadius: 20, width: dialogueWidth, height: dialogueHeight)
     }
 }
 
@@ -87,11 +86,11 @@ extension CustomDialogue {
 struct DialogueButtons: View {
     @Binding var isShown: Bool
     @Binding var newText: String
-    var previousText: String
-    var button1Text: String
-    var button2Text: String
-    var action1: () -> Void = { }
-    var action2: (String) -> Void = { _ in }
+    let previousText: String
+    let button1Text: String
+    let button2Text: String
+    let action1: () -> Void
+    let action2: (String) -> Void
         
     var body: some View {
         HStack(spacing: 0) {

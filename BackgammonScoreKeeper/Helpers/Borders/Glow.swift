@@ -10,8 +10,8 @@ import SwiftUI
 struct GlowEffect: View {
     @State private var gradientStops: [Gradient.Stop] = GlowEffect.generateGradientStops()
 
-    var givenFrameWidth: CGFloat
-    var givenFrameHeight: CGFloat
+    let givenFrameWidth: CGFloat
+    let givenFrameHeight: CGFloat
     var useFrameWidth: CGFloat { givenFrameWidth + 15 }
     var useFrameHeight: CGFloat { givenFrameHeight + 15 }
     
@@ -70,11 +70,11 @@ struct GlowEffect: View {
 }
 
 struct Effect: View {
-    var gradientStops: [Gradient.Stop]
-    var width: CGFloat
-    var blur: CGFloat
-    var useFrameWidth: CGFloat
-    var useFrameHeight: CGFloat
+    let gradientStops: [Gradient.Stop]
+    let width: CGFloat
+    let blur: CGFloat
+    let useFrameWidth: CGFloat
+    let useFrameHeight: CGFloat
     
     var body: some View {
         ZStack {
@@ -96,10 +96,10 @@ struct Effect: View {
 }
 
 struct EffectNoBlur: View {
-    var gradientStops: [Gradient.Stop]
-    var width: CGFloat
-    var useFrameWidth: CGFloat
-    var useFrameHeight: CGFloat
+    let gradientStops: [Gradient.Stop]
+    let width: CGFloat
+    let useFrameWidth: CGFloat
+    let useFrameHeight: CGFloat
 
     var body: some View {
         ZStack {
@@ -137,8 +137,8 @@ extension Color {
 
 
 struct NiceGlowEffect: ViewModifier {
-    var givenFrameWidth: CGFloat
-    var givenFrameHeight: CGFloat
+    let givenFrameWidth: CGFloat
+    let givenFrameHeight: CGFloat
     
     
     func body(content: Content) -> some View {

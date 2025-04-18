@@ -39,6 +39,6 @@ struct NotYetImplementedView: View {
 }
 
 #Preview(traits: .landscapeLeft) {
-    AbandonMatchView()
+    NotYetImplementedView()
         .environment(ViewModel())
 }

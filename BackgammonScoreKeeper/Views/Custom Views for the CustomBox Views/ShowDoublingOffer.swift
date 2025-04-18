@@ -10,7 +10,7 @@ import SwiftUI
 struct ShowDoublingOffer: View {
     @Environment(ViewModel.self) var vm
     
-    var offerMadeTo: OfferCubeTo
+    let offerMadeTo: OfferCubeTo
     
     var lhsBox: Int {
         if offerMadeTo == .owner {

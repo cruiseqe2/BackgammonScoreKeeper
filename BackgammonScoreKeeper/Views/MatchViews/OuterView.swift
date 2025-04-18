@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OuterView: View {
     @Environment(ViewModel.self) var vm
-    @State var sideToProcess: SideToProcess
+    let sideToProcess: SideToProcess
     
     private var smallBoxOpacity: Double {
         vm.typeOfMatch == .points && vm.showSmallBoxIfPointsBased ? 1.0 : 0.0

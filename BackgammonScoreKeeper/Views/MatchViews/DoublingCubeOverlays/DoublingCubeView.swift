@@ -10,7 +10,6 @@ import SwiftUI
 struct DoublingCubeView: View {
     @Environment(ViewModel.self) var vm
     @State private var offset: CGSize = .zero
-    @State private var show = false
     @State private var maxTravelOfCube: CGFloat = 200
     
     var body: some View {

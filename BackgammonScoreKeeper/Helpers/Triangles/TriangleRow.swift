@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TriangleRow: View {
-    var colors: [Color]
+    let colors: [Color]
     var body: some View {
         VStack(spacing: 0) {
             ForEach (1..<13) { i in
